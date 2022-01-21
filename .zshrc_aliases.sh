@@ -49,6 +49,7 @@ alias marta="cd ~/Documents/marta/mono"
 alias reagent="cd ~/Documents/htw/reagent/frontend-v2"
 alias projex="cd ~/Documents/projects"
 alias htw="cd ~/Documents/htw"
+alias sublime="cd ~/Documents/sublime"
 
 alias start-pg="brew services start postgresql"
 alias stop-pg="brew services stop postgresql"
