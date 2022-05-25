@@ -31,6 +31,8 @@ alias g-local="git config user.email sunan.regi@gmail.com"
 alias g-delete-origin="git push origin --delete"
 alias g-rh="g-f origin && git reset --hard origin/master"
 alias g-log="git log --oneline --graph"
+alias g-re="git restore"
+alias g-ra="git restore ."
 
 alias cc="clear"
 alias refresh="source ~/.zshrc"
