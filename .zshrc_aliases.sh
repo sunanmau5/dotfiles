@@ -35,7 +35,7 @@ alias g-re="git restore"
 alias g-ra="git restore ."
 
 alias cc="clear"
-alias refresh="source ~/.zshrc"
+alias rr="source ~/.zshrc"
 
 export VSCODE_SETTINGS_PATH="/Users/mba/Library/'Application Support'/Code/User/settings.json"
 
@@ -54,6 +54,7 @@ alias projex="cd ~/Documents/projects"
 alias htw="cd ~/Documents/htw"
 alias sublime="cd ~/Documents/sublime"
 alias dotfiles="cd ~/dotfiles"
+alias ba="cd ~/Documents/projects/chrome-ext/filtre-extension"
 
 alias start-pg="brew services start postgresql"
 alias stop-pg="brew services stop postgresql"
