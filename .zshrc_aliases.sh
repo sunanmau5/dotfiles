@@ -54,12 +54,16 @@ alias projex="cd ~/Documents/projects"
 alias htw="cd ~/Documents/htw"
 alias sublime="cd ~/Documents/sublime"
 alias dotfiles="cd ~/dotfiles"
-alias filtre="cd ~/Documents/projects/chrome-ext/filtre-extension"
+alias filtre="cd ~/Documents/projects/chrome-ext/filtre"
 alias thesis="cd ~/Documents/htw/ba/ba-tex"
 
+# homebrew
 alias start-pg="brew services start postgresql"
 alias stop-pg="brew services stop postgresql"
 alias restart-pg="brew services restart postgresql"
+
+# n
+alias n="N_PREFIX=$HOME/.local n"
 
 # marta
 alias m-s="yarn run dev:server"
@@ -74,3 +78,7 @@ alias m-i="yarn run dev:inquirer"
 alias m-clean="git clean -fxd && yarn install && sh scripts/ux-sync.sh && yarn run db:create"
 alias m-v="yarn run tsc && yarn run test && yarn run databuilder:tests"
 alias m-recreate="sh /Users/mba/Documents/scripts/recreate-db.sh"
+
+# services
+alias s-se="cd ~/Documents/marta/search-service"
+alias s-tr="cd ~/Documents/marta/translation-service"
