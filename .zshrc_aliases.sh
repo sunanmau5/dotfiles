@@ -30,6 +30,9 @@ alias g-rh="g-f origin && git reset --hard \$(g-bo)"
 alias g-log="git log --oneline --graph"
 alias g-re="git restore"
 alias g-ra="git restore ."
+alias g-h="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
+alias g-st="git stash --include-untracked"
+alias g-sp="git stash pop"
 
 alias rr="source ~/.zshrc"
 alias cat="bat"
@@ -38,8 +41,6 @@ export VSCODE_SETTINGS_PATH="/Users/mba/Library/'Application Support'/Code/User/
 
 alias zsh-config="code ~/.zshrc"
 alias vsc-config="code $VSCODE_SETTINGS_PATH"
-alias broot-verbs="code $BROOT_VERBS_PATH"
-alias broot-config="code $BROOT_CONFIG_PATH"
 alias alias-config="code $ALIAS_FILE_PATH"
 
 alias alias:custom="cat $ALIAS_FILE_PATH"
@@ -60,6 +61,7 @@ alias m-e="yarn run dev:employee"
 alias m-clean="git clean -fxd && yarn install && sh scripts/ux-sync.sh && yarn run db:create"
 alias m-v="yarn run tsc && yarn run test && yarn run databuilder:tests"
 alias m-recreate="sh ~/Documents/scripts/recreate-db.sh"
+alias rmods="find . -type dir -name node_modules | xargs rm -rf"
 
 # services
 alias s-se="cd ~/Documents/marta/search-service"
