@@ -69,3 +69,6 @@ alias s-tr="cd ~/Documents/marta/translation-service"
 
 # wordpress
 alias wplocal="cd /Applications/XAMPP/htdocs"
+
+# pnpm
+alias p="pnpm"
