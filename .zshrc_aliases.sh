@@ -28,7 +28,7 @@ alias g-local="git config user.email sunan.regi@gmail.com"
 alias g-delete-origin="git push origin --delete"
 alias g-rh="g-f origin && git reset --hard \$(g-bo)"
 alias g-log="git log --oneline --graph"
-alias g-re="git restore"
+alias g-re="git restore --staged"
 alias g-ra="git restore ."
 alias g-h="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 alias g-st="git stash --include-untracked"
@@ -69,6 +69,14 @@ alias s-tr="cd ~/Documents/marta/translation-service"
 
 # wordpress
 alias wplocal="cd /Applications/XAMPP/htdocs"
+
+# corepack
+alias yarn="corepack yarn"
+alias yarnpkg="corepack yarnpkg"
+alias pnpm="corepack pnpm"
+alias pnpx="corepack pnpx"
+alias npm="corepack npm"
+alias npx="corepack npx"
 
 # pnpm
 alias p="pnpm"
