@@ -39,9 +39,9 @@ alias cat="bat"
 
 export VSCODE_SETTINGS_PATH="/Users/mba/Library/'Application Support'/Code/User/settings.json"
 
-alias zsh-config="code ~/.zshrc"
-alias vsc-config="code $VSCODE_SETTINGS_PATH"
-alias alias-config="code $ALIAS_FILE_PATH"
+alias zsh-config="zed ~/.zshrc"
+alias vsc-config="zed $VSCODE_SETTINGS_PATH"
+alias alias-config="zed $ALIAS_FILE_PATH"
 
 alias alias:custom="cat $ALIAS_FILE_PATH"
 alias vsc-to-dotfiles="cat $VSCODE_SETTINGS_PATH >> $DOTFILES_PATH/.vscode/settings.json"
@@ -80,3 +80,6 @@ alias npx="corepack npx"
 
 # pnpm
 alias p="pnpm"
+
+# lazygit
+alias lg="lazygit"
