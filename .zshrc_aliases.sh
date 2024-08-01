@@ -39,9 +39,9 @@ alias cat="bat"
 
 export VSCODE_SETTINGS_PATH="/Users/mba/Library/'Application Support'/Code/User/settings.json"
 
-alias zsh-config="zed ~/.zshrc"
-alias vsc-config="zed $VSCODE_SETTINGS_PATH"
-alias alias-config="zed $ALIAS_FILE_PATH"
+alias zsh-config="code ~/.zshrc"
+alias vsc-config="code $VSCODE_SETTINGS_PATH"
+alias alias-config="code $ALIAS_FILE_PATH"
 
 alias alias:custom="cat $ALIAS_FILE_PATH"
 alias vsc-to-dotfiles="cat $VSCODE_SETTINGS_PATH >> $DOTFILES_PATH/.vscode/settings.json"
@@ -60,8 +60,9 @@ alias m-sm="AWS_PROFILE=marta NODE_ENV=production yarn run dev:server"
 alias m-e="yarn run dev:employee"
 alias m-clean="git clean -fxd && yarn install && sh scripts/ux-sync.sh && yarn run db:create"
 alias m-v="yarn run tsc && yarn run test && yarn run databuilder:tests"
-alias m-recreate="sh ~/Documents/scripts/recreate-db.sh"
+alias m-recreate="bash ~/Documents/scripts/recreate-db.sh"
 alias rmods="find . -type dir -name node_modules | xargs rm -rf"
+alias m-deps="bash ~/Documents/scripts/remove-add-dependency.sh"
 
 # services
 alias s-se="cd ~/Documents/marta/search-service"
@@ -83,3 +84,6 @@ alias p="pnpm"
 
 # lazygit
 alias lg="lazygit"
+
+# network
+alias ip="ipconfig getifaddr en0"
