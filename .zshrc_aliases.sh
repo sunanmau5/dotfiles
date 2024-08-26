@@ -33,6 +33,8 @@ alias g-ra="git restore ."
 alias g-h="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 alias g-st="git stash --include-untracked"
 alias g-sp="git stash pop"
+alias g-sl="git stash list"
+alias g-sd="git stash drop stash@{0}"
 
 alias rr="source ~/.zshrc"
 alias cat="bat"
@@ -63,6 +65,7 @@ alias m-v="yarn run tsc && yarn run test && yarn run databuilder:tests"
 alias m-recreate="bash ~/Documents/scripts/recreate-db.sh"
 alias rmods="find . -type dir -name node_modules | xargs rm -rf"
 alias m-deps="bash ~/Documents/scripts/remove-add-dependency.sh"
+alias awks="aws eks update-kubeconfig --region eu-central-1 --name k8s-cluster && export KUBE_CONFIG_PATH=~/.kube/config"
 
 # services
 alias s-se="cd ~/Documents/marta/search-service"
