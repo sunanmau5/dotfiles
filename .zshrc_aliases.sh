@@ -62,14 +62,14 @@ alias m-sm="AWS_PROFILE=marta NODE_ENV=production yarn run dev:server"
 alias m-e="yarn run dev:employee"
 alias m-clean="git clean -fxd && yarn install && sh scripts/ux-sync.sh && yarn run db:create"
 alias m-v="yarn run tsc && yarn run test && yarn run databuilder:tests"
-alias m-recreate="bash ~/Documents/scripts/recreate-db.sh"
+alias m-recreate="bash ~/Developer/scripts/recreate-db.sh"
 alias rmods="find . -type dir -name node_modules | xargs rm -rf"
-alias m-deps="bash ~/Documents/scripts/remove-add-dependency.sh"
+alias m-deps="bash ~/Developer/scripts/remove-add-dependency.sh"
 alias awks="aws eks update-kubeconfig --region eu-central-1 --name k8s-cluster && export KUBE_CONFIG_PATH=~/.kube/config"
 
 # services
-alias s-se="cd ~/Documents/marta/search-service"
-alias s-tr="cd ~/Documents/marta/translation-service"
+alias s-se="cd ~/Developer/marta/search-service"
+alias s-tr="cd ~/Developer/marta/translation-service"
 
 # wordpress
 alias wplocal="cd /Applications/XAMPP/htdocs"
