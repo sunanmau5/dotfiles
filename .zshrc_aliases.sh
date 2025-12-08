@@ -90,6 +90,9 @@ alias wplocal="cd /Applications/XAMPP/htdocs"
 # lazygit
 alias lg="lazygit"
 
+# lazydocker
+alias ld="lazydocker"
+
 # network
 alias ip="ipconfig getifaddr en0"
 
