@@ -1,0 +1,24 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/rose-pine-moon.toml"
+]
+
+[keyboard]
+bindings = [
+  { key = "Left",  mods = "Alt",     chars = "\u001bB"   },
+  { key = "Right", mods = "Alt",     chars = "\u001bF"   },
+  { key = "Left",  mods = "Command", chars = "\u001bOH"  },
+  { key = "Right", mods = "Command", chars =  "\u001bOF" },
+  { key = "Back",  mods = "Command", chars = "\u0015"    },
+]
+
+[window]
+decorations = "none" # Removes the window decoration (title bar, etc.)
+
+[font]
+size = 13
+
+# FiraCode Nerd Font
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+bold = { family = "FiraCode Nerd Font", style = "Bold" }
+italic = { family = "FiraCode Nerd Font", style = "Italic" }
