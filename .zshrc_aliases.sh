@@ -1,6 +1,9 @@
-# export variable $ALIAS_FILE_PATH on your `.zshrc` file that's pointing to the absolute path of this file
+# export variable $ALIAS_FILE_PATH and $DOTFILES_PATH on your `.zshrc` file that's pointing to the absolute path of this filealias
+
+source "$DOTFILES_PATH/variables.sh"
 
 alias ll="ls -la"
+alias cc="clear"
 
 # Git commands
 alias g-s="git status"
@@ -32,61 +35,81 @@ alias g-re="git restore --staged"
 alias g-ra="git restore ."
 alias g-h="open \`git remote -v | grep git@github.com | grep fetch | head -1 | cut -f2 | cut -d' ' -f1 | sed -e's/:/\//' -e 's/git@/http:\/\//'\`"
 alias g-st="git stash --include-untracked"
+alias g-sm="git stash push --include-untracked -m"
 alias g-sp="git stash pop"
 alias g-sl="git stash list"
-alias g-sd="git stash drop stash@{0}"
+alias g-ss="git stash push -S"
+# copy last commit message
+alias g-clc="git log -1 --pretty=%B | perl -pe 'chomp if eof' | pbcopy"
+# list recently committed branches
+alias g-lb="git branch --sort=-committerdate | head -10"
 
 alias rr="source ~/.zshrc"
 alias cat="bat"
+alias vim="nvim"
 
-export VSCODE_SETTINGS_PATH="/Users/mba/Library/'Application Support'/Code/User/settings.json"
-
-alias zsh-config="code ~/.zshrc"
-alias vsc-config="code $VSCODE_SETTINGS_PATH"
-alias alias-config="code $ALIAS_FILE_PATH"
-
+alias zsh-config="vim ~/.zshrc"
+alias vsc-config="vim $VSCODE_SETTINGS_PATH"
+alias alias-config="vim $ALIAS_FILE_PATH"
 alias alias:custom="cat $ALIAS_FILE_PATH"
-alias vsc-to-dotfiles="cat $VSCODE_SETTINGS_PATH >> $DOTFILES_PATH/.vscode/settings.json"
-alias backup:vsc="vsc-to-dotfiles && $DOTFILES_PATH && git add .vscode && g-cm 'chore: backup vscode config' && g-pu"
-
 
 # n
 alias n="N_PREFIX=$HOME/.local n"
 
 # marta
-alias m-s="yarn run dev:server"
-alias m-sj="AWS_PROFILE=default NODE_ENV=production yarn run dev:server"
-alias m-ss="AWS_PROFILE=sunan NODE_ENV=production yarn run dev:server"
-alias m-sh="AWS_PROFILE=heinz NODE_ENV=production yarn run dev:server"
-alias m-sm="AWS_PROFILE=marta NODE_ENV=production yarn run dev:server"
-alias m-e="yarn run dev:employee"
-alias m-clean="git clean -fxd && yarn install && sh scripts/ux-sync.sh && yarn run db:create"
-alias m-v="yarn run tsc && yarn run test && yarn run databuilder:tests"
+alias m-s="pnpm run dev:server"
+alias m-e="pnpm run dev:employee"
+alias m-clean="git clean -fxd && pnpm install && sh scripts/ux-sync.sh && pnpm run db:create"
+alias m-v="pnpm run tsc && pnpm run test && pnpm run databuilder:tests"
 alias m-recreate="bash ~/Developer/scripts/recreate-db.sh"
-alias rmods="find . -type dir -name node_modules | xargs rm -rf"
 alias m-deps="bash ~/Developer/scripts/remove-add-dependency.sh"
+alias rmods="find . -type dir -name node_modules | xargs rm -rf"
 alias awks="aws eks update-kubeconfig --region eu-central-1 --name k8s-cluster && export KUBE_CONFIG_PATH=~/.kube/config"
+alias arp="adb reverse tcp:4002 tcp:4002 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:9002 tcp:9002 && adb reverse tcp:9003 tcp:9003 && adb reverse tcp:9004 tcp:9004 && adb reverse tcp:9005 tcp:9005 && adb reverse tcp:9006 tcp:9006 && adb reverse tcp:9007 tcp:9007 && adb reverse tcp:9008 tcp:9008 && adb reverse tcp:9009 tcp:9009"
 
-# services
-alias s-se="cd ~/Developer/marta/search-service"
-alias s-tr="cd ~/Developer/marta/translation-service"
+# tmux
+alias t="tmux"
+alias tls="tmux ls"
+alias tks="t kill-session -t"
+
+# corepack
+# alias yarn="corepack yarn"
+# alias yarnpkg="corepack yarnpkg"
+# alias pnpm="corepack pnpm"
+# alias pnpx="corepack pnpx"
+# alias npm="corepack npm"
+
+# npq
+alias npm="npq-hero"
+alias yarn="NPQ_PKG_MGR=yarn npq-hero"
+alias pnpm="NPQ_PKG_MGR=pnpm npq-hero"
 
 # wordpress
 alias wplocal="cd /Applications/XAMPP/htdocs"
-
-# corepack
-alias yarn="corepack yarn"
-alias yarnpkg="corepack yarnpkg"
-alias pnpm="corepack pnpm"
-alias pnpx="corepack pnpx"
-alias npm="corepack npm"
-alias npx="corepack npx"
-
-# pnpm
-alias p="pnpm"
 
 # lazygit
 alias lg="lazygit"
 
 # network
 alias ip="ipconfig getifaddr en0"
+
+# Java version aliases
+alias java8='export JAVA_HOME=$JAVA_8_HOME'
+alias java17='export JAVA_HOME=$JAVA_17_HOME'
+alias java22='export JAVA_HOME=$JAVA_22_HOME'
+alias java24='export JAVA_HOME=$JAVA_24_HOME'
+
+# Default to Java 17 (currently active)
+export JAVA_HOME=$JAVA_17_HOME
+
+# eza
+alias ls='eza -lh --group-directories-first --icons --hyperlink'
+alias lsa='ls -a'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt -a'
+
+# util
+alias uuid='uuidgen | tr "[:upper:]" "[:lower:]" | pbcopy'
+alias passgen='openssl rand -base64 12'
+
+source "$DOTFILES_PATH/functions.sh"
