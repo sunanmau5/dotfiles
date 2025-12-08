@@ -1,0 +1,89 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "cmd+l cmd+c",
+    "command": "-extension.liveServer.goOffline",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+l cmd+o",
+    "command": "-extension.liveServer.goOnline",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+tab",
+    "command": "workbench.action.quickSwitchWindow"
+  },
+  {
+    "key": "alt+tab",
+    "command": "workbench.action.quickOpenNavigateNext",
+    "when": "inWindowsPicker"
+  },
+  {
+    "key": "shift+alt+tab",
+    "command": "workbench.action.quickOpenNavigatePrevious",
+    "when": "inWindowsPicker"
+  },
+  {
+    "key": "shift+alt+=",
+    "command": "workbench.action.increaseViewSize"
+  },
+  {
+    "key": "shift+alt+-",
+    "command": "workbench.action.decreaseViewSize"
+  },
+  {
+    "key": "ctrl+alt+p",
+    "command": "projectManager.listProjectsNewWindow"
+  },
+  // Toggle between terminal and editor focus
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
+    // Toggle between full screen editor and a full screen terminal
+    "key": "ctrl+alt+m",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus"
+  },
+  {
+    // Generate commit message with Copilot and open source control
+    "key": "cmd+;",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.view.scm",
+        "github.copilot.git.generateCommitMessage"
+      ]
+    }
+  },
+  {
+    // Commit changes and focus back to editor
+    "key": "cmd+'",
+    "command": "runCommands",
+    "args": {
+      "commands": ["git.commit", "workbench.action.focusActiveEditorGroup"]
+    },
+    "when": "!terminalFocus"
+  },
+  {
+    // Commit changes and focus back to terminal
+    "key": "cmd+'",
+    "command": "runCommands",
+    "args": {
+      "commands": ["git.commit", "workbench.action.terminal.focus"]
+    },
+    "when": "terminalFocus"
+  },
+  {
+    // Push changes to remote
+    "key": "cmd+k cmd+p",
+    "command": "git.push"
+  }
+]
