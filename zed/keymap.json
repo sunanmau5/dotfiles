@@ -1,0 +1,13 @@
+[
+  {
+    "bindings": {
+      "cmd-ctrl-`": "workspace::NewCenterTerminal"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-shift-f": "editor::Format"
+    }
+  }
+]
