@@ -7,15 +7,24 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
+  "base_keymap": "VSCode",
+  // Vim mode settings
   "vim_mode": true,
+  "vim": {
+    "enable_vim_sneak": true
+  },
   "ui_font_size": 16,
   "buffer_font_size": 13,
   "buffer_font_family": "JetBrains Mono",
+  // move panels to the right
   "project_panel": {
     "dock": "right"
   },
   "terminal": {
+    "dock": "right"
+  },
+  "git_panel": {
     "dock": "right"
   },
   "toolbar": {
@@ -24,10 +33,13 @@
   "tab_bar": {
     "show": false
   },
-  "theme": {
-    "mode": "dark",
-    "dark": "One Dark",
-    "light": "Ayu Light"
+  "scrollbar": {
+    "show": "never"
+  },
+  "theme": "Ayu Mirage",
+  // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
+  "inlay_hints": {
+    "enabled": true
   },
   "languages": {
     "JavaScript": {
@@ -38,6 +50,13 @@
     "TypeScript": {
       "code_actions_on_format": {
         "source.fixAll.eslint": true
+      },
+      // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": false,
+        "show_other_hints": true,
+        "show_type_hints": true
       }
     },
     "TSX": {
@@ -45,5 +64,39 @@
         "source.fixAll.eslint": true
       }
     }
+  },
+  // File syntax highlighting
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["json", "jsonc", "*.code-snippets"]
+  },
+  // File scan exclusions, hide on the file explorer and search
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    // above is default from Zed
+    "**/out",
+    "**/dist",
+    "**/.husky",
+    "**/.turbo",
+    "**/.vscode-test",
+    "**/.vscode",
+    "**/.next",
+    "**/.storybook",
+    "**/.tap",
+    "**/.nyc_output",
+    "**/report",
+    "**/node_modules"
+  ],
+  // Turn off telemetry
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
   }
 }
