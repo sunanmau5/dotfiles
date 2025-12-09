@@ -33,6 +33,28 @@ stow */
 | `karabiner`                 | Keyboard customization |
 | `cursor` / `vscode` / `zed` | Editor settings        |
 
+## Editor Setup
+
+VSCode and Cursor store configs outside `~/.config`, so they need manual symlinks.
+
+**VSCode:**
+
+```sh
+cd "$HOME/Library/Application\ Support/Code/User"
+rm settings.json keybindings.json
+ln -s $HOME/.config/vscode/settings.json .
+ln -s $HOME/.config/vscode/keybindings.json .
+```
+
+**Cursor:**
+
+```sh
+cd "$HOME/Library/Application\ Support/Cursor/User"
+rm settings.json keybindings.json
+ln -s $HOME/.config/cursor/settings.json .
+ln -s $HOME/.config/cursor/keybindings.json .
+```
+
 ## Usage
 
 Link everything:

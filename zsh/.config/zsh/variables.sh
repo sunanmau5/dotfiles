@@ -5,7 +5,7 @@ nvim="nvim"
 
 editor=$nvim
 
-export VSCODE_SETTINGS_PATH="$HOME/Library/'Application Support'/Code/User/settings.json"
+export VSCODE_SETTINGS_PATH="$HOME/.config/vscode/settings.json"
 export DEV_HOME="$HOME/Developer"
 export NOTES_PATH="$DEV_HOME/Notes/"
 export VAULT_PATH="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/vault"

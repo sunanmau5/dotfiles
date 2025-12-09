@@ -139,11 +139,11 @@
     "scminput": false
   },
   "gitblame.inlineMessageEnabled": true,
-  "github.copilot.chat.commitMessageGeneration.instructions": [
-    {
-      "text": "Follow this commit message format strictly: <type>(MP-X): <description>. Type must be one of: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert. Scope is mandatory and must be a JIRA ticket ID in format MP-{number} (e.g., MP-3, MP-24, MP-2125). Description must use imperative present tense, be clear, not exceed 50 chars, not capitalize first letter, and have no period at end."
-    }
-  ],
+  // "github.copilot.chat.commitMessageGeneration.instructions": [
+  //   {
+  //     "text": "Follow this commit message format strictly: <type>(MP-X): <description>. Type must be one of: feat, fix, docs, style, refactor, perf, test, build, ci, chore, revert. Scope is mandatory and must be a JIRA ticket ID in format MP-{number} (e.g., MP-3, MP-24, MP-2125). Description must use imperative present tense, be clear, not exceed 50 chars, not capitalize first letter, and have no period at end."
+  //   }
+  // ],
   "chat.commandCenter.enabled": false,
   "github.copilot.nextEditSuggestions.enabled": true,
   "editor.autoClosingBrackets": "never",
