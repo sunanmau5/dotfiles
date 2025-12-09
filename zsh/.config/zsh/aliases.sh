@@ -1,7 +1,3 @@
-# export variable $ALIAS_FILE_PATH and $DOTFILES_PATH on your `.zshrc` file that's pointing to the absolute path of this filealias
-
-source "$DOTFILES_PATH/variables.sh"
-
 alias ll="ls -la"
 alias cc="clear"
 
@@ -114,5 +110,3 @@ alias lta='lt -a'
 # util
 alias uuid='uuidgen | tr "[:upper:]" "[:lower:]" | pbcopy'
 alias passgen='openssl rand -base64 12'
-
-source "$DOTFILES_PATH/functions.sh"
