@@ -8,11 +8,6 @@ user_pref("browser.aboutwelcome.enabled", false);
 user_pref("browser.ctrlTab.sortByRecentlyUsed", true);
 /* Disable sponsored weather on new tab page */
 user_pref("browser.newtabpage.activity-stream.system.showWeather", false);
-/* New tab wallpaper */
-user_pref(
-  "browser.newtabpage.activity-stream.newtabWallpapers.wallpaper",
-  "blue-purple"
-);
 /* Disable More from Mozilla tab in settings */
 user_pref("browser.preferences.moreFromMozilla", false);
 /* Disable Firefox Focus promo when private browsing */
