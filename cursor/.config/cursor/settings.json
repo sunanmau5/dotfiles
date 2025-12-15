@@ -45,7 +45,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": "never"
   },
-  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Fira Code', Consolas, 'Courier New', monospace",
   "editor.fontLigatures": true,
   "editor.fontSize": 12,
   "editor.formatOnSaveMode": "modificationsIfAvailable",
