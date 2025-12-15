@@ -14,6 +14,9 @@ plug "zsh-users/zsh-syntax-highlighting"
 # zsh-autosuggestions config
 bindkey '^ ' autosuggest-accept
 
+# completions
+autoload -Uz compinit && compinit
+
 # starship
 eval "$(starship init zsh)"
 

@@ -40,11 +40,11 @@ alias g-clc="git log -1 --pretty=%B | perl -pe 'chomp if eof' | pbcopy"
 # list recently committed branches
 alias g-lb="git branch --sort=-committerdate | head -10"
 
-alias rr="source ~/.zshrc"
+alias rr="source $ZSH_CONFIG_PATH"
 alias cat="bat"
 alias vim="nvim"
 
-alias zsh-config="vim ~/.zshrc"
+alias zsh-config="vim $ZSH_CONFIG_PATH"
 alias vsc-config="vim $VSCODE_SETTINGS_PATH"
 alias alias-config="vim $ALIAS_FILE_PATH"
 alias alias:custom="cat $ALIAS_FILE_PATH"
