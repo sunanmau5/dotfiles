@@ -48,6 +48,7 @@ alias zsh-config="vim $ZSH_CONFIG_PATH"
 alias vsc-config="vim $VSCODE_SETTINGS_PATH"
 alias alias-config="vim $ALIAS_FILE_PATH"
 alias alias:custom="cat $ALIAS_FILE_PATH"
+alias fn-config="vim $FN_PROFILE_PATH"
 
 # n
 alias n="N_PREFIX=$HOME/.local n"

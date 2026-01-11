@@ -1,0 +1,16 @@
+# Sites to allow cookies (one per line)
+# Store this file in your dotfiles!
+# Lines starting with # are ignored
+#
+# For SSO logins, add both domains:
+#   youtube.com
+#   accounts.google.com
+
+github.com
+google.com
+accounts.google.com
+youtube.com
+
+# add your sites below:
+
+lastpass.com
