@@ -6,25 +6,19 @@
       // Git
       "space g h d": "editor::ToggleSelectedDiffHunks",
       "space g s": "git_panel::ToggleFocus",
-
       // Toggle inlay hints
       "space t i": "editor::ToggleInlayHints",
-
       // Toggle soft wrap
       "space u w": "editor::ToggleSoftWrap",
-
       // NOTE: Toggle Zen mode, not fully working yet
       "space c z": "workspace::ToggleCenteredLayout",
-
       // Open markdown preview
       "space m p": "markdown::OpenPreview",
       "space m P": "markdown::OpenPreviewToTheSide",
-
       // Open recent project
       "space f p": "projects::OpenRecent",
       // Search word under cursor
       "space s w": "pane::DeploySearch",
-
       // Chat with AI
       "space a c": "agent::ToggleFocus",
       // Go to file with `gf`
@@ -41,7 +35,6 @@
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
-
       // +LSP
       "space c a": "editor::ToggleCodeActions",
       "space .": "editor::ToggleCodeActions",
@@ -63,14 +56,11 @@
       "s S": "project_symbols::Toggle",
       // Diagnostic
       "space x x": "diagnostics::Deploy",
-
       // +Git
       // Git prev/next hunk
       "] h": "editor::GoToHunk",
       "[ h": "editor::GoToPreviousHunk",
-
       // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
-
       // + Buffers
       // Switch between buffers
       "shift-h": "pane::ActivatePreviousItem",
@@ -126,14 +116,14 @@
       "r": "editor::Rename" // zed specific
     }
   },
-  // Code Action
-  {
-    "context": "Editor && vim_operator == c",
-    "bindings": {
-      "c": "vim::CurrentLine",
-      "a": "editor::ToggleCodeActions" // zed specific
-    }
-  },
+  // Code Action - not using, disabling for now as it interferes with `caw` motion
+  // {
+  //   "context": "Editor && vim_operator == c",
+  //   "bindings": {
+  //     "c": "vim::CurrentLine",
+  //     "a": "editor::ToggleCodeActions" // zed specific
+  //   }
+  // },
   // Toggle terminal
   {
     "context": "Workspace",
