@@ -10,9 +10,7 @@ plug "$HOME/.config/zsh/exports.sh"
 # plugins
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
-
-# zsh-autosuggestions config
-bindkey '^ ' autosuggest-execute
+plug "jeffreytse/zsh-vi-mode"
 
 # completions
 autoload -Uz compinit

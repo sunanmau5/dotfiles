@@ -6,6 +6,11 @@ function g-sd() {
   git stash drop stash@{"${1:-0}"}
 }
 
+# zsh-vi-mode hook (keybindings must be set here to survive zsh-vi-mode init)
+function zvm_after_init() {
+  bindkey '^ ' autosuggest-accept
+}
+
 # yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
