@@ -52,8 +52,12 @@ user_pref("sidebar.verticalTabs.dragToPinPromo.dismissed", true);
  * OVERRIDES (changing arkenfox defaults)
  * ============================================================================= */
 
+/* Override: open home page on new tab */
+user_pref("browser.newtabpage.enabled", true);
+
 /* Override: open home page on startup instead of blank (arkenfox: 0) */
 user_pref("browser.startup.page", 1);
+user_pref("browser.startup.homepage", "about:home");
 
 /* Override: disable tab-to-search (commented out in arkenfox) */
 user_pref("browser.urlbar.suggest.engines", false);
