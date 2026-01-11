@@ -178,8 +178,9 @@ add_permissions_to_profile() {
 			site="https://$site"
 		fi
 
-		# insert permission (1 = ALLOW)
-		sqlite3 "$db" "INSERT OR REPLACE INTO moz_perms (origin, type, permission, expireType, expireTime, modificationTime)
+		# delete existing then insert (1 = ALLOW)
+		sqlite3 "$db" "DELETE FROM moz_perms WHERE origin='$site' AND type='cookie';
+		               INSERT INTO moz_perms (origin, type, permission, expireType, expireTime, modificationTime)
 		               VALUES ('$site', 'cookie', 1, 0, 0, $(date +%s)000);" 2>/dev/null
 
 		if [ $? -eq 0 ]; then
@@ -290,10 +291,12 @@ else
 
 	echo -e "Auto-detecting Firefox profiles in: ${ORANGE}${PROFILES_ROOT}${NC}\n"
 
-	# Find all profiles
+	# Find all profiles (directories containing prefs.js or times.json)
 	profiles=()
-	for profile_dir in "$PROFILES_ROOT"/*.default*; do
-		[ -d "$profile_dir" ] && profiles+=("$profile_dir")
+	for profile_dir in "$PROFILES_ROOT"/*/; do
+		if [ -d "$profile_dir" ] && { [ -f "$profile_dir/prefs.js" ] || [ -f "$profile_dir/times.json" ]; }; then
+			profiles+=("${profile_dir%/}")
+		fi
 	done
 
 	if [ ${#profiles[@]} -eq 0 ]; then

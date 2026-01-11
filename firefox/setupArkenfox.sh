@@ -269,10 +269,12 @@ else
 
 	echo -e "Auto-detecting Firefox profiles in: ${ORANGE}${PROFILES_ROOT}${NC}\n"
 
-	# Find all profiles
+	# Find all profiles (directories containing prefs.js or times.json)
 	profiles=()
-	for profile_dir in "$PROFILES_ROOT"/*.default*; do
-		[ -d "$profile_dir" ] && profiles+=("$profile_dir")
+	for profile_dir in "$PROFILES_ROOT"/*/; do
+		if [ -d "$profile_dir" ] && { [ -f "$profile_dir/prefs.js" ] || [ -f "$profile_dir/times.json" ]; }; then
+			profiles+=("${profile_dir%/}")
+		fi
 	done
 
 	if [ ${#profiles[@]} -eq 0 ]; then
