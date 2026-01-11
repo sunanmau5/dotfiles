@@ -55,6 +55,31 @@ ln -s $HOME/.config/cursor/settings.json .
 ln -s $HOME/.config/cursor/keybindings.json .
 ```
 
+## Firefox (Arkenfox)
+
+Privacy-hardened Firefox using [arkenfox user.js](https://github.com/arkenfox/user.js). Since Firefox profiles have random names, stow won't work — use the setup script instead.
+
+**Setup:**
+
+```sh
+# close Firefox first, then run setup (auto-detects all profiles)
+~/.dotfiles/firefox/setupArkenfox.sh
+
+# start Firefox once, close it, then add cookie permissions
+~/.dotfiles/firefox/addCookiePermissions.sh
+```
+
+**What it does:**
+
+| File                      | Description                           |
+| ------------------------- | ------------------------------------- |
+| `user-overrides.js`       | Personal prefs (symlinked to profile) |
+| `cookie-sites.txt`        | Sites to stay logged in               |
+| `setupArkenfox.sh`        | Downloads arkenfox & symlinks config  |
+| `addCookiePermissions.sh` | Adds cookie exceptions to Firefox     |
+
+Edit `cookie-sites.txt` to manage which sites keep cookies across sessions.
+
 ## Usage
 
 Link everything:
