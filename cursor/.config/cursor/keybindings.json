@@ -57,10 +57,7 @@
     "key": "cmd+;",
     "command": "runCommands",
     "args": {
-      "commands": [
-        "workbench.view.scm",
-        "cursor.generateGitCommitMessage"
-      ]
+      "commands": ["workbench.view.scm", "cursor.generateGitCommitMessage"]
     }
   },
   {
@@ -95,5 +92,29 @@
     "key": "cmd+k v",
     "command": "-markdown.showPreviewToSide",
     "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+  },
+
+  // kill terminal
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+r cmd+w",
+    "command": "workbench.action.terminal.killAll",
+    "when": "terminalFocus"
+  },
+
+  // jump to next/previous search result in search pane
+  {
+    "key": "ctrl+j",
+    "command": "search.action.focusNextSearchResult",
+    "when": "hasSearchResult && searchViewletVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "search.action.focusPreviousSearchResult",
+    "when": "hasSearchResult && searchViewletVisible"
   }
 ]

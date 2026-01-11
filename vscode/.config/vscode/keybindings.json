@@ -85,5 +85,17 @@
     // Push changes to remote
     "key": "cmd+k cmd+p",
     "command": "git.push"
+  },
+
+  // kill terminal
+  {
+    "key": "cmd+w",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+k cmd+w",
+    "command": "workbench.action.terminal.killAll",
+    "when": "terminalFocus"
   }
 ]

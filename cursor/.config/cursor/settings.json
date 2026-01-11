@@ -124,9 +124,6 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
   "zenMode.centerLayout": false,
   "zenMode.showTabs": "single",
   "zenMode.hideLineNumbers": false,
@@ -147,5 +144,8 @@
   "terminal.integrated.commandsToSkipShell": ["aichat.newchataction"],
   "terminal.integrated.defaultProfile.osx": "zsh",
   "workbench.layoutControl.enabled": false,
-  "workbench.navigationControl.enabled": false
+  "workbench.navigationControl.enabled": false,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }
