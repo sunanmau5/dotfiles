@@ -4,10 +4,8 @@ export PATH=$PATH:/opt/homebrew/bin
 # Global modules should live inside .local/
 export PATH="$HOME/.local/bin:$PATH"
 
-# ruby
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # react native
 export ANDROID_HOME=$HOME/Library/Android/sdk

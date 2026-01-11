@@ -18,6 +18,9 @@ bindkey '^ ' autosuggest-execute
 autoload -Uz compinit
 compinit
 
+# rbenv
+eval "$(rbenv init - zsh)"
+
 # starship
 eval "$(starship init zsh)"
 
