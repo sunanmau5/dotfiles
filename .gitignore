@@ -1,1 +1,4 @@
 Brewfile.lock.json
+
+# karabiner backups
+**/automatic_backups
