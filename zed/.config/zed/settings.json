@@ -7,68 +7,129 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "title_bar": {
+    "show_branch_name": true,
+    "show_branch_icon": false,
+    "show_onboarding_banner": false,
+    "show_project_items": true,
+    "show_sign_in": false,
+    "show_user_menu": false,
+    "show_user_picture": false,
+    "show_menus": false,
+  },
+  "file_finder": {
+    "git_status": false,
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "notification_panel": {
+    "button": false,
+  },
+  "outline_panel": {
+    "git_status": false,
+    "button": false,
+  },
+  "status_bar": {
+    "active_language_button": false,
+    "cursor_position_button": false,
+    "experimental.show": false,
+  },
+  "diagnostics": {
+    "button": false,
+  },
+  "search": {
+    "button": false,
+  },
+  "debugger": {
+    "button": false,
+  },
+  "agent": {
+    "button": false,
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5",
+    },
+    "model_parameters": [],
+  },
   "relative_line_numbers": "enabled",
   "base_keymap": "VSCode",
   // Vim mode settings
   "vim_mode": true,
   "vim": {
-    "enable_vim_sneak": true
+    "enable_vim_sneak": true,
   },
   "ui_font_size": 16,
   "buffer_font_size": 13,
   "buffer_font_family": "JetBrains Mono",
   // move panels to the right
   "project_panel": {
-    "dock": "right"
+    "sort_mode": "directories_first",
+    "hide_root": true,
+    "sticky_scroll": false,
+    "auto_fold_dirs": true,
+    "starts_open": true,
+    "auto_reveal_entries": true,
+    "indent_size": 20.0,
+    "folder_icons": true,
+    "file_icons": true,
+    "entry_spacing": "standard",
+    "git_status": false,
+    "button": false,
+    "dock": "right",
   },
   "terminal": {
-    "dock": "right"
+    "button": false,
+    "dock": "right",
   },
   "git_panel": {
-    "dock": "right"
+    "button": false,
+    "dock": "right",
   },
   "toolbar": {
-    "quick_actions": false
+    "quick_actions": false,
   },
   "tab_bar": {
-    "show": false
+    "show_tab_bar_buttons": false,
+    "show_nav_history_buttons": false,
+    "show": false,
   },
   "scrollbar": {
-    "show": "never"
+    "show": "never",
   },
   "theme": "Ayu Mirage",
   // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
   "inlay_hints": {
-    "enabled": true
+    "enabled": true,
   },
   "languages": {
     "JavaScript": {
       "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
+        "source.fixAll.eslint": true,
+      },
     },
     "TypeScript": {
       "code_actions_on_format": {
-        "source.fixAll.eslint": true
+        "source.fixAll.eslint": true,
       },
       // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
       "inlay_hints": {
         "enabled": true,
         "show_parameter_hints": false,
         "show_other_hints": true,
-        "show_type_hints": true
-      }
+        "show_type_hints": true,
+      },
     },
     "TSX": {
       "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
-    }
+        "source.fixAll.eslint": true,
+      },
+    },
   },
   // File syntax highlighting
   "file_types": {
     "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"]
+    "JSON": ["json", "jsonc", "*.code-snippets"],
   },
   // File scan exclusions, hide on the file explorer and search
   "file_scan_exclusions": [
@@ -92,11 +153,11 @@
     "**/.tap",
     "**/.nyc_output",
     "**/report",
-    "**/node_modules"
+    "**/node_modules",
   ],
   // Turn off telemetry
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
-  }
+    "metrics": false,
+  },
 }
