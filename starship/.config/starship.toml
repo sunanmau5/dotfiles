@@ -1,5 +1,2 @@
 [package]
 display_private = true
-
-[aws]
-symbol = '☁️ '

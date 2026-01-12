@@ -144,5 +144,8 @@
   "terminal.integrated.commandsToSkipShell": ["aichat.newchataction"],
   "terminal.integrated.defaultProfile.osx": "zsh",
   "workbench.layoutControl.enabled": false,
-  "workbench.navigationControl.enabled": false
+  "workbench.navigationControl.enabled": false,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }
