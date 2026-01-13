@@ -61,7 +61,7 @@
   },
   "ui_font_size": 16,
   "buffer_font_size": 13,
-  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
   // move panels to the right
   "project_panel": {
     "sort_mode": "directories_first",
@@ -98,9 +98,8 @@
     "show": "never",
   },
   "theme": "Ayu Mirage",
-  // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
   "inlay_hints": {
-    "enabled": true,
+    "enabled": false,
   },
   "languages": {
     "JavaScript": {
@@ -111,13 +110,6 @@
     "TypeScript": {
       "code_actions_on_format": {
         "source.fixAll.eslint": true,
-      },
-      // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
-      "inlay_hints": {
-        "enabled": true,
-        "show_parameter_hints": false,
-        "show_other_hints": true,
-        "show_type_hints": true,
       },
     },
     "TSX": {
