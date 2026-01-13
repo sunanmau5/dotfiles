@@ -47,6 +47,8 @@ user_pref("findbar.highlightAll", true);
 user_pref("sidebar.verticalTabs", true);
 /* Dismiss the promo tooltip about dragging tabs to pin them in vertical tabs */
 user_pref("sidebar.verticalTabs.dragToPinPromo.dismissed", true);
+/* Hide sidebar */
+user_pref("sidebar.visibility", "hide-sidebar");
 
 /* =============================================================================
  * OVERRIDES (changing arkenfox defaults)
