@@ -283,19 +283,44 @@ else
 	fi
 
 	echo -e "Found ${#profiles[@]} profile(s):"
-	for p in "${profiles[@]}"; do
-		echo -e "  - $(basename "$p")"
+	for i in "${!profiles[@]}"; do
+		echo -e "  ${CYAN}[$i]${NC} $(basename "${profiles[$i]}")"
 	done
+	echo -e "  ${CYAN}[a]${NC} All profiles"
 	echo ""
 
 	if [ "$CONFIRM" = 'yes' ]; then
-		echo -e "${RED}Setup arkenfox in all profiles? Y/N${NC}"
-		read -p "" -n 1 -r
-		echo -e "\n"
-		[[ $REPLY =~ ^[Yy]$ ]] || { echo -e "${RED}Process aborted${NC}"; exit 0; }
+		echo -e "${ORANGE}Select profiles to setup (comma-separated numbers, or 'a' for all):${NC}"
+		read -r selection
+		echo ""
+
+		if [[ "$selection" =~ ^[Aa]$ ]]; then
+			selected_profiles=("${profiles[@]}")
+		else
+			selected_profiles=()
+			IFS=',' read -ra selections <<< "$selection"
+			for sel in "${selections[@]}"; do
+				# Trim whitespace
+				sel=$(echo "$sel" | tr -d ' ')
+				if [[ "$sel" =~ ^[0-9]+$ ]] && [ "$sel" -lt "${#profiles[@]}" ]; then
+					selected_profiles+=("${profiles[$sel]}")
+				else
+					echo -e "${RED}Invalid selection: $sel${NC}"
+				fi
+			done
+
+			if [ ${#selected_profiles[@]} -eq 0 ]; then
+				echo -e "${RED}No valid profiles selected. Process aborted${NC}"
+				exit 0
+			fi
+		fi
+	else
+		selected_profiles=("${profiles[@]}")
 	fi
 
-	for profile_dir in "${profiles[@]}"; do
+	echo -e "Setting up ${#selected_profiles[@]} profile(s)..."
+
+	for profile_dir in "${selected_profiles[@]}"; do
 		setup_profile "$profile_dir"
 	done
 fi
