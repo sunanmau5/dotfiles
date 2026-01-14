@@ -29,20 +29,44 @@ user_pref("browser.shell.checkDefaultBrowser", true);
 user_pref("browser.tabs.warnOnOpen", false);
 /* Don't show an image preview when you hover on a tab */
 user_pref("browser.tabs.hoverPreview.showThumbnails", false);
-/* Hide bookmark toolbar */
-user_pref("browser.toolbars.bookmarks.visibility", "never");
-/* Disable VPN sponsor when private browsing */
-user_pref("browser.vpn_promo.enabled", false);
 /* Disable smart tab grouping feature that automatically organizes tabs */
 user_pref("browser.tabs.groups.smart.userEnabled", false);
+/* Hide bookmark toolbar */
+user_pref("browser.toolbars.bookmarks.visibility", "never");
 /* Disable automatic translation popup when visiting foreign language pages */
 user_pref("browser.translations.automaticallyPopup", false);
+/* Disable Firefox Suggest */
+user_pref("browser.urlbar.quicksuggest.enabled", false);
+/* Disable URL bar shortcut buttons */
+user_pref("browser.urlbar.shortcuts.actions", false);
+user_pref("browser.urlbar.shortcuts.bookmarks", false);
+user_pref("browser.urlbar.shortcuts.history", false);
+user_pref("browser.urlbar.shortcuts.tabs", false);
+/* Don't show search terms in URL bar after searching */
+user_pref("browser.urlbar.showSearchTerms.enabled", false);
+/* Disable speculative connections when hovering suggestions */
+user_pref("browser.urlbar.speculativeConnect.enabled", false);
+/* Disable various URL bar suggestions */
+user_pref("browser.urlbar.suggest.engines", false);
+user_pref("browser.urlbar.suggest.openpage", false);
+user_pref("browser.urlbar.suggest.quickactions", false);
+user_pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
+user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
+user_pref("browser.urlbar.suggest.recentsearches", false);
+user_pref("browser.urlbar.suggest.searches", false);
+user_pref("browser.urlbar.suggest.topsites", false);
+/* Disable trending searches */
+user_pref("browser.urlbar.trending.featureGate", false);
+/* Disable VPN sponsor when private browsing */
+user_pref("browser.vpn_promo.enabled", false);
 /* Disable warning dialog when using Ctrl+Q/Cmd+Q quit shortcut */
 user_pref("browser.warnOnQuitShortcut", false);
 /* Dark blue theme */
 user_pref("extensions.activeThemeID", "activist-bold-colorway@mozilla.org");
 /* Highlight items when finding in page */
 user_pref("findbar.highlightAll", true);
+/* Position sidebar on the right */
+user_pref("sidebar.position_start", false);
 /* Enable vertical tabs in the sidebar instead of horizontal tabs at the top */
 user_pref("sidebar.verticalTabs", true);
 /* Dismiss the promo tooltip about dragging tabs to pin them in vertical tabs */
