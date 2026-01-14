@@ -27,7 +27,6 @@
     "button": false,
   },
   "outline_panel": {
-    "git_status": false,
     "button": false,
   },
   "status_bar": {
@@ -45,10 +44,11 @@
     "button": false,
   },
   "agent": {
+    "default_profile": "write",
     "button": false,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5",
+      "model": "claude-opus-4.5",
     },
     "model_parameters": [],
   },
@@ -61,7 +61,7 @@
   },
   "ui_font_size": 16,
   "buffer_font_size": 13,
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "JetBrainsMonoNL Nerd Font",
   // move panels to the right
   "project_panel": {
     "sort_mode": "directories_first",
@@ -74,7 +74,6 @@
     "folder_icons": true,
     "file_icons": true,
     "entry_spacing": "standard",
-    "git_status": false,
     "button": false,
     "dock": "right",
   },
@@ -83,7 +82,6 @@
     "dock": "right",
   },
   "git_panel": {
-    "button": false,
     "dock": "right",
   },
   "toolbar": {
