@@ -37,6 +37,8 @@ user_pref("browser.toolbars.bookmarks.visibility", "never");
 user_pref("browser.translations.automaticallyPopup", false);
 /* Disable Firefox Suggest */
 user_pref("browser.urlbar.quicksuggest.enabled", false);
+/* Disable Scotch Bonnet (unified search button in URL bar) */
+user_pref("browser.urlbar.scotchBonnet.enableOverride", false);
 /* Disable URL bar shortcut buttons */
 user_pref("browser.urlbar.shortcuts.actions", false);
 user_pref("browser.urlbar.shortcuts.bookmarks", false);
