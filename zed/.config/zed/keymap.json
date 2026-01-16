@@ -116,19 +116,17 @@
       "r": "editor::Rename", // zed specific
     },
   },
-  // Code Action - not using, disabling for now as it interferes with `caw` motion
-  // {
-  //   "context": "Editor && vim_operator == c",
-  //   "bindings": {
-  //     "c": "vim::CurrentLine",
-  //     "a": "editor::ToggleCodeActions" // zed specific
-  //   }
-  // },
-  // Toggle terminal
   {
     "context": "Workspace",
     "bindings": {
+      // Toggle terminal
       "ctrl-\\": "terminal_panel::ToggleFocus",
+      // Map VSCode like keybindings
+      "cmd-b": "workspace::ToggleRightDock",
+      // Increase the size of the currently focused dock
+      "alt-=": "workspace::IncreaseActiveDockSize",
+      // Decrease the size of the currently focused dock
+      "alt--": "workspace::DecreaseActiveDockSize",
     },
   },
   {
@@ -171,17 +169,6 @@
       "ctrl-w j": "workspace::ActivatePaneDown",
     },
   },
-  {
-    "context": "Workspace",
-    "bindings": {
-      // Map VSCode like keybindings
-      "cmd-b": "workspace::ToggleRightDock",
-      // Increase the size of the currently focused dock
-      "alt-=": "workspace::IncreaseActiveDockSize",
-      // Decrease the size of the currently focused dock
-      "alt--": "workspace::DecreaseActiveDockSize",
-    },
-  },
   // Run nearest task
   {
     "context": "EmptyPane || SharedScreen || vim_mode == normal",
@@ -195,6 +182,14 @@
     "bindings": {
       "s": "vim::PushSneak",
       "shift-s": "vim::PushSneakBackward",
+    },
+  },
+  // Git panel shortcuts
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "ctrl-g p": "git::Pull",
+      "ctrl-g P": "git::Push",
     },
   },
   // Subword motion is not working really nice with `ciw`, disable for now
