@@ -48,7 +48,6 @@ alias zsh-config="$editor $ZSH_CONFIG_PATH"
 alias vsc-config="$editor $VSCODE_SETTINGS_PATH"
 alias alias-config="$editor $ALIAS_FILE_PATH"
 alias alias:custom="cat $ALIAS_FILE_PATH"
-alias fn-config="$editor $FN_PROFILE_PATH"
 alias fd-config="$editor $FD_PROFILE_PATH"
 
 # n

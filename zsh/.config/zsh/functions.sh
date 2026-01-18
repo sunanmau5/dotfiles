@@ -1,5 +1,5 @@
 function kl() {
-  kubectl get pods | grep "$1" | awk '{print $1}' | xargs kubectl logs -f
+  kubectl get pods | grep "$1" | grep -v "\-migration\-" | awk '{print $1}' | xargs kubectl logs -f
 }
 
 function g-sd() {
