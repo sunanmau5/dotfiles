@@ -21,6 +21,21 @@
       "space s w": "pane::DeploySearch",
       // Chat with AI
       "space a c": "agent::ToggleFocus",
+      // Open new opencode agent thread
+      "space a o": [
+        "agent::NewExternalAgentThread",
+        {
+          "agent": {
+            "custom": {
+              "name": "opencode",
+              "command": {
+                "command": "opencode",
+                "args": ["acp"],
+              },
+            },
+          },
+        },
+      ],
       // Go to file with `gf`
       "g f": "editor::OpenExcerpts",
     },
@@ -136,6 +151,11 @@
       "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-j": "workspace::ActivatePaneDown",
+      // Open GitPanel and generate commit message with agent
+      "cmd-;": [
+        "workspace::SendKeystrokes",
+        "ctrl-shift-g c shift-escape alt-tab escape",
+      ],
     },
   },
   // File panel (netrw)
@@ -190,6 +210,9 @@
     "bindings": {
       "ctrl-g p": "git::Pull",
       "ctrl-g P": "git::Push",
+      "d": "git::RestoreFile",
+      "D": "git::RestoreTrackedFiles",
+      "c": "git_panel::FocusEditor",
     },
   },
   // Subword motion is not working really nice with `ciw`, disable for now

@@ -7,15 +7,14 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "minimap": {},
   "title_bar": {
-    "show_branch_name": true,
-    "show_branch_icon": false,
     "show_onboarding_banner": false,
+    "show_branch_name": true,
     "show_project_items": true,
-    "show_sign_in": false,
-    "show_user_menu": false,
-    "show_user_picture": false,
-    "show_menus": false,
+    "show_sign_in": true,
+    "show_user_menu": true,
+    "show_user_picture": true,
   },
   "file_finder": {
     "git_status": false,
@@ -52,18 +51,25 @@
     },
     "model_parameters": [],
   },
+  "agent_servers": {
+    "opencode": {
+      "args": ["acp"],
+      "command": "opencode",
+      "default_model": "github-copilot/claude-opus-4.5",
+      "type": "custom",
+    },
+  },
   "relative_line_numbers": "enabled",
   "base_keymap": "VSCode",
   // Vim mode settings
   "vim_mode": true,
-  "vim": {
-    "enable_vim_sneak": true,
-  },
   "ui_font_size": 16,
   "buffer_font_size": 13,
   "buffer_font_family": "JetBrainsMonoNL Nerd Font",
   // move panels to the right
   "project_panel": {
+    "hide_gitignore": false,
+    "hide_hidden": false,
     "sort_mode": "directories_first",
     "hide_root": true,
     "sticky_scroll": false,
@@ -123,7 +129,6 @@
   },
   // File scan exclusions, hide on the file explorer and search
   "file_scan_exclusions": [
-    "**/.git",
     "**/.svn",
     "**/.hg",
     "**/CVS",
@@ -133,17 +138,11 @@
     "**/.settings",
     // above is default from Zed
     "**/out",
-    "**/dist",
-    "**/.husky",
     "**/.turbo",
     "**/.vscode-test",
-    "**/.vscode",
-    "**/.next",
-    "**/.storybook",
     "**/.tap",
     "**/.nyc_output",
     "**/report",
-    "**/node_modules",
   ],
   // Turn off telemetry
   "telemetry": {
