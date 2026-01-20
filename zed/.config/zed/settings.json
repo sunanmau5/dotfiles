@@ -7,7 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "minimap": {},
+  "show_completion_documentation": false,
+  "show_completions_on_input": false,
+  "show_edit_predictions": false,
   "title_bar": {
     "show_onboarding_banner": false,
     "show_branch_name": true,

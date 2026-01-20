@@ -4,6 +4,7 @@
     "context": "Editor",
     "bindings": {
       "alt-shift-f": "editor::Format",
+      "ctrl-s": "workspace::Save",
     },
   },
   // Normal & visual mode
@@ -68,7 +69,6 @@
       "ctrl-q": "pane::CloseActiveItem",
       "space b d": "pane::CloseActiveItem",
       "space b o": "pane::CloseOtherItems",
-      "ctrl-s": "workspace::Save",
       "space space": "file_finder::Toggle",
       "space /": "pane::DeploySearch",
       "space e": "pane::RevealInProjectPanel",
