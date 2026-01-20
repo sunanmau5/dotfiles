@@ -9,9 +9,13 @@ export ZSH_CONFIG_PATH="$HOME/.zshrc"
 export ALIAS_FILE_PATH="$HOME/.config/zsh/aliases.sh"
 export VSCODE_SETTINGS_PATH="$HOME/.config/vscode/settings.json"
 export DEV_HOME="$HOME/Developer"
-export NOTES_PATH="$DEV_HOME/Notes/"
-export VAULT_PATH="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/vault"
-export FD_PROFILE_PATH="$HOME/Library/Application Support/Firefox/Profiles/r84pvtib.dev-edition-default"
+export DOTFILES_PATH="$HOME/.dotfiles"
+export VAULT_PATH="$HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault"
+
+# tmux-sessionizer project directories
+export PROJECT_DIRS="$DEV_HOME/projex $DEV_HOME/marta"
+export STANDALONE_PROJECTS="$DOTFILES_PATH"
+export FD_PROFILE_PATH="$HOME/Library/Application\ Support/Firefox/Profiles/r84pvtib.dev-edition-default"
 
 # Java version exports
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)

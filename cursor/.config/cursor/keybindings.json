@@ -38,11 +38,11 @@
   },
   // Toggle between terminal and editor focus
   {
-    "key": "ctrl+`",
+    "key": "ctrl+\\",
     "command": "workbench.action.terminal.focus"
   },
   {
-    "key": "ctrl+`",
+    "key": "ctrl+\\",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "terminalFocus"
   },
@@ -116,5 +116,11 @@
     "key": "ctrl+k",
     "command": "search.action.focusPreviousSearchResult",
     "when": "hasSearchResult && searchViewletVisible"
+  },
+
+  // save file
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.files.save"
   }
 ]

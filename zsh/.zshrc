@@ -16,6 +16,10 @@ plug "jeffreytse/zsh-vi-mode"
 autoload -Uz compinit
 compinit
 
+# case insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
+
 # rbenv
 eval "$(rbenv init - zsh)"
 

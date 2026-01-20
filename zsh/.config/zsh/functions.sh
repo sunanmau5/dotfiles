@@ -9,6 +9,7 @@ function g-sd() {
 # zsh-vi-mode hook (keybindings must be set here to survive zsh-vi-mode init)
 function zvm_after_init() {
   bindkey '^ ' autosuggest-accept
+  bindkey -s '^f' 'tmux-sessionizer\n'
 }
 
 # yazi

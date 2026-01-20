@@ -45,9 +45,10 @@ alias cat="bat"
 alias vim="nvim"
 
 alias zsh-config="$editor $ZSH_CONFIG_PATH"
-alias vsc-config="$editor $VSCODE_SETTINGS_PATH"
 alias alias-config="$editor $ALIAS_FILE_PATH"
+alias vsc-config="$editor $VSCODE_SETTINGS_PATH"
 alias alias:custom="cat $ALIAS_FILE_PATH"
+alias vlt="$editor $VAULT_PATH"
 alias fd-config="$editor $FD_PROFILE_PATH"
 
 # n
@@ -65,9 +66,10 @@ alias awks="aws eks update-kubeconfig --region eu-central-1 --name k8s-cluster &
 alias arp="adb reverse tcp:4002 tcp:4002 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:9002 tcp:9002 && adb reverse tcp:9003 tcp:9003 && adb reverse tcp:9004 tcp:9004 && adb reverse tcp:9005 tcp:9005 && adb reverse tcp:9006 tcp:9006 && adb reverse tcp:9007 tcp:9007 && adb reverse tcp:9008 tcp:9008 && adb reverse tcp:9009 tcp:9009"
 
 # tmux
-# alias t="tmux"
-# alias tls="tmux ls"
-# alias tks="t kill-session -t"
+alias t="tmux"
+alias ta="t a"
+alias tls="t ls"
+alias tks="t kill-session -t"
 
 # corepack
 # alias yarn="corepack yarn"
@@ -115,3 +117,6 @@ alias lta='lt -a'
 # util
 alias uuid='uuidgen | tr "[:upper:]" "[:lower:]" | pbcopy'
 alias passgen='openssl rand -base64 12'
+
+# opencode
+alias oc="opencode"
