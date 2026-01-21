@@ -6,9 +6,14 @@ function g-sd() {
   git stash drop stash@{"${1:-0}"}
 }
 
+# zsh-vi-mode config (runs before plugin init)
+function zvm_config() {
+  ZVM_VI_COPY_TO_SYSTEM_CLIPBOARD=true
+}
+
 # zsh-vi-mode hook (keybindings must be set here to survive zsh-vi-mode init)
 function zvm_after_init() {
-  bindkey '^ ' autosuggest-accept
+  bindkey '^e' autosuggest-accept
   bindkey -s '^f' 'tmux-sessionizer\n'
 }
 
