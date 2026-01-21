@@ -11,11 +11,14 @@ export VSCODE_SETTINGS_PATH="$HOME/.config/vscode/settings.json"
 export DEV_HOME="$HOME/Developer"
 export DOTFILES_PATH="$HOME/.dotfiles"
 export VAULT_PATH="$HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/vault"
-
-# tmux-sessionizer project directories
-export PROJECT_DIRS="$DEV_HOME/projex $DEV_HOME/marta"
-export STANDALONE_PROJECTS="$DOTFILES_PATH"
 export FD_PROFILE_PATH="$HOME/Library/Application\ Support/Firefox/Profiles/r84pvtib.dev-edition-default"
+
+# tmux-sessionizer: directories to scan for projects (finds subdirs)
+export PROJECT_DIRS="$DEV_HOME/projex $DEV_HOME/marta"
+# tmux-sessionizer: specific paths shown directly in fzf (newline-separated)
+export STANDALONE_PROJECTS="$DOTFILES_PATH
+$VAULT_PATH
+$FD_PROFILE_PATH"
 
 # Java version exports
 export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
