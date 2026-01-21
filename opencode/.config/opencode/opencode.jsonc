@@ -1,5 +1,4 @@
 {
-  "plugin": ["oh-my-opencode"],
   "$schema": "https://opencode.ai/config.json",
   "theme": "ayu",
   "model": "anthropic/claude-opus-4-5",
