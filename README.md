@@ -26,16 +26,20 @@ stow */
 | Config                      | Description            |
 | --------------------------- | ---------------------- |
 | `zsh`                       | Shell configuration    |
-| `nvim`                      | Neovim setup           |
-| `ghostty`                   | Terminal emulator      |
+| `nvim` / `nvim-lite`        | Neovim setups          |
+| `alacritty` / `ghostty`     | Terminal emulators     |
 | `starship`                  | Shell prompt           |
 | `git`                       | Git configuration      |
 | `karabiner`                 | Keyboard customization |
-| `cursor` / `vscode` / `zed` | Editor settings        |
+| `cursor` / `vscode` / `zed` / `opencode` | Editor settings |
+| `tmux`                      | Terminal multiplexer   |
+| `yazi`                      | File manager           |
+| `obsidian`                  | Note-taking app        |
+| `scripts`                   | Custom scripts (tmux-sessionizer) |
 
 ## Editor Setup
 
-VSCode and Cursor store configs outside `~/.config`, so they need manual symlinks.
+Most editors work automatically with stow, but VSCode and Cursor store configs outside `~/.config`, so they need manual symlinks.
 
 **VSCode:**
 
@@ -54,6 +58,8 @@ rm settings.json keybindings.json
 ln -s $HOME/.config/cursor/settings.json .
 ln -s $HOME/.config/cursor/keybindings.json .
 ```
+
+**Zed, Opencode, Obsidian:** These work automatically with stow since they use `~/.config`.
 
 ## Firefox (Arkenfox)
 
@@ -79,6 +85,16 @@ Privacy-hardened Firefox using [arkenfox user.js](https://github.com/arkenfox/us
 | `addCookiePermissions.sh` | Adds cookie exceptions to Firefox     |
 
 Edit `cookie-sites.txt` to manage which sites keep cookies across sessions.
+
+## Zsh Secrets
+
+The zsh config includes a `secrets.sh.example` file. Copy it to create your own secrets file:
+
+```sh
+cp ~/.config/zsh/secrets.sh.example ~/.config/zsh/secrets.sh
+```
+
+Then edit `secrets.sh` with your actual values (API tokens, etc.). This file is gitignored and won't be committed.
 
 ## Usage
 
