@@ -33,3 +33,9 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
 
 # fastlane
 export LC_ALL=en_US.UTF-8
+
+# java (default version)
+export JAVA_HOME=$JAVA_17_HOME
+
+# secrets
+[[ -f "$HOME/.config/zsh/secrets.sh" ]] && source "$HOME/.config/zsh/secrets.sh"

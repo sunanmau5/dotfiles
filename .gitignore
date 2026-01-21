@@ -2,3 +2,6 @@ Brewfile.lock.json
 
 # karabiner backups
 **/automatic_backups
+
+# secrets
+**/secrets.sh

@@ -105,9 +105,6 @@ alias java17='export JAVA_HOME=$JAVA_17_HOME'
 alias java22='export JAVA_HOME=$JAVA_22_HOME'
 alias java24='export JAVA_HOME=$JAVA_24_HOME'
 
-# Default to Java 17 (currently active)
-export JAVA_HOME=$JAVA_17_HOME
-
 # eza
 alias ls='eza -lh --group-directories-first --icons --hyperlink'
 alias lsa='ls -a'
