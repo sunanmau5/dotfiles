@@ -3,6 +3,14 @@
 -- Add any additional keymaps here
 local map = vim.keymap.set
 
+-- escape insert mode with jj/jk
+map("i", "jj", "<Esc>", { desc = "Exit insert mode" })
+map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
+
+-- close buffer / quit
+map("n", "<C-w>", "<cmd>bdelete<cr>", { desc = "Close buffer" })
+map("n", "<C-q>", "<cmd>qa<cr>", { desc = "Quit all" })
+
 -- resize current window width (alt+= to increase, alt+- to decrease)
 map({ "n", "t" }, "<M-=>", "<cmd>vertical resize +5<cr>", { desc = "Increase window width" })
 map({ "n", "t" }, "<M-->", "<cmd>vertical resize -5<cr>", { desc = "Decrease window width" })
