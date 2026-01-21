@@ -7,9 +7,12 @@ local map = vim.keymap.set
 map("i", "jj", "<Esc>", { desc = "Exit insert mode" })
 map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 
--- close buffer / quit
-map("n", "<C-w>", "<cmd>bdelete<cr>", { desc = "Close buffer" })
+-- close buffer / quit (using snacks bufdelete to keep window open)
+map("n", "<C-w>", function() Snacks.bufdelete() end, { desc = "Close buffer" })
 map("n", "<C-q>", "<cmd>qa<cr>", { desc = "Quit all" })
+
+-- toggle diagnostics
+map("n", "<leader>ud", function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, { desc = "Toggle diagnostics" })
 
 -- resize current window width (alt+= to increase, alt+- to decrease)
 map({ "n", "t" }, "<M-=>", "<cmd>vertical resize +5<cr>", { desc = "Increase window width" })
