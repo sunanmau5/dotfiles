@@ -68,6 +68,38 @@ function zvm_after_init() {
   bindkey -s '^g' 'gcm-ai\n'
 }
 
+# jira ready to release tickets
+function jira-release() {
+  local keys=$(jira sprint list --current -s"Ready to Release" --plain --columns key --no-headers 2>/dev/null)
+  [[ -z "$keys" ]] && { echo "No tickets found"; return 1; }
+
+  while IFS= read -r key; do
+    [[ -z "$key" ]] && continue
+    jira issue view "$key" --raw 2>/dev/null | jq -r '
+def marks: (.marks // []) | map(.type) | if index("strong") then "**" elif index("em") then "*" else "" end;
+def m: marks as $m | "\($m)\(.text)\($m)";
+def adf:
+  if type != "object" then ""
+  elif .type == "doc" then [.content[]? | adf] | join("\n\n")
+  elif .type == "panel" then
+    (if .attrs.panelType == "error" then "> [!CAUTION]\n"
+     elif .attrs.panelType == "warning" then "> [!WARNING]\n"
+     elif .attrs.panelType == "success" then "> [!TIP]\n"
+     else "> [!NOTE]\n" end) + ([.content[]? | adf] | join("\n") | split("\n") | map("> " + .) | join("\n"))
+  elif .type == "paragraph" then [.content[]? | adf] | join("")
+  elif .type == "text" then m
+  elif .type == "heading" then ("#" * (.attrs.level // 1)) + " " + ([.content[]? | adf] | join(""))
+  elif .type == "orderedList" then [.content | to_entries[] | "\(.key + 1). \(.value | adf)"] | join("\n")
+  elif .type == "bulletList" then [.content[]? | "- " + adf] | join("\n")
+  elif .type == "listItem" then [.content[]? | adf] | join("")
+  else [.content[]? | adf] | join("")
+  end;
+"## [\(.key)] \(.fields.summary)\nType: \(.fields.issuetype.name)\n\n\((.fields.description // {}) | adf)\n"'
+  done <<< "$keys" | cat -s | pbcopy
+
+  echo "Copied to clipboard" >&2
+}
+
 # yazi
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
