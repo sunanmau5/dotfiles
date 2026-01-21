@@ -70,6 +70,8 @@ alias t="tmux"
 alias ta="t a"
 alias tls="t ls"
 alias tks="t kill-session -t"
+alias tka="t kill-server"
+alias trs="t rename-session"
 
 # corepack
 # alias yarn="corepack yarn"

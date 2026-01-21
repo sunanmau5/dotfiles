@@ -16,3 +16,7 @@ background-opacity = 0.96
 background-blur-radius = 40
 
 mouse-hide-while-typing = true
+
+theme = Ayu Mirage
+font-family = JetBrainsMonoNL Nerd Font Mono
+title = ""
