@@ -16,9 +16,14 @@ return {
         WinSeparator = { fg = "#1f2430", bg = "NONE" },
         NeoTreeNormal = { bg = "NONE" },
         NeoTreeNormalNC = { bg = "NONE" },
-         -- statusline transparent
-         StatusLine = { bg = "NONE" },
-         StatusLineNC = { bg = "NONE" },
+        -- statusline transparent
+        StatusLine = { bg = "NONE" },
+        StatusLineNC = { bg = "NONE" },
+        -- snacks / floating windows (terminal, lazygit, etc)
+        SnacksNormal = { bg = "NONE" },
+        SnacksWinBar = { bg = "NONE" },
+        NormalFloat = { bg = "NONE" },
+        FloatBorder = { bg = "NONE" },
       },
     },
   },

@@ -10,7 +10,13 @@ return {
       {
         "<C-\\>",
         function()
-          Snacks.terminal(nil, { win = { position = "right", width = 0.2 } })
+          Snacks.terminal(nil, {
+            win = {
+              position = "right",
+              width = 0.2,
+              wo = { winhighlight = "Normal:Normal,NormalNC:NormalNC" },
+            },
+          })
         end,
         desc = "Terminal (right)",
         mode = { "n", "t" },
