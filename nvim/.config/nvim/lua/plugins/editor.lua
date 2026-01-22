@@ -61,6 +61,12 @@ return {
       open_on_setup = true,
       window = {
         position = "right",
+        width = 35,
+      },
+      default_component_configs = {
+        indent = {
+          with_expanders = true,
+        },
       },
       filesystem = {
         -- show hidden/dotfiles
@@ -71,6 +77,17 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      -- disable signcolumn in neo-tree to remove the margin/thick line
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "neo-tree",
+        callback = function()
+          vim.opt_local.signcolumn = "no"
+          vim.opt_local.foldcolumn = "0"
+        end,
+      })
+      require("neo-tree").setup(opts)
+    end,
     init = function()
       vim.api.nvim_create_autocmd("VimEnter", {
         callback = function()

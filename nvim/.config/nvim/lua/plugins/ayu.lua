@@ -5,6 +5,27 @@ return {
     name = "ayu",
     lazy = false,
     priority = 1000,
+    opts = {
+      overrides = {
+        Normal = { bg = "NONE" },
+        NormalFloat = { bg = "NONE" },
+        NormalNC = { bg = "NONE" },
+        SignColumn = { bg = "NONE" },
+        FoldColumn = { bg = "NONE" },
+        LineNr = { bg = "NONE" },
+        CursorLineNr = { bg = "NONE" },
+        -- neo-tree separator (thin line, matching bg)
+        WinSeparator = { fg = "#1f2430", bg = "NONE" },
+        NeoTreeWinSeparator = { fg = "#1f2430", bg = "NONE" },
+        NeoTreeNormal = { bg = "NONE" },
+        NeoTreeNormalNC = { bg = "NONE" },
+        NeoTreeEndOfBuffer = { bg = "NONE" },
+        NeoTreeSignColumn = { bg = "NONE" },
+        -- statusline transparent
+        StatusLine = { bg = "NONE" },
+        StatusLineNC = { bg = "NONE" },
+      },
+    },
   },
   -- Configure LazyVim to use ayu-mirage
   {
@@ -18,8 +39,12 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
       local theme = require("lualine.themes.ayu_mirage")
-      theme.normal.c.bg = "#1f2430"
-      theme.inactive.c.bg = "#1f2430"
+      -- only make c sections transparent (the long line)
+      for _, mode in pairs(theme) do
+        if mode.c then
+          mode.c.bg = "NONE"
+        end
+      end
 
       opts.options = opts.options or {}
       opts.options.theme = theme

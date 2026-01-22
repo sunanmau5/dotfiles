@@ -16,7 +16,8 @@ bindings = [
 option_as_alt = "Both"
 decorations = "None"
 dynamic_padding = true
-opacity = 1.0
+opacity = 0.9
+blur = true
 
 [font]
 size = 13
