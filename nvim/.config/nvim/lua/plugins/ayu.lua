@@ -8,22 +8,17 @@ return {
     opts = {
       overrides = {
         Normal = { bg = "NONE" },
-        NormalFloat = { bg = "NONE" },
         NormalNC = { bg = "NONE" },
-        SignColumn = { bg = "NONE" },
-        FoldColumn = { bg = "NONE" },
-        LineNr = { bg = "NONE" },
-        CursorLineNr = { bg = "NONE" },
-        -- neo-tree separator (thin line, matching bg)
+        -- line numbers (brighter for visibility on transparent bg)
+        LineNr = { fg = "#5c6773" },
+        CursorLineNr = { fg = "#e6b450" },
+        -- neo-tree
         WinSeparator = { fg = "#1f2430", bg = "NONE" },
-        NeoTreeWinSeparator = { fg = "#1f2430", bg = "NONE" },
         NeoTreeNormal = { bg = "NONE" },
         NeoTreeNormalNC = { bg = "NONE" },
-        NeoTreeEndOfBuffer = { bg = "NONE" },
-        NeoTreeSignColumn = { bg = "NONE" },
-        -- statusline transparent
-        StatusLine = { bg = "NONE" },
-        StatusLineNC = { bg = "NONE" },
+         -- statusline transparent
+         StatusLine = { bg = "NONE" },
+         StatusLineNC = { bg = "NONE" },
       },
     },
   },
