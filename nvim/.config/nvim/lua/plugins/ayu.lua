@@ -50,7 +50,7 @@ return {
       opts.sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff" },
-        lualine_c = {},
+        lualine_c = { { "filename", path = 1 } },
         lualine_x = {},
         lualine_y = {},
         lualine_z = {
