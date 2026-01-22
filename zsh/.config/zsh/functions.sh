@@ -47,7 +47,7 @@ Diff:
 
   local start=$SECONDS
   echo -n "Generating..."
-  local msg=$(echo "$prompt" | agent -p 2>/dev/null | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+  local msg=$(echo "$prompt" | agent -p 2>/dev/null | tr '\n' ' ' | sed 's/  */ /g; s/^[[:space:]]*//; s/[[:space:]]*$//')
   local elapsed=$((SECONDS - start))
   echo "\r\033[KGenerated in ${elapsed}s"
 
