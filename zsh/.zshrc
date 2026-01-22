@@ -28,3 +28,6 @@ eval "$(starship init zsh)"
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+# tmux (alacritty only)
+[[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]] && tmux new-session -A -s main
