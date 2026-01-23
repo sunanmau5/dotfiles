@@ -4,9 +4,6 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 # Global modules should live inside .local/
 export PATH="$HOME/.local/bin:$PATH"
 
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-
 # react native
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -25,17 +22,16 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# libpq
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+# libpq (only set if installed, avoids breaking ruby builds)
+if [[ -d "/opt/homebrew/opt/libpq" ]]; then
+  export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+  export LDFLAGS="-L/opt/homebrew/opt/libpq/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
+  export PKG_CONFIG_PATH="/opt/homebrew/opt/libpq/lib/pkgconfig"
+fi
 
 # fastlane
 export LC_ALL=en_US.UTF-8
-
-# java (default version)
-export JAVA_HOME=$JAVA_17_HOME
 
 # secrets
 [[ -f "$HOME/.config/zsh/secrets.sh" ]] && source "$HOME/.config/zsh/secrets.sh"
