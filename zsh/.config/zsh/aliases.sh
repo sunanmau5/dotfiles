@@ -1,4 +1,3 @@
-alias ll="ls -la"
 alias cc="clear"
 
 # Git commands
@@ -51,9 +50,6 @@ alias alias:custom="cat $ALIAS_FILE_PATH"
 alias vlt="$editor $VAULT_PATH"
 alias fd-config="$editor $FD_PROFILE_PATH"
 
-# n
-alias n="N_PREFIX=$HOME/.local n"
-
 # marta
 alias m-s="pnpm run dev:server"
 alias m-e="pnpm run dev:employee"
@@ -101,15 +97,9 @@ alias ip="ipconfig getifaddr en0"
 alias mnu="open \"obsidian://open?vault=cloud-storage&file=menu\""
 alias ov="open \"obsidian://open?vault=vault\""
 
-# Java version aliases
-alias java8='export JAVA_HOME=$JAVA_8_HOME'
-alias java17='export JAVA_HOME=$JAVA_17_HOME'
-alias java22='export JAVA_HOME=$JAVA_22_HOME'
-alias java24='export JAVA_HOME=$JAVA_24_HOME'
-
 # eza
 alias ls='eza -lh --group-directories-first --icons --hyperlink'
-alias lsa='ls -a'
+alias ll='ls -a'
 alias lt='eza --tree --level=2 --long --icons --git'
 alias lta='lt -a'
 
