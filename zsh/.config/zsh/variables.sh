@@ -22,9 +22,3 @@ export STANDALONE_PROJECTS="$DOTFILES_PATH
 $VAULT_PATH
 $MENU_PATH
 $FD_PROFILE_PATH"
-
-# Java version exports
-export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-export JAVA_17_HOME=$(/usr/libexec/java_home -v17)
-export JAVA_22_HOME=$(/usr/libexec/java_home -v22)
-export JAVA_24_HOME=$(/usr/libexec/java_home -v24)
