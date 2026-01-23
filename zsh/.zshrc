@@ -30,4 +30,5 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # tmux (alacritty only)
-[[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]] && tmux new-session -A -s main
+# || true keeps exit code 0
+[[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]] && tmux new-session -A -s main || true
