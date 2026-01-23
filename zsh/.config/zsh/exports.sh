@@ -1,5 +1,5 @@
-# homebrew
-export PATH=$PATH:/opt/homebrew/bin
+# homebrew (prepend so it takes priority over /usr/bin)
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
 # Global modules should live inside .local/
 export PATH="$HOME/.local/bin:$PATH"
