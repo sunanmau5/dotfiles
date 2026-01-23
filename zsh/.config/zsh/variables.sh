@@ -3,7 +3,7 @@ vscode="code"
 cursor="cursor"
 nvim="nvim"
 
-export EDITOR=$zed
+export EDITOR=$nvim
 
 export ZSH_CONFIG_PATH="$HOME/.zshrc"
 export ALIAS_FILE_PATH="$HOME/.config/zsh/aliases.sh"
