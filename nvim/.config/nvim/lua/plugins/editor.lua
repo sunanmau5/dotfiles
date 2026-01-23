@@ -7,18 +7,13 @@ return {
       { "<leader>fE", false },
       { "<leader>E", false },
       { "<leader>e", false },
+      -- ctrl+\ for floating terminal (like lazygit)
       {
         "<C-\\>",
         function()
-          Snacks.terminal(nil, {
-            win = {
-              position = "right",
-              width = 0.2,
-              wo = { winhighlight = "Normal:Normal,NormalNC:NormalNC" },
-            },
-          })
+          Snacks.terminal()
         end,
-        desc = "Terminal (right)",
+        desc = "Terminal (float)",
         mode = { "n", "t" },
       },
     },
@@ -26,6 +21,15 @@ return {
       picker = { enabled = false },
       explorer = { enabled = false },
       dashboard = { enabled = false },
+      terminal = {
+        win = {
+          position = "float",
+          border = "rounded",
+          width = 0.9,
+          height = 0.9,
+          wo = { winhighlight = "Normal:Normal,FloatBorder:FloatBorder" },
+        },
+      },
     },
   },
   -- disable tokyonight (lazyvim default colorscheme)
