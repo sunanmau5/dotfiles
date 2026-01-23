@@ -46,8 +46,15 @@ brew "ios-deploy"
 brew "watchman"
 brew "facebook/fb/idb-companion"
 
-# ruby (replace with mise later)
-brew "rbenv"
+# version manager (node, ruby, python, java)
+brew "mise"
+brew "uv"
+
+# ruby build deps (mise compiles from source)
+brew "libyaml"
+brew "openssl@3"
+brew "readline"
+brew "gmp"
 
 # cloud / infra
 brew "awscli"
@@ -73,6 +80,4 @@ cask "font-jetbrains-mono-nerd-font"
 cask "ghostty"
 cask "raycast"
 cask "rectangle"
-cask "temurin"
 cask "vlc"
-cask "zulu17"

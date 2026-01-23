@@ -20,8 +20,8 @@ compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
-# rbenv
-eval "$(rbenv init - zsh)"
+# mise (version manager for node, ruby, python, java)
+eval "$(mise activate zsh)"
 
 # starship
 eval "$(starship init zsh)"

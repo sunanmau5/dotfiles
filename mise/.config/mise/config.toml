@@ -1,0 +1,16 @@
+[settings]
+# use uv for venv management when uv.lock is present
+python.uv_venv_auto = true
+# recognize .ruby-version, .node-version, .python-version files
+idiomatic_version_file = true
+# auto-trust mise.toml in these directories
+trusted_config_paths = [
+  "~/Developer/projex",
+  "~/Developer/marta",
+]
+
+[tools]
+node = "lts"
+ruby = "3.3"
+python = "3.13"
+java = "zulu-17"  # react native requires jdk 17
