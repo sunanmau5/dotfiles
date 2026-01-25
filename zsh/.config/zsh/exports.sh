@@ -32,6 +32,3 @@ fi
 
 # fastlane
 export LC_ALL=en_US.UTF-8
-
-# secrets
-[[ -f "$HOME/.config/zsh/secrets.sh" ]] && source "$HOME/.config/zsh/secrets.sh"

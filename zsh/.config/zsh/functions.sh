@@ -1,5 +1,13 @@
 function kl() {
-  kubectl get pods | grep "$1" | grep -v "\-migration\-" | awk '{print $1}' | xargs kubectl logs -f
+  [[ -z "$1" ]] && { echo "Usage: kl <pod-pattern>"; return 1; }
+  local pod=$(kubectl get pods | grep "$1" | grep -v "\-migration\-" | awk '{print $1}' | head -1)
+  [[ -n "$pod" ]] && kubectl logs -f "$pod" || echo "No pod found"
+}
+
+function klm() {
+  [[ -z "$1" ]] && { echo "Usage: klm <pod-pattern>"; return 1; }
+  local pod=$(kubectl get pods | grep "$1" | grep "\-migration\-" | awk '{print $1}' | head -1)
+  [[ -n "$pod" ]] && kubectl logs -f "$pod" || echo "No migration pod found"
 }
 
 function g-sd() {
@@ -64,7 +72,6 @@ function zvm_config() {
 # zsh-vi-mode hook (keybindings must be set here to survive zsh-vi-mode init)
 function zvm_after_init() {
   bindkey '^e' autosuggest-accept
-  bindkey -s '^f' 'tmux-sessionizer\n'
   bindkey -s '^g' 'gcm-ai\n'
 }
 

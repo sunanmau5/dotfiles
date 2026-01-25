@@ -6,6 +6,7 @@ plug "$HOME/.config/zsh/variables.sh"
 plug "$HOME/.config/zsh/aliases.sh"
 plug "$HOME/.config/zsh/functions.sh"
 plug "$HOME/.config/zsh/exports.sh"
+[[ -f "$HOME/.config/zsh/secrets.sh" ]] && plug "$HOME/.config/zsh/secrets.sh"
 
 # plugins
 plug "zsh-users/zsh-autosuggestions"
@@ -24,7 +25,12 @@ zstyle ':completion:*' menu select
 eval "$(mise activate zsh)"
 
 # starship
-eval "$(starship init zsh)"
+# check that the function `starship_zle-keymap-select` is defined.
+# xref: https://github.com/starship/starship/issues/3418
+type starship_zle-keymap-select >/dev/null || \
+  {
+    eval "$(starship init zsh)"
+  }
 
 # zoxide
 eval "$(zoxide init zsh)"
