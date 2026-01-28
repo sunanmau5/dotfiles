@@ -10,7 +10,7 @@ selected_name=$(basename "$selected" | tr '. ' '__')
 
 # create session if it doesn't exist
 if ! tmux has-session -t="$selected_name" 2>/dev/null; then
-  tmux new-session -ds "$selected_name" -c "$selected" \; send-keys -t "$selected_name" 'nvim' Enter
+  tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
 # attach or switch
