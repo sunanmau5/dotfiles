@@ -48,7 +48,7 @@ return {
 		}
 
 		dashboard.section.buttons.val = {
-			dashboard.button("<leader><leader>", "  find file", ":Telescope find_files <CR>"),
+			dashboard.button("<C-p>", "  find file", ":Telescope frecency workspace=CWD <CR>"),
 			dashboard.button("<leader>/", "  grep", ":Telescope live_grep <CR>"),
 			dashboard.button("l", "  lazy", ":Lazy <CR>"),
 			dashboard.button("q", "  quit", ":qa <CR>"),
@@ -64,18 +64,5 @@ return {
 		}
 
 		alpha.setup(dashboard.config)
-
-		-- show alpha when on empty buffer
-		vim.api.nvim_create_autocmd("BufEnter", {
-			callback = function()
-				local buf_name = vim.api.nvim_buf_get_name(0)
-				local buf_ft = vim.bo.filetype
-				local buf_lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-				local is_empty = buf_name == "" and buf_ft == "" and #buf_lines == 1 and buf_lines[1] == ""
-				if is_empty and vim.bo.buftype == "" then
-					vim.cmd("Alpha")
-				end
-			end,
-		})
 	end,
 }
