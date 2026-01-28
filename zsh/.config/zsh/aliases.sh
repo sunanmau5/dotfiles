@@ -68,6 +68,7 @@ alias tls="t ls"
 alias tks="t kill-session -t"
 alias tka="t kill-server"
 alias trs="t rename-session"
+alias tm="ta -t main"
 
 # corepack
 # alias yarn="corepack yarn"
