@@ -13,8 +13,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("config.options")
 require("config.keymaps")
-require("lsp")
 
-require("lazy").setup("plugins", {
-	change_detection = { notify = false },
-})
+if not vim.g.vscode then
+	require("lsp")
+	require("lazy").setup("plugins", {
+		change_detection = { notify = false },
+	})
+end
