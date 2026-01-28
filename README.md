@@ -23,19 +23,19 @@ stow */
 
 ## What's Included
 
-| Config                      | Description            |
-| --------------------------- | ---------------------- |
-| `zsh`                       | Shell configuration    |
-| `nvim` / `nvim-lite`        | Neovim setups          |
-| `alacritty` / `ghostty`     | Terminal emulators     |
-| `starship`                  | Shell prompt           |
-| `git`                       | Git configuration      |
-| `karabiner`                 | Keyboard customization |
-| `cursor` / `vscode` / `zed` / `opencode` | Editor settings |
-| `tmux`                      | Terminal multiplexer   |
-| `yazi`                      | File manager           |
-| `obsidian`                  | Note-taking app        |
-| `scripts`                   | Custom scripts (tmux-sessionizer) |
+| Config                                   | Description                       |
+| ---------------------------------------- | --------------------------------- |
+| `zsh`                                    | Shell configuration               |
+| `nvim`                                   | Neovim setups                     |
+| `alacritty` / `ghostty`                  | Terminal emulators                |
+| `starship`                               | Shell prompt                      |
+| `git`                                    | Git configuration                 |
+| `karabiner`                              | Keyboard customization            |
+| `cursor` / `vscode` / `zed` / `opencode` | Editor settings                   |
+| `tmux`                                   | Terminal multiplexer              |
+| `yazi`                                   | File manager                      |
+| `obsidian`                               | Note-taking app                   |
+| `scripts`                                | Custom scripts (tmux-sessionizer) |
 
 ## Editor Setup
 
