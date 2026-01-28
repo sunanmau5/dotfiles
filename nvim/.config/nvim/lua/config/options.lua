@@ -4,3 +4,4 @@
 
 -- use a thin/invisible window separator
 vim.opt.fillchars:append({ vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " })
+vim.g.autoformat = false

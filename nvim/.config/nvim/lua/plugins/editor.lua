@@ -7,20 +7,15 @@ return {
       { "<leader>fE", false },
       { "<leader>E", false },
       { "<leader>e", false },
-      -- ctrl+\ for floating terminal (like lazygit)
-      {
-        "<C-\\>",
-        function()
-          Snacks.terminal()
-        end,
-        desc = "Terminal (float)",
-        mode = { "n", "t" },
-      },
     },
     opts = {
       picker = { enabled = false },
       explorer = { enabled = false },
+      scroll = { enabled = false },
       dashboard = { enabled = false },
+      indent = {
+        animate = { enabled = false },
+      },
       terminal = {
         win = {
           position = "float",
@@ -53,6 +48,14 @@ return {
         sorting_strategy = "ascending",
         winblend = 0,
       },
+      pickers = {
+        grep_string = {
+          additional_args = { "--hidden" },
+        },
+        live_grep = {
+          additional_args = { "--hidden" },
+        },
+      },
     },
   },
 
@@ -72,6 +75,33 @@ return {
       window = {
         position = "right",
         width = 35,
+        mappings = {
+          -- Sources:
+          -- https://github.com/nvim-neo-tree/neo-tree.nvim/discussions/163#discussioncomment-4747082
+          -- https://github.com/nvim-neo-tree/neo-tree.nvim/discussions/163#discussioncomment-7663286
+          -- Jump up to parent directory on file or closed directory, or close on open directory
+          ["h"] = function(state)
+            local node = state.tree:get_node()
+            if (node.type == "directory" or node:has_children()) and node:is_expanded() then
+              state.commands.toggle_node(state)
+            else
+              require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+            end
+          end,
+          -- Open on file or closed directory, or jump down to top subdirectory on open directory
+          ["l"] = function(state)
+            local node = state.tree:get_node()
+            if node.type == "directory" or node:has_children() then
+              if not node:is_expanded() then
+                state.commands.toggle_node(state)
+              else
+                require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+              end
+            else
+              require("neo-tree.sources.filesystem.commands").open(state)
+            end
+          end,
+        },
       },
       default_component_configs = {
         indent = {
@@ -120,6 +150,7 @@ return {
         virtual_text = false,
         signs = false,
       },
+      autoformat = false,
     },
   },
 }
