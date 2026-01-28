@@ -15,8 +15,6 @@ map("n", "<M-->", "<cmd>vertical resize -5<cr>")
 
 map("n", "<S-h>", "<cmd>bprevious<cr>")
 map("n", "<S-l>", "<cmd>bnext<cr>")
-map("n", "<leader>bd", "<cmd>bdelete<cr>")
-map("n", "<C-w>", "<cmd>bdelete<cr>")
 
 map("n", "<M-j>", "<cmd>m .+1<cr>==")
 map("n", "<M-k>", "<cmd>m .-2<cr>==")
@@ -27,11 +25,6 @@ map("i", "<M-k>", "<esc><cmd>m .-2<cr>==gi")
 
 map("v", "<", "<gv")
 map("v", ">", ">gv")
-
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
 
 map("x", "<leader>p", [["_dP]])
 
