@@ -1,13 +1,25 @@
 function kl() {
   [[ -z "$1" ]] && { echo "Usage: kl <pod-pattern>"; return 1; }
-  local pod=$(kubectl get pods | grep "$1" | grep -v "\-migration\-" | awk '{print $1}' | head -1)
-  [[ -n "$pod" ]] && kubectl logs -f "$pod" || echo "No pod found"
+  local pods
+  pods=$(kubectl get pods 2>&1) || { echo "Failed to get pods"; return 1; }
+  local pod=$(echo "$pods" | grep "$1" | grep -v "\-migration\-" | awk '{print $1}' | head -1)
+  if [[ -n "$pod" ]]; then
+    kubectl logs -f "$pod"
+  else
+    echo "No pod found"
+  fi
 }
 
 function klm() {
   [[ -z "$1" ]] && { echo "Usage: klm <pod-pattern>"; return 1; }
-  local pod=$(kubectl get pods | grep "$1" | grep "\-migration\-" | awk '{print $1}' | head -1)
-  [[ -n "$pod" ]] && kubectl logs -f "$pod" || echo "No migration pod found"
+  local pods
+  pods=$(kubectl get pods 2>&1) || { echo "Failed to get pods"; return 1; }
+  local pod=$(echo "$pods" | grep "$1" | grep "\-migration\-" | awk '{print $1}' | head -1)
+  if [[ -n "$pod" ]]; then
+    kubectl logs -f "$pod"
+  else
+    echo "No migration pod found"
+  fi
 }
 
 function g-sd() {
