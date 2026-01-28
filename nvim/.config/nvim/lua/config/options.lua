@@ -40,3 +40,6 @@ opt.timeoutlen = 300
 opt.completeopt = "menuone,noselect,popup"
 opt.cmdheight = 0
 opt.title = true
+
+-- use a thin/invisible window separator
+opt.fillchars:append({ vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " })
