@@ -85,6 +85,9 @@ function zvm_config() {
 function zvm_after_init() {
   bindkey '^e' autosuggest-accept
   bindkey -s '^g' 'gcm-ai\n'
+  # workaround when using fzf and zvm - fzf Ctrl-r will be prioritized
+  source <(fzf --zsh)
+
 }
 
 # jira ready to release tickets

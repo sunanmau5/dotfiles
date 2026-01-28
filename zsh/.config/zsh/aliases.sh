@@ -48,7 +48,7 @@ alias alias-config="$editor $ALIAS_FILE_PATH"
 alias vsc-config="$editor $VSCODE_SETTINGS_PATH"
 alias alias:custom="cat $ALIAS_FILE_PATH"
 alias vlt="$editor $VAULT_PATH"
-alias fd-config="$editor $FD_PROFILE_PATH"
+alias ffd-config="$editor $FFD_PROFILE_PATH"
 
 # marta
 alias m-s="pnpm run dev:server"
@@ -110,3 +110,6 @@ alias passgen='openssl rand -base64 12'
 
 # opencode
 alias oc="opencode"
+
+# fd
+alias fd="fd $FD_OPTIONS"
