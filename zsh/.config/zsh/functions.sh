@@ -1,3 +1,11 @@
+function tm() {
+  if tmux has-session -t main 2>/dev/null; then
+    ta -t main
+  else
+    tn -s main
+  fi
+}
+
 function kl() {
   [[ -z "$1" ]] && { echo "Usage: kl <pod-pattern>"; return 1; }
   local pods

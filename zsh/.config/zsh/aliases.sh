@@ -64,11 +64,11 @@ alias arp="adb reverse tcp:4002 tcp:4002 && adb reverse tcp:9001 tcp:9001 && adb
 # tmux
 alias t="tmux"
 alias ta="t a"
-alias tls="t ls"
-alias tks="t kill-session -t"
-alias tka="t kill-server"
-alias trs="t rename-session"
-alias tm="ta -t main"
+alias tn="t new-session"
+alias tl="t ls"
+alias tk="t kill-session -t"
+alias tq="t kill-server"
+alias tr="t rename-session"
 
 # corepack
 # alias yarn="corepack yarn"
