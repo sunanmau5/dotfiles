@@ -19,22 +19,26 @@ return {
 		{ "<leader>fb", "<cmd>Telescope buffers<cr>" },
 	},
 	opts = function()
-    local actions = require("telescope.actions")
-    return {
-      defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        mappings = {
-          i = {
-            ["<esc>"] = actions.close
-          }
-        }
-      },
-      pickers = {
-        find_files = { hidden = true },
-        live_grep = { additional_args = { "--hidden" } },
-      },
-    }
-  end
+		local actions = require("telescope.actions")
+		local additional_rg_args = { "--hidden", "--glob", "!**/.git/*" }
+		return {
+			defaults = {
+				layout_strategy = "horizontal",
+				layout_config = { prompt_position = "top" },
+				sorting_strategy = "ascending",
+				mappings = {
+					i = {
+						["<esc>"] = actions.close
+					}
+				}
+			},
+			pickers = {
+				find_files = {
+					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+				},
+				live_grep = { additional_args = additional_rg_args },
+				grep_string = { additional_args = additional_rg_args },
+			},
+		}
+	end
 }
