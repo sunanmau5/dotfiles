@@ -16,9 +16,8 @@ bindings = [
 ]
 
 [window]
-option_as_alt = "Both"
+option_as_alt = "OnlyLeft"
 decorations = "None"
-dynamic_padding = true
 opacity = 0.9
 blur = true
 
