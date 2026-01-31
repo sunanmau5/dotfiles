@@ -12,7 +12,7 @@ export DEV_HOME="$HOME/Developer"
 export DOTFILES_PATH="$HOME/.dotfiles"
 export OBS_ICLOUD_PATH="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 export OBS_LOCAL_PATH="$HOME/Documents/obsidian"
-export VAULT_PATH="$OBS_PATH/vault"
+export VAULT_PATH="$OBS_LOCAL_PATH/vault"
 export MENU_PATH="$OBS_ICLOUD_PATH/cloud-storage"
 export FFD_PROFILE_PATH="$HOME/Library/Application Support/Firefox/Profiles/r84pvtib.dev-edition-default"
 

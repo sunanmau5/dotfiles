@@ -6,7 +6,7 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {
 		workspaces = {
-			{ name = "notes", path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/vault" },
+			{ name = "vault", path = "~/Documents/obsidian/vault" },
 		},
 	},
 }
