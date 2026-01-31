@@ -14,3 +14,4 @@ ruby = "3.3"
 python = "3.13"
 java = "zulu-17"  # react native requires jdk 17
 cocoapods = "1.16.2"
+stylua = "latest"
