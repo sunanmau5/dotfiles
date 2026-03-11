@@ -10,6 +10,9 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
+map("n", "<C-w>l", "<cmd>vsplit<cr>")
+map("n", "<C-w>j", "<cmd>split<cr>")
+
 map("n", "<M-=>", "<cmd>vertical resize +5<cr>")
 map("n", "<M-->", "<cmd>vertical resize -5<cr>")
 
