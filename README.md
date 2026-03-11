@@ -35,6 +35,7 @@ stow */
 | `tmux`                                   | Terminal multiplexer              |
 | `yazi`                                   | File manager                      |
 | `obsidian`                               | Note-taking app                   |
+| `mise`                                   | Version manager (node, ruby, etc) |
 | `scripts`                                | Custom scripts (tmux-sessionizer) |
 
 ## Editor Setup
