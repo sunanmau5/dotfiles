@@ -16,7 +16,7 @@ return {
 				show_buffer_close_icons = false,
 				show_close_icon = false,
 				indicator = { style = "none" },
-        separator_style = { "", "" },
+				separator_style = { "", "" },
 			},
 			highlights = {
 				indicator_selected = { fg = "#1f2430", bg = "#ffcc66" },
@@ -31,6 +31,11 @@ return {
 					fg = "#1f2430",
 					bg = "#ffcc66",
 					bold = false,
+					italic = false,
+				},
+				duplicate_selected = {
+					fg = "#1f2430",
+					bg = "#ffcc66",
 					italic = false,
 				},
 				separator = { fg = "#ffcc66" },
