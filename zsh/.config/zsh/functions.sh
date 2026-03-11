@@ -7,7 +7,7 @@ function tm() {
 }
 
 function kl() {
-  [[ -z "$1" ]] && { echo "Usage: kl <pod-pattern>"; return 1; }
+  [[ -z "$1" ]] && { kubectl get po; return; }
   local pods
   pods=$(kubectl get pods 2>&1) || { echo "Failed to get pods"; return 1; }
   local pod=$(echo "$pods" | grep "$1" | grep -v "\-migration\-" | awk '{print $1}' | head -1)
@@ -128,6 +128,30 @@ def adf:
   done <<< "$keys" | cat -s | pbcopy
 
   echo "Copied to clipboard" >&2
+}
+
+# AWS MFA session + kubeconfig update
+function awks-mfa() {
+  echo -n "MFA code: "
+  read -r token_code
+  local output
+  output=$(aws sts get-session-token \
+    --serial-number arn:aws:iam::458209770945:mfa/MiniHannigan \
+    --token-code "$token_code" \
+    --duration-seconds 43200 \
+    --output json 2>&1)
+
+  if [[ $? -ne 0 ]]; then
+    echo "Failed to get session token: $output"
+    return 1
+  fi
+
+  export AWS_ACCESS_KEY_ID=$(echo "$output" | jq -r '.Credentials.AccessKeyId')
+  export AWS_SECRET_ACCESS_KEY=$(echo "$output" | jq -r '.Credentials.SecretAccessKey')
+  export AWS_SESSION_TOKEN=$(echo "$output" | jq -r '.Credentials.SessionToken')
+
+  awks
+  echo "Done. Session valid for 12h."
 }
 
 # yazi
