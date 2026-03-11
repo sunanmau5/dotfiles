@@ -48,18 +48,10 @@
     "default_profile": "write",
     "button": false,
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-opus-4.5",
+      "provider": "anthropic",
+      "model": "claude-opus-4-6",
     },
     "model_parameters": [],
-  },
-  "agent_servers": {
-    "opencode": {
-      "args": ["acp"],
-      "command": "opencode",
-      "default_model": "opencode/big-pickle",
-      "type": "custom",
-    },
   },
   "relative_line_numbers": "enabled",
   "base_keymap": "VSCode",
