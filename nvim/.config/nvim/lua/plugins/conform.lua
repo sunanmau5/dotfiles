@@ -15,8 +15,14 @@ return {
   },
   opts = {
     formatters_by_ft = {
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+      json = { "prettier" },
       markdown = { "prettier" },
       lua = { "stylua" },
+      python = { "ruff_format" },
     },
     format_on_save = nil,
   },
