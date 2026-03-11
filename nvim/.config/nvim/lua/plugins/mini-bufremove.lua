@@ -26,5 +26,6 @@ return {
 	keys = {
 		{ "<leader>bd", delete_buffer },
 		{ "<leader>bD", delete_all_buffers },
+		{ "<leader>ba", delete_all_buffers },
 	},
 }
