@@ -10,6 +10,7 @@ return {
 		{ "<leader>e", "<cmd>Neotree toggle<cr>" },
 		{ "<leader>E", "<cmd>Neotree toggle dir=%:p:h<cr>" },
 	},
+	lazy = false,
 	opts = {
 		hijack_netrw_behavior = "open_current",
 		window = {
@@ -36,6 +37,7 @@ return {
 						require("neo-tree.sources.filesystem.commands").open(state)
 					end
 				end,
+				["o"] = "reveal_in_finder",
 			},
 		},
 		default_component_configs = {
@@ -47,6 +49,14 @@ return {
 				hide_dotfiles = false,
 				hide_gitignored = false,
 			},
+			follow_current_file = { enabled = true },
+		},
+		commands = {
+			reveal_in_finder = function(state)
+				local node = state.tree:get_node()
+				local path = node:get_id()
+				os.execute("open -R " .. path)
+			end,
 		},
 	},
 	config = function(_, opts)
