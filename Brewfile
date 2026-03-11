@@ -47,6 +47,13 @@ brew "ios-deploy"
 brew "watchman"
 brew "facebook/fb/idb-companion"
 
+# python lsp
+brew "basedpyright"
+brew "ruff"
+
+# treesitter parser compilation
+brew "tree-sitter"
+
 # version manager (node, ruby, python, java)
 brew "mise"
 brew "uv"
@@ -77,8 +84,10 @@ brew "parallel"
 brew "scrcpy"
 
 cask "docker-desktop"
+cask "coconutbattery"
 cask "font-jetbrains-mono-nerd-font"
 cask "ghostty"
+cask "pearcleaner"
 cask "raycast"
 cask "rectangle"
 cask "vlc"
