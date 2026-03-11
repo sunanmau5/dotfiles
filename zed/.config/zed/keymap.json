@@ -5,6 +5,8 @@
     "bindings": {
       "alt-shift-f": "editor::Format",
       "ctrl-s": "workspace::Save",
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
     },
   },
   // Normal & visual mode
@@ -21,18 +23,10 @@
       "space a c": "agent::ToggleFocus",
       "space a o": [
         "agent::NewExternalAgentThread",
-        {
-          "agent": {
-            "custom": {
-              "name": "opencode",
-              "command": {
-                "command": "opencode",
-                "args": ["acp"],
-              },
-            },
-          },
-        },
+        { "agent": "claude_code" },
       ],
+      "g y": "editor::GoToTypeDefinition",
+      "space c d": "editor::Hover",
       "g f": "editor::OpenExcerpts",
     },
   },
@@ -69,9 +63,11 @@
       "ctrl-q": "pane::CloseActiveItem",
       "space b d": "pane::CloseActiveItem",
       "space b o": "pane::CloseOtherItems",
+      "space b a": "pane::CloseAllItems",
       "space space": "file_finder::Toggle",
       "space /": "pane::DeploySearch",
       "space e": "pane::RevealInProjectPanel",
+      "space q q": "zed::Quit",
     },
   },
   // Visual mode only
@@ -124,6 +120,7 @@
   {
     "context": "Workspace",
     "bindings": {
+      "ctrl-p": "file_finder::Toggle",
       "ctrl-\\": "terminal_panel::ToggleFocus",
       "cmd-b": "workspace::ToggleRightDock",
       "alt-=": "workspace::IncreaseActiveDockSize",
