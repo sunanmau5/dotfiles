@@ -122,5 +122,10 @@
   {
     "key": "ctrl+s",
     "command": "workbench.action.files.save"
+  },
+  {
+    "key": "alt+cmd+s",
+    "command": "workbench.action.toggleUnifiedSidebarFromKeyboard",
+    "when": "cursor.agentIdeUnification.enabled == true && !isAuxiliaryWindowFocusedContext"
   }
 ]
