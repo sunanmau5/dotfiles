@@ -108,6 +108,9 @@ alias lta='lt -a'
 alias uuid='uuidgen | tr "[:upper:]" "[:lower:]" | pbcopy'
 alias passgen='openssl rand -base64 12'
 
+# claude
+alias clsp="sync-claude-permissions"
+
 # opencode
 alias oc="opencode"
 

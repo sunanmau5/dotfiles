@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Syncs ~/.claude/settings.json Read permissions from tmux-sessionizer directories
+# (PROJECT_DIRS and STANDALONE_PROJECTS in ~/.config/zsh/variables.sh)
+
+set -euo pipefail
+
+VARIABLES_FILE="$HOME/.config/zsh/variables.sh"
+SETTINGS_FILE="$HOME/.claude/settings.json"
+
+if [[ ! -f "$VARIABLES_FILE" ]]; then
+  echo "Error: $VARIABLES_FILE not found" >&2
+  exit 1
+fi
+
+source "$VARIABLES_FILE"
+
+read_rules=()
+
+for dir in $PROJECT_DIRS; do
+  read_rules+=("Read($dir/**)")
+done
+
+while IFS= read -r dir; do
+  [[ -z "$dir" ]] && continue
+  read_rules+=("Read($dir/**)")
+done <<< "$STANDALONE_PROJECTS"
+
+rules_json=$(printf '%s\n' "${read_rules[@]}" | jq -R . | jq -s .)
+
+tmp=$(mktemp)
+jq --argjson rules "$rules_json" '
+  .permissions.allow = $rules
+' "$SETTINGS_FILE" > "$tmp" && mv "$tmp" "$SETTINGS_FILE"
+
+echo "Updated $SETTINGS_FILE with ${#read_rules[@]} Read permissions:"
+printf '  %s\n' "${read_rules[@]}"

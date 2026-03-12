@@ -36,7 +36,7 @@ stow */
 | `yazi`                                   | File manager                      |
 | `obsidian`                               | Note-taking app                   |
 | `mise`                                   | Version manager (node, ruby, etc) |
-| `scripts`                                | Custom scripts (tmux-sessionizer) |
+| `scripts`                                | Custom scripts (tmux-sessionizer, sync-claude-permissions) |
 
 ## Editor Setup
 
@@ -86,6 +86,18 @@ Privacy-hardened Firefox using [arkenfox user.js](https://github.com/arkenfox/us
 | `addCookiePermissions.sh` | Adds cookie exceptions to Firefox     |
 
 Edit `cookie-sites.txt` to manage which sites keep cookies across sessions.
+
+## Claude Permissions
+
+The `sync-claude-permissions` script keeps `~/.claude/settings.json` in sync with the directories defined in `variables.sh` (`PROJECT_DIRS` and `STANDALONE_PROJECTS`). It's symlinked automatically via stow.
+
+Run it once after setup (and again whenever you update `variables.sh`):
+
+```sh
+sync-claude-permissions
+# or
+clsp
+```
 
 ## Zsh Secrets
 
