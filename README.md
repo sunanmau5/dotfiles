@@ -37,6 +37,7 @@ stow */
 | `obsidian`                               | Note-taking app                   |
 | `mise`                                   | Version manager (node, ruby, etc) |
 | `scripts`                                | Custom scripts (tmux-sessionizer, sync-claude-permissions) |
+| `claude`                                 | Claude Code settings and custom skills                     |
 
 ## Editor Setup
 
@@ -87,15 +88,27 @@ Privacy-hardened Firefox using [arkenfox user.js](https://github.com/arkenfox/us
 
 Edit `cookie-sites.txt` to manage which sites keep cookies across sessions.
 
-## Claude Permissions
+## Claude Code
 
-The `sync-claude-permissions` script keeps `~/.claude/settings.json` in sync with the directories defined in `variables.sh` (`PROJECT_DIRS` and `STANDALONE_PROJECTS`). It's symlinked automatically via stow.
+The `claude` package is stowed automatically and includes:
 
-Run it once after setup (and again whenever you update `variables.sh`):
+- `~/.claude/settings.json` — permissions, plugins, and global config
+- `~/.claude/skills/commit/` — custom commit skill (Angular convention)
+- `~/.claude/skills/recipe/` — custom recipe skill (converts to Obsidian format)
+
+Skills from the Claude registry (not in dotfiles — re-install manually):
+
+```
+frontend-slides   # HTML presentations from scratch or converted from PowerPoint
+```
+
+See `claude/.claude/skills/registry.txt` for the full list.
+
+### Sync Read Permissions
+
+`sync-claude-permissions` keeps `~/.claude/settings.json` Read permissions in sync with the directories defined in `variables.sh` (`PROJECT_DIRS` and `STANDALONE_PROJECTS`). Run it once after setup and whenever you update `variables.sh`:
 
 ```sh
-sync-claude-permissions
-# or
 clsp
 ```
 

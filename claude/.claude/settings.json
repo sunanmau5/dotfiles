@@ -1,0 +1,29 @@
+{
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Read(//Users/mba/Developer/marta/**)",
+      "Read(//Users/mba/Developer/projex/**)",
+      "Read(//Users/mba/.dotfiles/**)",
+      "Read(//Users/mba/Documents/obsidian/vault/**)",
+      "Read(//Users/mba/Library/Mobile Documents/iCloud~md~obsidian/Documents/cloud-storage/**)",
+      "Read(//Users/mba/Library/Application Support/Firefox/Profiles/r84pvtib.dev-edition-default/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/mba/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

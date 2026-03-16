@@ -17,13 +17,21 @@ source "$VARIABLES_FILE"
 
 read_rules=()
 
+# Prefix absolute paths with extra / per Claude Code permission syntax:
+# /path = project-relative, //path = absolute filesystem path
+make_rule() {
+  local dir="$1"
+  # /path = project-relative, //path = absolute filesystem path
+  [[ "$dir" == /* ]] && echo "Read(/$dir/**)" || echo "Read($dir/**)"
+}
+
 for dir in $PROJECT_DIRS; do
-  read_rules+=("Read($dir/**)")
+  read_rules+=("$(make_rule "$dir")")
 done
 
 while IFS= read -r dir; do
   [[ -z "$dir" ]] && continue
-  read_rules+=("Read($dir/**)")
+  read_rules+=("$(make_rule "$dir")")
 done <<< "$STANDALONE_PROJECTS"
 
 rules_json=$(printf '%s\n' "${read_rules[@]}" | jq -R . | jq -s .)
@@ -31,7 +39,7 @@ rules_json=$(printf '%s\n' "${read_rules[@]}" | jq -R . | jq -s .)
 tmp=$(mktemp)
 jq --argjson rules "$rules_json" '
   .permissions.allow = $rules
-' "$SETTINGS_FILE" > "$tmp" && mv "$tmp" "$SETTINGS_FILE"
+' "$SETTINGS_FILE" > "$tmp" && cp "$tmp" "$SETTINGS_FILE" && rm "$tmp"
 
 echo "Updated $SETTINGS_FILE with ${#read_rules[@]} Read permissions:"
 printf '  %s\n' "${read_rules[@]}"
