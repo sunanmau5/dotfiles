@@ -82,6 +82,7 @@ brew "sevenzip"
 # utils
 brew "parallel"
 brew "scrcpy"
+brew "rtk"
 
 cask "docker-desktop"
 cask "coconutbattery"
