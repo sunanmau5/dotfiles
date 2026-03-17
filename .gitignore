@@ -4,4 +4,4 @@ Brewfile.lock.json
 **/automatic_backups
 
 # secrets
-**/secrets.sh
+**/secrets.zsh

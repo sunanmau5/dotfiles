@@ -3,11 +3,11 @@
 
 # source - keep the order
 plug "$HOME/.config/zsh/options.zsh"
-plug "$HOME/.config/zsh/variables.sh"
-plug "$HOME/.config/zsh/aliases.sh"
-plug "$HOME/.config/zsh/functions.sh"
-plug "$HOME/.config/zsh/exports.sh"
-[[ -f "$HOME/.config/zsh/secrets.sh" ]] && plug "$HOME/.config/zsh/secrets.sh"
+plug "$HOME/.config/zsh/variables.zsh"
+plug "$HOME/.config/zsh/aliases.zsh"
+plug "$HOME/.config/zsh/functions.zsh"
+plug "$HOME/.config/zsh/exports.zsh"
+[[ -f "$HOME/.config/zsh/secrets.zsh" ]] && plug "$HOME/.config/zsh/secrets.zsh"
 
 # plugins
 plug "zsh-users/zsh-autosuggestions"
