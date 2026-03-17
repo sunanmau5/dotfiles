@@ -26,6 +26,7 @@ brew "lazydocker"
 brew "yazi"
 brew "git-delta"
 brew "git-lfs"
+brew "btop"
 
 # dev tools
 brew "gh"
