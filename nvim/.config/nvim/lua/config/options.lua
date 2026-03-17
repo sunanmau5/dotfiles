@@ -42,6 +42,14 @@ opt.cmdheight = 0
 opt.title = true
 
 -- use a thin/invisible window separator
-opt.fillchars:append({ vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " })
+opt.fillchars:append({
+    vert = " ",
+    horiz = " ",
+    horizup = " ",
+    horizdown = " ",
+    vertleft = " ",
+    vertright = " ",
+    verthoriz = " ",
+})
 
 opt.laststatus = 3
