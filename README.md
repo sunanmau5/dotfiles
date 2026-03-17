@@ -33,6 +33,7 @@ stow */
 | `karabiner`                              | Keyboard customization            |
 | `cursor` / `vscode` / `zed` / `opencode` | Editor settings                   |
 | `tmux`                                   | Terminal multiplexer              |
+| `btop`                                   | System monitor                    |
 | `yazi`                                   | File manager                      |
 | `obsidian`                               | Note-taking app                   |
 | `mise`                                   | Version manager (node, ruby, etc) |
@@ -106,7 +107,7 @@ See `claude/.claude/skills/registry.txt` for the full list.
 
 ### Sync Read Permissions
 
-`sync-claude-permissions` keeps `~/.claude/settings.json` Read permissions in sync with the directories defined in `variables.sh` (`PROJECT_DIRS` and `STANDALONE_PROJECTS`). Run it once after setup and whenever you update `variables.sh`:
+`sync-claude-permissions` keeps `~/.claude/settings.json` Read permissions in sync with the directories defined in `variables.zsh` (`PROJECT_DIRS` and `STANDALONE_PROJECTS`). Run it once after setup and whenever you update `variables.zsh`:
 
 ```sh
 clsp
@@ -114,13 +115,13 @@ clsp
 
 ## Zsh Secrets
 
-The zsh config includes a `secrets.sh.example` file. Copy it to create your own secrets file:
+The zsh config includes a `secrets.zsh.example` file. Copy it to create your own secrets file:
 
 ```sh
-cp ~/.config/zsh/secrets.sh.example ~/.config/zsh/secrets.sh
+cp ~/.config/zsh/secrets.zsh.example ~/.config/zsh/secrets.zsh
 ```
 
-Then edit `secrets.sh` with your actual values (API tokens, etc.). This file is gitignored and won't be committed.
+Then edit `secrets.zsh` with your actual values (API tokens, etc.). This file is gitignored and won't be committed.
 
 ## Usage
 

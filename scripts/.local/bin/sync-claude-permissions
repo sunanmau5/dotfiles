@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # Syncs ~/.claude/settings.json Read permissions from tmux-sessionizer directories
-# (PROJECT_DIRS and STANDALONE_PROJECTS in ~/.config/zsh/variables.sh)
+# (PROJECT_DIRS and STANDALONE_PROJECTS in ~/.config/zsh/variables.zsh)
 
 set -euo pipefail
 
-VARIABLES_FILE="$HOME/.config/zsh/variables.sh"
+VARIABLES_FILE="$HOME/.config/zsh/variables.zsh"
 SETTINGS_FILE="$HOME/.claude/settings.json"
 
 if [[ ! -f "$VARIABLES_FILE" ]]; then
