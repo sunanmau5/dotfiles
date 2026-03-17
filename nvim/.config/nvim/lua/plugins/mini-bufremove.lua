@@ -24,8 +24,8 @@ end
 return {
     "echasnovski/mini.bufremove",
     keys = {
-        { "<leader>bd", delete_buffer },
-        { "<leader>bD", delete_all_buffers },
-        { "<leader>ba", delete_all_buffers },
+        { "<leader>bd", delete_buffer, desc = "Delete buffer" },
+        { "<leader>bD", delete_all_buffers, desc = "Delete all buffers" },
+        { "<leader>ba", delete_all_buffers, desc = "Delete all buffers" },
     },
 }

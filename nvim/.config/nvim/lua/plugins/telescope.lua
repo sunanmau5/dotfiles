@@ -12,17 +12,18 @@ return {
     end,
     cmd = "Telescope",
     keys = {
-        { "<C-p>", "<cmd>Telescope frecency workspace=CWD<cr>" },
-        { "<leader><leader>", "<cmd>Telescope frecency workspace=CWD<cr>" },
-        { "<leader>/", "<cmd>Telescope live_grep<cr>" },
+        { "<C-p>", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Find files (frecency)" },
+        { "<leader><leader>", "<cmd>Telescope frecency workspace=CWD<cr>", desc = "Find files (frecency)" },
+        { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
         {
             "<leader>/",
             function()
                 require("telescope.builtin").live_grep({ default_text = vim.fn.expand("<cword>") })
             end,
             mode = "v",
+            desc = "Grep word under cursor",
         },
-        { "<leader>fb", "<cmd>Telescope buffers<cr>" },
+        { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
     },
     opts = function()
         local actions = require("telescope.actions")

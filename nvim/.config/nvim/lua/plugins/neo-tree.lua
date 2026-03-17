@@ -7,8 +7,8 @@ return {
         "MunifTanjim/nui.nvim",
     },
     keys = {
-        { "<leader>e", "<cmd>Neotree toggle<cr>" },
-        { "<leader>E", "<cmd>Neotree toggle dir=%:p:h<cr>" },
+        { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle file tree" },
+        { "<leader>E", "<cmd>Neotree toggle dir=%:p:h<cr>", desc = "Toggle file tree (cwd)" },
     },
     lazy = false,
     opts = {
