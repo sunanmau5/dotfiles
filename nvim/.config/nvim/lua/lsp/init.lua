@@ -78,20 +78,26 @@ vim.diagnostic.config({
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
-        local map = function(mode, lhs, rhs)
-            vim.keymap.set(mode, lhs, rhs, { buffer = args.buf })
+        local map = function(mode, lhs, rhs, desc)
+            vim.keymap.set(mode, lhs, rhs, { buffer = args.buf, desc = desc })
         end
-        map("n", "gd", vim.lsp.buf.definition)
-        map("n", "gr", vim.lsp.buf.references)
-        map("n", "gy", vim.lsp.buf.type_definition)
-        map("n", "<leader>cr", vim.lsp.buf.rename)
-        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action)
-        map("n", "<leader>cd", vim.diagnostic.open_float)
+        map("n", "gd", vim.lsp.buf.definition, "Go to definition")
+        map("n", "gr", vim.lsp.buf.references, "Go to references")
+        map("n", "gy", vim.lsp.buf.type_definition, "Go to type definition")
+        map("n", "<leader>cr", vim.lsp.buf.rename, "Rename symbol")
+        map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
+        map("n", "<leader>cd", vim.diagnostic.open_float, "Diagnostic details")
         map("n", "<leader>ci", function()
             vim.lsp.buf.code_action({
                 apply = true,
                 context = { only = { "source.addMissingImports.ts" }, diagnostics = {} },
             })
-        end)
+        end, "Add missing imports")
+        map("n", "<leader>co", function()
+            vim.lsp.buf.code_action({
+                apply = true,
+                context = { only = { "source.organizeImports.ts" }, diagnostics = {} },
+            })
+        end, "Organize imports")
     end,
 })
