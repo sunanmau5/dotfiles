@@ -36,6 +36,8 @@ return {
                 mappings = {
                     i = {
                         ["<esc>"] = actions.close,
+                        ["<C-l>"] = actions.select_vertical,
+                        ["<C-j>"] = actions.select_horizontal,
                     },
                 },
             },
