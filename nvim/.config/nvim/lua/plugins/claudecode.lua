@@ -7,6 +7,7 @@ return {
     opts = {
         terminal = {
             provider = "native",
+            show_native_term_exit_tip = false,
         },
     },
 }
