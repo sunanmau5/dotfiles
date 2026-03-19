@@ -6,7 +6,7 @@ nvim="nvim"
 export EDITOR=$nvim
 
 export ZSH_CONFIG_PATH="$HOME/.zshrc"
-export ALIAS_FILE_PATH="$HOME/.config/zsh/aliases.sh"
+export ALIAS_FILE_PATH="$HOME/.config/zsh/aliases.zsh"
 export VSCODE_SETTINGS_PATH="$HOME/.config/vscode/settings.json"
 export DEV_HOME="$HOME/Developer"
 export DOTFILES_PATH="$HOME/.dotfiles"
