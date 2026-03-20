@@ -3,7 +3,6 @@ tap "gigalixir/brew"
 tap "hashicorp/tap"
 tap "oven-sh/bun"
 tap "anomalyco/tap"
-tap "ankitpokhrel/jira-cli"
 
 # core tools
 brew "git"
@@ -35,8 +34,6 @@ brew "ni"
 brew "hashicorp/tap/terraform"
 brew "repomix"
 brew "anomalyco/tap/opencode"
-brew "ankitpokhrel/jira-cli/jira-cli"
-brew "postgresql@14"
 
 # elixir
 brew "elixir"
@@ -78,6 +75,7 @@ brew "poppler"
 brew "pngpaste"
 brew "resvg"
 brew "sevenzip"
+brew "spotify_player"
 
 # utils
 brew "parallel"
@@ -87,7 +85,6 @@ brew "rtk"
 
 cask "coconutbattery"
 cask "font-jetbrains-mono-nerd-font"
-cask "ghostty"
 cask "orbstack"
 cask "pearcleaner"
 cask "raycast"
