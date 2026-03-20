@@ -1,0 +1,37 @@
+[[themes]]
+name = "ayu-mirage"
+
+[themes.palette]
+# background omitted for transparency
+foreground = "#cbccc6"
+black = "#212733"
+red = "#f08778"
+green = "#53bf97"
+yellow = "#fdcc60"
+blue = "#60b8d6"
+magenta = "#ec7171"
+cyan = "#98e6ca"
+white = "#fafafa"
+bright_black = "#686868"
+bright_red = "#f58c7d"
+bright_green = "#58c49c"
+bright_yellow = "#ffd165"
+bright_blue = "#65bddb"
+bright_magenta = "#f17676"
+bright_cyan = "#9debcf"
+bright_white = "#ffffff"
+
+[themes.component_style]
+block_title = { fg = "Yellow", modifiers = ["Bold"] }
+border = { fg = "BrightBlack" }
+selection = { fg = "Black", bg = "Cyan", modifiers = ["Bold"] }
+playback_status = { fg = "Green", modifiers = ["Bold"] }
+playback_track = { fg = "White", modifiers = ["Bold"] }
+playback_artists = { fg = "Cyan" }
+playback_album = { fg = "Yellow" }
+playback_genres = { fg = "BrightBlack", modifiers = ["Dim"] }
+playback_metadata = { fg = "BrightBlack" }
+playback_progress_bar = { fg = "Green", bg = "BrightBlack" }
+current_playing = { fg = "Green", modifiers = ["Bold"] }
+page_desc = { fg = "Cyan", modifiers = ["Bold"] }
+table_header = { fg = "Blue", modifiers = ["Bold"] }

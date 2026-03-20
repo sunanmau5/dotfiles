@@ -11,6 +11,14 @@ selected_name=$(basename "$selected" | tr '. ' '__')
 # create session if it doesn't exist
 if ! tmux has-session -t="$selected_name" 2>/dev/null; then
   tmux new-session -ds "$selected_name" -c "$selected"
+
+  # run startup hook if defined
+  hooks_file="$HOME/.config/tmux-sessionizer/hooks.sh"
+  if [[ -f "$hooks_file" ]]; then
+    source "$hooks_file"
+    hook="${!selected_name}"
+    [[ -n "$hook" ]] && tmux send-keys -t "$selected_name" "$hook" Enter
+  fi
 fi
 
 # attach or switch
