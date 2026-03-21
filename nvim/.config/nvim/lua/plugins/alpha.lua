@@ -55,7 +55,7 @@ return {
         }
 
         dashboard.config.layout = {
-            { type = "padding", val = 8 },
+            { type = "padding", val = 4 },
             dashboard.section.header,
             { type = "padding", val = 4 },
             dashboard.section.buttons,
