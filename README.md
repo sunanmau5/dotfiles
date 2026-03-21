@@ -113,6 +113,14 @@ See `claude/.claude/skills/registry.txt` for the full list.
 clsp
 ```
 
+## macOS System Settings
+
+### tmux prefix (C-Space)
+
+macOS binds `C-Space` to **Switch Input Sources** by default, which intercepts the tmux prefix. Disable it at:
+
+**System Settings → Keyboard → Keyboard Shortcuts → Input Sources** → uncheck `Select the previous input source`.
+
 ## Zsh Secrets
 
 The zsh config includes a `secrets.zsh.example` file. Copy it to create your own secrets file:
