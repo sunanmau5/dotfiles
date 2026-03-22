@@ -11,3 +11,4 @@ accounts.google.com
 youtube.com
 lastpass.com
 www.amazon.de
+pass.proton.me

@@ -14,7 +14,7 @@ export OBS_ICLOUD_PATH="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Docume
 export OBS_LOCAL_PATH="$HOME/Documents/obsidian"
 export VAULT_PATH="$OBS_LOCAL_PATH/vault"
 export MENU_PATH="$OBS_ICLOUD_PATH/cloud-storage"
-export FFD_PROFILE_PATH="$HOME/Library/Application Support/Firefox/Profiles/r84pvtib.dev-edition-default"
+export FFD_PROFILE_PATH="$HOME/Library/Application Support/Firefox/Profiles/b7e8k2ch.dev-edition-default"
 
 # common fd options
 export FD_OPTIONS="--hidden --exclude '.git'"
