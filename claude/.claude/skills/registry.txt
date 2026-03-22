@@ -1,5 +1,0 @@
-# Claude Skills from Registry
-# These are installed via the Claude skills registry, not managed by dotfiles.
-# Re-install them manually if setting up on a new machine.
-
-frontend-slides   # Create HTML presentations from scratch or converted from PowerPoint
