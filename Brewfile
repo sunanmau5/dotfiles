@@ -23,6 +23,7 @@ brew "btop"
 # dev tools
 brew "gh"
 brew "ni"
+brew "opencode"
 
 # python lsp
 brew "basedpyright"
