@@ -62,7 +62,7 @@ defaults write com.apple.dock mru-spaces -bool false
 defaults write com.apple.dock launchanim -bool false
 
 # Windows & Apps > Prefer tabs when opening documents
-defaults write -globalDomain AppleWindowTabbingMode -string "always"
+defaults write -g AppleWindowTabbingMode -string "always"
 
 # Desktop & Stage Manager > Click Wallpaper to reveal desktop
 defaults write "com.apple.WindowManager" EnableStandardClickToShowDesktop -bool false
@@ -90,7 +90,7 @@ defaults write com.apple.AppleMultitouchTrackpad "trackpad.speed" -float 3
 ################################################################################
 
 # Play feedback when volume is changed
-defaults write -globalDomain "com.apple.sound.beep.feedback" -int 1
+defaults write -g "com.apple.sound.beep.feedback" -int 1
 
 
 ################################################################################
@@ -110,19 +110,19 @@ defaults write -g AppleEnableSwipeWithScrollBars -bool false
 
 # Keyboard navigation
 defaults write -g AppleEnableSwipeNavigateWithScrolls -bool false
-defaults write -globalDomain AppleKeyboardUIMode -int 2
+defaults write -g AppleKeyboardUIMode -int 2
 
 # Disable press-and-hold for diacritics
 defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Txt Input > Correct spelling automatically
-defaults write -globalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Txt Input > Capitalise words automatically
-defaults write -globalDomain NSAutomaticCapitalizationEnabled -bool false
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
 
 # Txt Input > Add full stop with double-space
-defaults write -globalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
 
 
 ################################################################################
@@ -130,11 +130,8 @@ defaults write -globalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 ################################################################################
 
 defaults write -g AppleInterfaceStyle -string Dark
-
 defaults write -g AppleLanguages -array en-US de-DE
-
-defaults write -g AppleLocale -string "de-DE"
-
+defaults write -g AppleLocale -string "en_US@rg=dezzzz"
 defaults write -g AppleMiniaturizeOnDoubleClick -bool false
 
 
@@ -143,7 +140,7 @@ defaults write -g AppleMiniaturizeOnDoubleClick -bool false
 ################################################################################
 
 # Show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write -g AppleShowAllExtensions -bool true
 
 # Show warning before changing an extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
