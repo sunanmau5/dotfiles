@@ -54,13 +54,23 @@ return {
             dashboard.button("q", "  quit", ":qa <CR>"),
         }
 
+        local function dynamic_padding(ceil)
+            local header_lines = #dashboard.section.header.val
+            local buttons_lines = #dashboard.section.buttons.val
+            local static_lines = header_lines + buttons_lines + 4 + 1 + 1 -- middle pad + footer pad + footer
+            local available = vim.fn.winheight(0) - static_lines - 3 -- account for statusline/tabline/tmux
+            local half = available / 2
+            return math.max(0, ceil and math.ceil(half) or math.floor(half))
+        end
+
         dashboard.config.layout = {
-            { type = "padding", val = 4 },
+            { type = "padding", val = function() return dynamic_padding(false) end },
             dashboard.section.header,
             { type = "padding", val = 4 },
             dashboard.section.buttons,
             { type = "padding", val = 1 },
             dashboard.section.footer,
+            { type = "padding", val = function() return dynamic_padding(true) end },
         }
 
         alpha.setup(dashboard.config)
