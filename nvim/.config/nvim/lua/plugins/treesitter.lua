@@ -6,47 +6,40 @@ return {
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
-        local treesitter = require("nvim-treesitter")
-        treesitter.setup()
-        treesitter.install({
+        local ts = require("nvim-treesitter")
+        ts.setup()
+
+        local languages = {
             "lua",
-            "ruby",
-            "sql",
-            "markdown",
-            "markdown_inline",
-            "python",
             "vim",
             "vimdoc",
+            "query",
+            "markdown",
+            "markdown_inline",
+            "ruby",
+            "sql",
+            "python",
             "javascript",
             "typescript",
             "tsx",
             "json",
-        })
+        }
+
+        ts.install(languages, { summary = false }):wait(30000)
+
+        local function install_parser_and_enable_features(args)
+            local ok, task = pcall(ts.install, { args.match }, { summary = false })
+            if ok then
+                task:wait(10000)
+            end
+            pcall(vim.treesitter.start, args.buf)
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
 
         vim.api.nvim_create_autocmd("FileType", {
-            pattern = {
-                "lua",
-                "ruby",
-                "sql",
-                "markdown",
-                "markdown_inline",
-                "python",
-                "vim",
-                "vimdoc",
-                "javascript",
-                "typescript",
-                "tsx",
-                "json",
-            },
-            callback = function()
-                -- syntax highlighting, provided by Neovim
-                vim.treesitter.start()
-                -- folds, provided by Neovim (I don't like folds)
-                -- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-                -- vim.wo.foldmethod = 'expr'
-                -- indentation, provided by nvim-treesitter
-                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-            end,
+            group = vim.api.nvim_create_augroup("treesitter", { clear = true }),
+            pattern = languages,
+            callback = install_parser_and_enable_features,
         })
     end,
 }
