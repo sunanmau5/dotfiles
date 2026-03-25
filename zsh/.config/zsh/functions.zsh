@@ -86,7 +86,7 @@ Diff:
 
 # zsh-vi-mode config (runs before plugin init)
 function zvm_config() {
-  ZVM_VI_COPY_TO_SYSTEM_CLIPBOARD=true
+  ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 }
 
 # zsh-vi-mode hook (keybindings must be set here to survive zsh-vi-mode init)
