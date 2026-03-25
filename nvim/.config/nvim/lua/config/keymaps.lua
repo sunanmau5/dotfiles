@@ -18,6 +18,8 @@ map("n", "<C-w>j", "<cmd>split<cr>", { desc = "Split window below" })
 
 map("n", "<M-=>", "<cmd>vertical resize +5<cr>", { desc = "Increase window width" })
 map("n", "<M-->", "<cmd>vertical resize -5<cr>", { desc = "Decrease window width" })
+map("n", "<M-+>", "<cmd>resize +5<cr>", { desc = "Increase window height" })
+map("n", "<M-_>", "<cmd>resize -5<cr>", { desc = "Decrease window height" })
 
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
