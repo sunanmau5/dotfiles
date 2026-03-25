@@ -1,7 +1,4 @@
 {
-  "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true
-  },
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
@@ -11,8 +8,21 @@
       "Read(//Users/mba/Documents/obsidian/vault/**)",
       "Read(//Users/mba/Library/Mobile Documents/iCloud~md~obsidian/Documents/cloud-storage/**)",
       "Read(//Users/mba/Library/Application Support/Firefox/Profiles/r84pvtib.dev-edition-default/**)"
+    ],
+    "deny": [
+      "Read(**/.env*)",
+      "Read(**/env.php*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials/**)",
+      "Read(**/.aws/**)",
+      "Read(**/.ssh/**)",
+      "Read(**/docker-compose*.yml)",
+      "Read(**/config/database.yml)"
     ]
   },
+  "model": "opus[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -23,7 +33,47 @@
             "command": "/Users/mba/.claude/hooks/rtk-rewrite.sh"
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/Users/mba/.claude/hooks/gsd-prompt-guard.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/Users/mba/.claude/hooks/gsd-check-update.js\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Edit|Write|MultiEdit|Agent|Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"/Users/mba/.claude/hooks/gsd-context-monitor.js\"",
+            "timeout": 10
+          }
+        ]
       }
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node \"/Users/mba/.claude/hooks/gsd-statusline.js\""
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true
   }
 }

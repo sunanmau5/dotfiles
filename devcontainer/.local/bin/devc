@@ -1,0 +1,63 @@
+#!/bin/bash
+set -euo pipefail
+
+DEVCONTAINER_DIR="$HOME/.devcontainer"
+
+usage() {
+  echo "Usage: devc [up|exec|down|status] [workspace-folder]"
+  echo ""
+  echo "Commands:"
+  echo "  up      Copy .devcontainer, build and start the container"
+  echo "  exec    Exec into a running container (default: zsh)"
+  echo "  down    Stop the container"
+  echo "  status  Show container status"
+  echo ""
+  echo "If no workspace-folder is given, the current directory is used."
+  echo "Running 'devc' with no arguments does 'up' then 'exec'."
+}
+
+COMMAND="${1:-}"
+WORKSPACE="${2:-.}"
+WORKSPACE="$(cd "$WORKSPACE" && pwd)"
+
+copy_devcontainer() {
+  if [ ! -d "$WORKSPACE/.devcontainer" ]; then
+    echo "Copying .devcontainer into $WORKSPACE ..."
+    cp -r "$DEVCONTAINER_DIR" "$WORKSPACE/.devcontainer"
+  fi
+}
+
+case "$COMMAND" in
+  up)
+    copy_devcontainer
+    devcontainer up --workspace-folder "$WORKSPACE"
+    ;;
+  exec)
+    devcontainer exec --workspace-folder "$WORKSPACE" zsh
+    ;;
+  down)
+    CONTAINER_ID=$(docker ps -q --filter "label=devcontainer.local_folder=$WORKSPACE")
+    if [ -n "$CONTAINER_ID" ]; then
+      docker stop "$CONTAINER_ID"
+      echo "Container stopped."
+    else
+      echo "No running container found for $WORKSPACE"
+    fi
+    ;;
+  status)
+    devcontainer read-configuration --workspace-folder "$WORKSPACE" 2>/dev/null && echo "Container configured" || echo "No devcontainer found"
+    ;;
+  -h|--help)
+    usage
+    ;;
+  "")
+    copy_devcontainer
+    devcontainer up --workspace-folder "$WORKSPACE" && \
+    devcontainer exec --workspace-folder "$WORKSPACE" zsh
+    ;;
+  *)
+    echo "Unknown command: $COMMAND"
+    usage
+    exit 1
+    ;;
+esac
