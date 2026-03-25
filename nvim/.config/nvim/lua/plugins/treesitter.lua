@@ -27,19 +27,23 @@ return {
 
         ts.install(languages, { summary = false }):wait(30000)
 
-        local function install_parser_and_enable_features(args)
-            local ok, task = pcall(ts.install, { args.match }, { summary = false })
-            if ok then
-                task:wait(10000)
-            end
-            pcall(vim.treesitter.start, args.buf)
-            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        end
-
         vim.api.nvim_create_autocmd("FileType", {
             group = vim.api.nvim_create_augroup("treesitter", { clear = true }),
-            pattern = languages,
-            callback = install_parser_and_enable_features,
+            pattern = "*",
+            callback = function(args)
+                local lang = vim.treesitter.language.get_lang(args.match)
+                if not lang then
+                    return
+                end
+                if not pcall(vim.treesitter.language.inspect, lang) then
+                    local ok, task = pcall(ts.install, { lang }, { summary = false })
+                    if ok then
+                        task:wait(10000)
+                    end
+                end
+                pcall(vim.treesitter.start, args.buf)
+                vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end,
         })
     end,
 }
