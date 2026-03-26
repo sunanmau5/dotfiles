@@ -33,8 +33,13 @@ return {
             ts.install(parsers):wait(300000)
         end, 0)
 
+        local filetypes = vim.tbl_map(function(lang)
+            return vim.treesitter.language.get_filetypes(lang)
+        end, parsers)
+        filetypes = vim.iter(filetypes):flatten():totable()
+
         vim.api.nvim_create_autocmd("FileType", {
-            pattern = parsers,
+            pattern = filetypes,
             callback = function()
                 pcall(vim.treesitter.start)
             end,
