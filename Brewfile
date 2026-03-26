@@ -29,13 +29,6 @@ brew "kubectl"
 brew "ni"
 brew "opencode"
 
-# python lsp
-brew "basedpyright"
-brew "ruff"
-
-# treesitter parser compilation
-brew "tree-sitter"
-
 # version manager (node, ruby, python, java)
 brew "mise"
 brew "uv"

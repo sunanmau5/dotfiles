@@ -58,7 +58,25 @@ vim.lsp.config("ruff", {
     root_markers = { "pyproject.toml", "ruff.toml", ".git" },
 })
 
-vim.lsp.enable({ "vtsls", "lua_ls", "sqls", "marksman", "basedpyright", "ruff" })
+vim.lsp.config("cssls", {
+    cmd = { "vscode-css-language-server", "--stdio" },
+    filetypes = { "css", "scss", "less" },
+    root_markers = { "package.json", ".git" },
+})
+
+vim.lsp.config("html", {
+    cmd = { "vscode-html-language-server", "--stdio" },
+    filetypes = { "html", "templ" },
+    root_markers = { "package.json", ".git" },
+})
+
+vim.lsp.config("tailwindcss", {
+    cmd = { "tailwindcss-language-server", "--stdio" },
+    filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    root_markers = { "tailwind.config.js", "tailwind.config.ts", "tailwind.config.mjs", ".git" },
+})
+
+vim.lsp.enable({ "vtsls", "lua_ls", "sqls", "marksman", "basedpyright", "ruff", "cssls", "html", "tailwindcss" })
 
 vim.diagnostic.config({
     virtual_text = false, -- signs + underline are enough; use <leader>cd for details
