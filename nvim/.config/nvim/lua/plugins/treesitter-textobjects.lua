@@ -10,6 +10,7 @@ return {
             selection_modes = {
                 ["@function.outer"] = "V",
             },
+            include_surrounding_whitespace = false,
         },
         move = { set_jumps = true },
     },

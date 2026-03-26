@@ -9,40 +9,34 @@ return {
         local ts = require("nvim-treesitter")
         ts.setup()
 
-        local languages = {
+        local parsers = {
+            "bash",
+            "css",
+            "dockerfile",
+            "html",
+            "javascript",
+            "json",
             "lua",
-            "vim",
-            "vimdoc",
-            "query",
             "markdown",
             "markdown_inline",
+            "python",
             "ruby",
             "sql",
-            "python",
-            "javascript",
-            "typescript",
             "tsx",
-            "json",
+            "typescript",
+            "vim",
+            "vimdoc",
+            "yaml",
         }
 
-        ts.install(languages, { summary = false }):wait(30000)
+        vim.defer_fn(function()
+            ts.install(parsers):wait(300000)
+        end, 0)
 
         vim.api.nvim_create_autocmd("FileType", {
-            group = vim.api.nvim_create_augroup("treesitter", { clear = true }),
-            pattern = "*",
-            callback = function(args)
-                local lang = vim.treesitter.language.get_lang(args.match)
-                if not lang then
-                    return
-                end
-                if not pcall(vim.treesitter.language.inspect, lang) then
-                    local ok, task = pcall(ts.install, { lang }, { summary = false })
-                    if ok then
-                        task:wait(10000)
-                    end
-                end
-                pcall(vim.treesitter.start, args.buf)
-                vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            pattern = parsers,
+            callback = function()
+                pcall(vim.treesitter.start)
             end,
         })
     end,
