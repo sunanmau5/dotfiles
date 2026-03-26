@@ -12,3 +12,4 @@ youtube.com
 lastpass.com
 www.amazon.de
 pass.proton.me
+www.netflix.com/
