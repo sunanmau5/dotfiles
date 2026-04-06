@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit"
+  short_description: "Commit staged changes with Angular convention"
+  default_prompt: "Use $commit to create a commit from the changes that are already staged."

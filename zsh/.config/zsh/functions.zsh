@@ -162,3 +162,12 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+# codex
+function cx() {
+  codex --sandbox workspace-write "$@"
+}
+
+function cxs() {
+  codex --sandbox read-only "$@"
+}

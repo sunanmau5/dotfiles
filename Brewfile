@@ -41,6 +41,7 @@ brew "npq"
 brew "rtk"
 
 cask "coconutbattery"
+cask "codex"
 cask "font-jetbrains-mono-nerd-font"
 cask "karabiner-elements"
 cask "pearcleaner"

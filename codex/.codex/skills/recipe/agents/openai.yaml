@@ -1,0 +1,4 @@
+interface:
+  display_name: "Recipe"
+  short_description: "Convert recipes into Obsidian markdown"
+  default_prompt: "Use $recipe to convert this recipe into my Obsidian format."

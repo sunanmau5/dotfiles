@@ -23,22 +23,22 @@ stow */
 
 ## What's Included
 
-| Config                                   | Description                       |
-| ---------------------------------------- | --------------------------------- |
-| `zsh`                                    | Shell configuration               |
-| `nvim`                                   | Neovim setups                     |
-| `alacritty` / `ghostty`                  | Terminal emulators                |
-| `starship`                               | Shell prompt                      |
-| `git`                                    | Git configuration                 |
-| `karabiner`                              | Keyboard customization            |
-| `cursor` / `vscode` / `zed` / `opencode` | Editor settings                   |
-| `tmux`                                   | Terminal multiplexer              |
-| `btop`                                   | System monitor                    |
-| `yazi`                                   | File manager                      |
-| `obsidian`                               | Note-taking app                   |
-| `mise`                                   | Version manager (node, ruby, etc) |
+| Config                                   | Description                                                |
+| ---------------------------------------- | ---------------------------------------------------------- |
+| `zsh`                                    | Shell configuration                                        |
+| `nvim`                                   | Neovim setups                                              |
+| `alacritty` / `ghostty`                  | Terminal emulators                                         |
+| `starship`                               | Shell prompt                                               |
+| `git`                                    | Git configuration                                          |
+| `karabiner`                              | Keyboard customization                                     |
+| `cursor` / `vscode` / `zed` / `opencode` | Editor settings                                            |
+| `tmux`                                   | Terminal multiplexer                                       |
+| `btop`                                   | System monitor                                             |
+| `yazi`                                   | File manager                                               |
+| `obsidian`                               | Note-taking app                                            |
+| `mise`                                   | Version manager (node, ruby, etc)                          |
 | `scripts`                                | Custom scripts (tmux-sessionizer, sync-claude-permissions) |
-| `claude`                                 | Claude Code settings and custom skills                     |
+| `claude`                                 | Claude Code settings                                       |
 
 ## Editor Setup
 
@@ -91,19 +91,8 @@ Edit `cookie-sites.txt` to manage which sites keep cookies across sessions.
 
 ## Claude Code
 
-The `claude` package is stowed automatically and includes:
-
-- `~/.claude/settings.json` — permissions, plugins, and global config
-- `~/.claude/skills/commit/` — custom commit skill (Angular convention)
-- `~/.claude/skills/recipe/` — custom recipe skill (converts to Obsidian format)
-
-Skills from the Claude registry (not in dotfiles — re-install manually):
-
-```
-frontend-slides   # HTML presentations from scratch or converted from PowerPoint
-```
-
-See `claude/.claude/skills/registry.txt` for the full list.
+The `claude` package is stowed automatically and includes
+`~/.claude/settings.json`.
 
 ### Sync Read Permissions
 
