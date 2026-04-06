@@ -9,4 +9,5 @@ idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
 node = "lts"
+"npm:@nestjs.cli" = "latest"
 python = "3.13"
