@@ -41,5 +41,6 @@ map("i", "<C-Space>", "<C-x><C-o>", { desc = "Trigger completion" })
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>w", "<cmd>set wrap!<cr>", { desc = "Toggle wrap" })
 
 map("n", "<leader>qq", "<cmd>confirm qa<cr>", { desc = "Quit all" })
