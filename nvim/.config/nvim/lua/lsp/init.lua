@@ -1,6 +1,16 @@
+local vue_language_server_path = vim.fn.stdpath("data")
+    .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local tsserver_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "json" }
+local vue_plugin = {
+    name = "@vue/typescript-plugin",
+    location = vue_language_server_path,
+    languages = { "vue" },
+    configNamespace = "typescript",
+}
+
 vim.lsp.config("vtsls", {
     cmd = { "vtsls", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+    filetypes = tsserver_filetypes,
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
     settings = {
         typescript = {
@@ -11,8 +21,26 @@ vim.lsp.config("vtsls", {
             updateImportsOnFileMove = { enabled = "always" },
             suggest = { completeFunctionCalls = true },
         },
-        vtsls = { autoUseWorkspaceTsdk = true },
+        vtsls = {
+            autoUseWorkspaceTsdk = true,
+            tsserver = {
+                globalPlugins = {
+                    vue_plugin,
+                },
+            },
+        },
     },
+    on_attach = function(client)
+        if client.server_capabilities.semanticTokensProvider then
+            client.server_capabilities.semanticTokensProvider.full = vim.bo.filetype ~= "vue"
+        end
+    end,
+})
+
+vim.lsp.config("vue_ls", {
+    cmd = { "vue-language-server", "--stdio" },
+    filetypes = { "vue" },
+    root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
 })
 
 vim.lsp.config("lua_ls", {
@@ -72,11 +100,22 @@ vim.lsp.config("html", {
 
 vim.lsp.config("tailwindcss", {
     cmd = { "tailwindcss-language-server", "--stdio" },
-    filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    filetypes = { "html", "css", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
     root_markers = { "tailwind.config.js", "tailwind.config.ts", "tailwind.config.mjs", ".git" },
 })
 
-vim.lsp.enable({ "vtsls", "lua_ls", "sqls", "marksman", "basedpyright", "ruff", "cssls", "html", "tailwindcss" })
+vim.lsp.enable({
+    "vtsls",
+    "vue_ls",
+    "lua_ls",
+    "sqls",
+    "marksman",
+    "basedpyright",
+    "ruff",
+    "cssls",
+    "html",
+    "tailwindcss",
+})
 
 vim.diagnostic.config({
     virtual_text = false, -- signs + underline are enough; use <leader>cd for details

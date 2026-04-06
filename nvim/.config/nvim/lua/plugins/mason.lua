@@ -12,8 +12,8 @@ return {
                 "lua-language-server",
                 "marksman",
                 "ruff",
-                "sqls",
                 "tailwindcss-language-server",
+                "vue-language-server",
                 "vtsls",
                 -- Formatters / linters
                 "markdown-toc",
