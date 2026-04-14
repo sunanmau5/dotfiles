@@ -2,6 +2,9 @@ return {
     "saghen/blink.cmp",
     version = "*", -- use pre-built Rust binaries, no toolchain required
     opts = {
+        enabled = function()
+            return vim.b.completion ~= false and vim.bo.filetype ~= "markdown"
+        end,
         keymap = {
             preset = "default",
             ["<CR>"] = { "accept", "fallback" },
