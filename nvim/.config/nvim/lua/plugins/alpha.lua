@@ -5,7 +5,7 @@ return {
         local alpha = require("alpha")
         local dashboard = require("alpha.themes.dashboard")
 
-        local header_file = ((vim.env.KOPPLA or ""):lower() == "true") and "koppla.txt" or "default.txt"
+        local header_file = (vim.env.KOPPLA == "1") and "koppla.txt" or "default.txt"
         dashboard.section.header.val = vim.fn.readfile(vim.fn.stdpath("config") .. "/ascii/alpha/" .. header_file)
 
         dashboard.section.buttons.val = {
