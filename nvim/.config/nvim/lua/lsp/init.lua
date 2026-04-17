@@ -104,6 +104,18 @@ vim.lsp.config("tailwindcss", {
     root_markers = { "tailwind.config.js", "tailwind.config.ts", "tailwind.config.mjs", ".git" },
 })
 
+vim.lsp.config("terraformls", {
+    cmd = { "terraform-ls", "serve" },
+    filetypes = { "terraform", "terraform-vars", "hcl" },
+    root_markers = { ".terraform", ".git" },
+})
+
+vim.lsp.config("tflint", {
+    cmd = { "tflint", "--langserver" },
+    filetypes = { "terraform", "terraform-vars" },
+    root_markers = { ".tflint.hcl", ".terraform", ".git" },
+})
+
 vim.lsp.enable({
     "vtsls",
     "vue_ls",
@@ -115,6 +127,8 @@ vim.lsp.enable({
     "cssls",
     "html",
     "tailwindcss",
+    "terraformls",
+    "tflint",
 })
 
 vim.diagnostic.config({
@@ -144,6 +158,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "<leader>cr", vim.lsp.buf.rename, "Rename symbol")
         map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
         map("n", "<leader>cd", vim.diagnostic.open_float, "Diagnostic details")
+        map({ "n", "i" }, "<leader>cs", vim.lsp.buf.signature_help, "Signature help")
         map("n", "<leader>ci", function()
             vim.lsp.buf.code_action({
                 apply = true,

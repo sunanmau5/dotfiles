@@ -17,6 +17,6 @@
   navigate = true
   side-by-side = true
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
 [diff]
   colorMoved = default

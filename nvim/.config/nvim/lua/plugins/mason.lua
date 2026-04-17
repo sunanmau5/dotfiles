@@ -11,8 +11,9 @@ return {
                 "html-lsp",
                 "lua-language-server",
                 "marksman",
-                "ruff",
                 "tailwindcss-language-server",
+                "terraform-ls",
+                "tflint",
                 "vue-language-server",
                 "vtsls",
                 -- Formatters / linters
