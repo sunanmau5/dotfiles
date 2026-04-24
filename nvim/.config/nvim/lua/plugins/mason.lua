@@ -8,6 +8,7 @@ return {
                 -- LSP servers
                 "basedpyright",
                 "css-lsp",
+                "elixir-ls",
                 "html-lsp",
                 "lua-language-server",
                 "marksman",

@@ -99,6 +99,12 @@ vim.lsp.config("marksman", {
     filetypes = { "markdown" },
 })
 
+vim.lsp.config("elixirls", {
+    cmd = { "elixir-ls" },
+    filetypes = { "elixir", "eelixir", "heex", "surface" },
+    root_markers = { "mix.exs", ".git" },
+})
+
 vim.lsp.config("basedpyright", {
     cmd = { "basedpyright-langserver", "--stdio" },
     filetypes = { "python" },
@@ -156,6 +162,7 @@ vim.lsp.enable({
     "lua_ls",
     "sqls",
     "marksman",
+    "elixirls",
     "basedpyright",
     "ruff",
     "cssls",
