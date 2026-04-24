@@ -20,7 +20,7 @@ export FFD_PROFILE_PATH="$HOME/Library/Application Support/Firefox/Profiles/b7e8
 export FD_OPTIONS="--hidden --exclude '.git'"
 
 # tmux-sessionizer
-export PROJECT_DIRS="$DEV_HOME/marta $DEV_HOME/projex"
+export PROJECT_DIRS="$DEV_HOME/koppla $DEV_HOME/projex"
 export STANDALONE_PROJECTS="$DOTFILES_PATH
 $VAULT_PATH
 $MENU_PATH
