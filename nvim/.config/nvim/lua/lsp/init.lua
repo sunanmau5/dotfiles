@@ -199,7 +199,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("n", "<leader>cr", vim.lsp.buf.rename, "Rename symbol")
         map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
         map("n", "<leader>cd", vim.diagnostic.open_float, "Diagnostic details")
-        map({ "n", "i" }, "<leader>cs", vim.lsp.buf.signature_help, "Signature help")
+        map("n", "<leader>cs", vim.lsp.buf.signature_help, "Signature help")
         map("n", "<leader>ci", function()
             vim.lsp.buf.code_action({
                 apply = true,

@@ -1,7 +1,46 @@
 git:
   pagers:
     - colorArg: always
-      pager: delta --dark --paging=never
+      pager: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
 gui:
   sidePanelWidth: 0.25
   showCommandLog: false
+customCommands:
+  # Create worktree from current branch (when in worktrees view)
+  - key: "N"
+    context: "worktrees"
+    description: "Create new worktree from current branch"
+    prompts:
+      - type: "input"
+        title: "Worktree folder name (based on {{ .CheckedOutBranch.Name }})"
+        key: "WorktreeName"
+        initialValue: ""
+      - type: "input"
+        title: "New branch name"
+        key: "BranchName"
+        initialValue: ""
+    command: "git worktree add -b {{ .Form.BranchName }} ../{{ .Form.WorktreeName }} {{ .CheckedOutBranch.Name }}"
+  # Create worktree from selected branch (when in branches view)
+  - key: "N"
+    context: "localBranches"
+    description: "Create new worktree from selected branch"
+    prompts:
+      - type: "input"
+        title: "Worktree folder name (based on {{ .SelectedLocalBranch.Name }})"
+        key: "WorktreeName"
+        initialValue: ""
+      - type: "input"
+        title: "New branch name"
+        key: "BranchName"
+        initialValue: ""
+    command: "git worktree add -b {{ .Form.BranchName }} ../{{ .Form.WorktreeName }} {{ .SelectedLocalBranch.Name }}"
+  - key: "D"
+    context: "worktrees"
+    description: "Force remove selected worktree"
+    prompts:
+      - type: "confirm"
+        title: "Force Remove Worktree"
+        body: "Are you sure you want to remove this worktree and any submodules?"
+    command: "git worktree remove -f {{ .SelectedWorktree.Path | quote }}"
+    loadingText: "Removing worktree..."
+    output: log
