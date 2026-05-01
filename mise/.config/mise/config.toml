@@ -11,5 +11,6 @@ idiomatic_version_file_enable_tools = ["node"]
 node = "lts"
 python = "3.13"
 ruff = "latest"
+serverless = "latest"
 terraform = "latest"
 yarn = "4.9.2"

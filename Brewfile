@@ -29,6 +29,7 @@ brew "kubectl"
 brew "ni"
 brew "opencode"
 brew "elixir"
+brew "awscli"
 
 # version manager (node, ruby, python, java)
 brew "mise"
