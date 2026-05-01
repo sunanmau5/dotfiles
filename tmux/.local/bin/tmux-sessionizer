@@ -2,18 +2,68 @@
 
 # uses PROJECT_DIRS and STANDALONE_PROJECTS from ~/.config/zsh/variables.sh
 
-selected="${1:-$({ find $PROJECT_DIRS -mindepth 1 -maxdepth 1 -type d 2>/dev/null; echo "$STANDALONE_PROJECTS"; } | fzf)}"
+hooks_file="$HOME/.config/tmux-sessionizer/hooks.sh"
+tab=$'\t'
+
+emit_entry() {
+  local display="$1"
+  local value="$2"
+  printf '%s%s%s\n' "${display/#$HOME/~}" "$tab" "$value"
+}
+
+project_entries() {
+  local root dir
+  for root in $PROJECT_DIRS; do
+    [[ -d "$root" ]] || continue
+    for dir in "$root"/*; do
+      [[ -d "$dir" ]] || continue
+      emit_entry "$dir" "$dir"
+    done
+  done
+}
+
+standalone_entries() {
+  local path
+  while IFS= read -r path; do
+    [[ -n "$path" ]] || continue
+    emit_entry "$path" "$path"
+  done <<< "$STANDALONE_PROJECTS"
+}
+
+hook_entries() {
+  local line name
+  [[ -f "$hooks_file" ]] || return 0
+
+  while IFS= read -r line; do
+    [[ "$line" =~ ^[[:space:]]*[A-Za-z_][A-Za-z0-9_]*= ]] || continue
+    name="${line%%=*}"
+    name="${name#"${name%%[![:space:]]*}"}"
+    name="${name%"${name##*[![:space:]]}"}"
+    emit_entry "$name" "$name"
+  done < "$hooks_file"
+}
+
+selected="${1:-$({
+  project_entries
+  standalone_entries
+  hook_entries
+} | fzf --delimiter="$tab" --with-nth=1)}"
 [[ -z "$selected" ]] && exit 0
+selected="${selected#*"$tab"}"
 
 selected="${selected//\\/}"
-selected_name=$(basename "$selected" | tr '. ' '__')
+selected_name="${selected##*/}"
+selected_name="${selected_name//[ .]/_}"
+
+if [[ ! -d "$selected" ]]; then
+  selected="$HOME"
+fi
 
 # create session if it doesn't exist
 if ! tmux has-session -t="$selected_name" 2>/dev/null; then
   tmux new-session -ds "$selected_name" -c "$selected"
 
   # run startup hook if defined
-  hooks_file="$HOME/.config/tmux-sessionizer/hooks.sh"
   if [[ -f "$hooks_file" ]]; then
     source "$hooks_file"
     hook="${!selected_name}"

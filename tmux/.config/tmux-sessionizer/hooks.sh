@@ -3,3 +3,4 @@
 
 dbee="nvim -c 'Dbee'"
 spotify_player="spotify_player"
+dietpi="ssh dietpi"
