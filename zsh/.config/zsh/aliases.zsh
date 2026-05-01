@@ -59,7 +59,6 @@ alias m-recreate="bash ~/Developer/scripts/recreate-db.sh"
 alias m-deps="bash ~/Developer/scripts/remove-add-dependency.sh"
 alias rmods="find . -type dir -name node_modules | xargs rm -rf"
 alias awks="aws eks update-kubeconfig --region eu-central-1 --name k8s-cluster && export KUBE_CONFIG_PATH=~/.kube/config"
-alias arp="adb reverse tcp:4002 tcp:4002 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:9002 tcp:9002 && adb reverse tcp:9003 tcp:9003 && adb reverse tcp:9004 tcp:9004 && adb reverse tcp:9005 tcp:9005 && adb reverse tcp:9006 tcp:9006 && adb reverse tcp:9007 tcp:9007 && adb reverse tcp:9008 tcp:9008 && adb reverse tcp:9009 tcp:9009"
 
 # tmux
 alias t="tmux"

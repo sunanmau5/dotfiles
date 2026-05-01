@@ -34,7 +34,7 @@ fi
 export LC_ALL=en_US.UTF-8
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgreprc"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # fzf
 export FZF_DEFAULT_OPTS="--layout reverse"
