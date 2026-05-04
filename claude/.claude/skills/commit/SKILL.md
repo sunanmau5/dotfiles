@@ -13,7 +13,7 @@ Steps:
 
 Rules for the commit message:
 - Start with a type prefix: feat, fix, docs, style, refactor, test, chore
-- If the branch name contains a ticket number (e.g. MP-1234), include it in parentheses after the type: feat(MP-1234):
+- If previous commits have similar changes, use the same scope
 - Use lowercase for the subject line after the prefix
 - Limit the subject line to 72 characters
 - Do not end the subject line with any punctuation

@@ -22,7 +22,7 @@ If there are no staged changes, stop and tell the user that there is nothing to 
 Write the commit message in Angular-style format.
 
 - Start the subject with one of: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
-- If the branch name contains a ticket number, include it in parentheses immediately after the type, for example `feat(MP-1234):`
+- If previous commits have similar changes, use the same scope
 - Use lowercase for the subject text after the prefix
 - Keep the subject line at 72 characters or fewer
 - Use the imperative mood
