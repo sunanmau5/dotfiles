@@ -4,6 +4,7 @@
 
 hooks_file="$HOME/.config/tmux-sessionizer/hooks.sh"
 tab=$'\t'
+launch_mode="default"
 
 emit_entry() {
   local display="$1"
@@ -43,12 +44,20 @@ hook_entries() {
   done < "$hooks_file"
 }
 
-selected="${1:-$({
-  project_entries
-  standalone_entries
-  hook_entries
-} | fzf --delimiter="$tab" --with-nth=1)}"
-[[ -z "$selected" ]] && exit 0
+if [[ -n "${1:-}" ]]; then
+  selected="$1"
+else
+  choice="$({
+    project_entries
+    standalone_entries
+    hook_entries
+  } | fzf --delimiter="$tab" --with-nth=1 --expect=enter,ctrl-o)"
+  [[ -z "$choice" ]] && exit 0
+  launch_key="${choice%%$'\n'*}"
+  selected="${choice#*$'\n'}"
+  [[ "$launch_key" == "ctrl-o" ]] && launch_mode="dev"
+fi
+
 selected="${selected#*"$tab"}"
 
 selected="${selected//\\/}"
@@ -61,6 +70,11 @@ fi
 
 # create session if it doesn't exist
 if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+  if [[ "$launch_mode" == "dev" && -d "$selected" ]]; then
+    tmux-dev "$selected"
+    exit 0
+  fi
+
   tmux new-session -ds "$selected_name" -c "$selected"
 
   # run startup hook if defined
