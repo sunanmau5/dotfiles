@@ -18,6 +18,7 @@ return {
                 "vue-language-server",
                 "vtsls",
                 -- Formatters / linters
+                "biome",
                 "markdown-toc",
                 "markdownlint-cli2",
                 "prettier",

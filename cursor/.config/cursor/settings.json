@@ -41,7 +41,7 @@
         "editor.tabSize": 2
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -190,5 +190,8 @@
         "scminput"
     ],
     "workbench.editor.showTabs": "single",
-    "vscode-neovim.logOutputToConsole": true
+    "vscode-neovim.logOutputToConsole": true,
+    "window.autoDetectColorScheme": false,
+    "workbench.agentsWindowButton.enabled": false,
+    "workbench.layoutControl.enabled": false
 }

@@ -51,12 +51,6 @@ alias vlt="$editor $VAULT_PATH"
 alias ffd-config="$editor $FFD_PROFILE_PATH"
 
 # marta
-alias m-s="pnpm run dev:server"
-alias m-e="pnpm run dev:employee"
-alias m-clean="git clean -fxd && pnpm install && sh scripts/ux-sync.sh && pnpm run db:create"
-alias m-v="pnpm run tsc && pnpm run test && pnpm run databuilder:tests"
-alias m-recreate="bash ~/Developer/scripts/recreate-db.sh"
-alias m-deps="bash ~/Developer/scripts/remove-add-dependency.sh"
 alias rmods="find . -type dir -name node_modules | xargs rm -rf"
 alias awks="aws eks update-kubeconfig --region eu-central-1 --name k8s-cluster && export KUBE_CONFIG_PATH=~/.kube/config"
 
@@ -70,15 +64,15 @@ alias tq="t kill-server"
 alias trn="t rename-session"
 
 # corepack
-# alias yarn="corepack yarn"
+alias yarn="corepack yarn"
 # alias yarnpkg="corepack yarnpkg"
 # alias pnpm="corepack pnpm"
 # alias pnpx="corepack pnpx"
-# alias npm="corepack npm"
+alias npm="corepack npm"
 
 # npq
-alias npm="npq-hero"
-alias yarn="NPQ_PKG_MGR=yarn npq-hero"
+# alias npm="npq-hero"
+# alias yarn="NPQ_PKG_MGR=yarn npq-hero"
 alias pnpm="NPQ_PKG_MGR=pnpm npq-hero"
 
 # wordpress

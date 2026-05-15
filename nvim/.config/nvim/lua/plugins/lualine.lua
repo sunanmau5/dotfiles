@@ -18,7 +18,7 @@ return {
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = { "branch", "diff" },
-                lualine_c = { { "filename", path = 1 } },
+                lualine_c = { { "filename", path = 1 }, { "searchcount", maxcount = 999999 } },
                 lualine_x = {},
                 lualine_y = {},
                 lualine_z = {},
