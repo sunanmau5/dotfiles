@@ -4,7 +4,7 @@ set -euo pipefail
 
 dir="${1:-$PWD}"
 target="${dir##*/}"
-target="${target//[^[:alnum:]_]/_}"
+target="${target//[^[:alnum:]_-]/_}"
 
 has_window() {
   tmux list-windows -t "$1" -F '#W' | grep -Fxq "$2"
