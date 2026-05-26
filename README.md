@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal configuration files for macOS, managed with [GNU Stow](https://www.gnu.org/software/stow/).
+Personal configuration files for macOS, managed with [GNU Stow](https://www.gnu.org/software/stow/)
 
 ## Setup
 
@@ -23,26 +23,32 @@ stow */
 
 ## What's Included
 
-| Config                                   | Description                                                |
-| ---------------------------------------- | ---------------------------------------------------------- |
-| `zsh`                                    | Shell configuration                                        |
-| `nvim`                                   | Neovim setups                                              |
-| `alacritty` / `ghostty`                  | Terminal emulators                                         |
-| `starship`                               | Shell prompt                                               |
-| `git`                                    | Git configuration                                          |
-| `karabiner`                              | Keyboard customization                                     |
-| `cursor` / `vscode` / `zed` / `opencode` | Editor settings                                            |
-| `tmux`                                   | Terminal multiplexer                                       |
-| `btop`                                   | System monitor                                             |
-| `yazi`                                   | File manager                                               |
-| `obsidian`                               | Note-taking app                                            |
-| `mise`                                   | Version manager (node, ruby, etc)                          |
-| `scripts`                                | Custom scripts (tmux-sessionizer, sync-claude-permissions) |
-| `claude`                                 | Claude Code settings                                       |
+| Config                                   | Description                           |
+| ---------------------------------------- | ------------------------------------- |
+| `zsh`                                    | Shell configuration                   |
+| `starship`                               | Shell prompt                          |
+| `git`                                    | Git configuration                     |
+| `mise`                                   | Version manager (node, ruby, etc)     |
+| `tmux`                                   | Terminal multiplexer                  |
+| `nvim`                                   | Neovim setups                         |
+| `alacritty` / `ghostty`                  | Terminal emulators                    |
+| `less` / `ripgrep`                       | CLI tool defaults                     |
+| `lazygit`                                | Lazygit config                        |
+| `yazi`                                   | File manager                          |
+| `btop`                                   | System monitor                        |
+| `karabiner`                              | Keyboard customization                |
+| `cursor` / `vscode` / `zed` / `opencode` | Editor settings                       |
+| `codex`                                  | Codex skills                          |
+| `claude`                                 | Claude Code settings                  |
+| `docker`                                 | Docker CLI config                     |
+| `firefox`                                | Arkenfox setup and cookie permissions |
+| `obsidian`                               | Note-taking app                       |
+| `datagrip`                               | DataGrip IdeaVim config               |
+| `spotify_player`                         | Spotify Player config                 |
 
 ## Editor Setup
 
-Most editors work automatically with stow, but VSCode and Cursor store configs outside `~/.config`, so they need manual symlinks.
+Most editors work automatically with stow, but VSCode and Cursor store configs outside `~/.config`, so they need manual symlinks
 
 **VSCode:**
 
@@ -62,11 +68,9 @@ ln -s $HOME/.config/cursor/settings.json .
 ln -s $HOME/.config/cursor/keybindings.json .
 ```
 
-**Zed, Opencode, Obsidian:** These work automatically with stow since they use `~/.config`.
-
 ## Firefox (Arkenfox)
 
-Privacy-hardened Firefox using [arkenfox user.js](https://github.com/arkenfox/user.js). Since Firefox profiles have random names, stow won't work — use the setup script instead.
+Privacy-hardened Firefox using [arkenfox user.js](https://github.com/arkenfox/user.js). Since Firefox profiles have random names, stow won't work, use the setup script instead
 
 **Setup:**
 
@@ -87,28 +91,35 @@ Privacy-hardened Firefox using [arkenfox user.js](https://github.com/arkenfox/us
 | `setupArkenfox.sh`        | Downloads arkenfox & symlinks config  |
 | `addCookiePermissions.sh` | Adds cookie exceptions to Firefox     |
 
-Edit `cookie-sites.txt` to manage which sites keep cookies across sessions.
+Edit `cookie-sites.txt` to manage which sites keep cookies across sessions
 
 ## Claude Code
 
-The `claude` package is stowed automatically and includes
-`~/.claude/settings.json`.
+Claude Code settings are managed by the `claude` package and custom scripts
 
-### Sync Read Permissions
-
-`sync-claude-permissions` keeps `~/.claude/settings.json` Read permissions in sync with the directories defined in `variables.zsh` (`PROJECT_DIRS` and `STANDALONE_PROJECTS`). Run it once after setup and whenever you update `variables.zsh`:
+**Setup:**
 
 ```sh
-clsp
+# link Claude Code settings
+stow claude
+
+# sync Read permissions from variables.zsh
+# run once after setup and whenever PROJECT_DIRS or STANDABLE_PROJECTS are updated
+sync-claude-permissions
 ```
 
-## macOS System Settings
+**What it does:**
 
-### tmux prefix (C-Space)
+| File / command            | Description                                 |
+| ------------------------- | ------------------------------------------- |
+| `~/.claude/settings.json` | Stowed Claude Code settings file            |
+| `sync-claude-permissions` | Syncs Read permissions from `variables.zsh` |
 
-macOS binds `C-Space` to **Switch Input Sources** by default, which intercepts the tmux prefix. Disable it at:
+## Tmux
 
-**System Settings → Keyboard → Keyboard Shortcuts → Input Sources** → uncheck `Select the previous input source`.
+On macOS, disable the system `C-Space` shortcut so tmux can receive the prefix:
+
+**System Settings -> Keyboard -> Keyboard Shortcuts -> Input Sources** -> uncheck `Select the previous input source`.
 
 ## Zsh Secrets
 
@@ -117,8 +128,6 @@ The zsh config includes a `secrets.zsh.example` file. Copy it to create your own
 ```sh
 cp ~/.config/zsh/secrets.zsh.example ~/.config/zsh/secrets.zsh
 ```
-
-Then edit `secrets.zsh` with your actual values (API tokens, etc.). This file is gitignored and won't be committed.
 
 ## Usage
 

@@ -9,7 +9,7 @@ github.com
 google.com
 accounts.google.com
 youtube.com
-lastpass.com
 www.amazon.de
 pass.proton.me
-www.netflix.com/
+www.netflix.com
+f1tv.formula1.com

@@ -73,8 +73,8 @@ user_pref("sidebar.position_start", false);
 user_pref("sidebar.verticalTabs", true);
 /* Dismiss the promo tooltip about dragging tabs to pin them in vertical tabs */
 user_pref("sidebar.verticalTabs.dragToPinPromo.dismissed", true);
-/* Hide sidebar */
-user_pref("sidebar.visibility", "hide-sidebar");
+/* Always show sidebar */
+user_pref("sidebar.visibility", "always-show");
 
 /* =============================================================================
  * OVERRIDES (changing arkenfox defaults)
