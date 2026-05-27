@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ayu Slides"
+  short_description: "Create Ayu Mirage technical HTML slides"
+  default_prompt: "Create an Ayu Mirage technical HTML presentation"
