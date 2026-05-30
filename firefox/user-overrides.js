@@ -94,6 +94,9 @@ user_pref("browser.urlbar.suggest.engines", false);
 user_pref("extensions.formautofill.addresses.enabled", false);
 user_pref("extensions.formautofill.creditCards.enabled", false);
 
+/* Override: allow unsigned extensions in Developer Edition, Nightly, and ESR */
+user_pref("xpinstall.signatures.required", false);
+
 /* Override: disable Firefox password manager (commented out in arkenfox) */
 user_pref("signon.rememberSignons", false);
 
