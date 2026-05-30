@@ -41,7 +41,6 @@ alias g-lb="git branch --sort=-committerdate | head -10"
 
 alias rr="source $ZSH_CONFIG_PATH"
 alias cat="bat"
-alias vim="nvim"
 
 alias zsh-config="$editor $ZSH_CONFIG_PATH"
 alias alias-config="$editor $ALIAS_FILE_PATH"

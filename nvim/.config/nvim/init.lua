@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("config.options")
 require("config.keymaps")
+require("config.netrw")
 
 if not vim.g.vscode then
     require("lsp")
