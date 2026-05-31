@@ -6,12 +6,14 @@ vim.g.netrw_winsize = vim.o.columns < 90 and 50 or 20
 -- sync current directory and browsing directory
 -- this solves the problem with the move command
 vim.g.netrw_keepdir = 0
+vim.g.netrw_altv = 1
 vim.g.netrw_banner = 0
 vim.g.netrw_list_hide = ""
 vim.g.netrw_localcopydircmd = "cp -r"
+vim.g.netrw_browse_split = 4 -- open file in prev buffer
 
-map("n", "<leader>e", "<cmd>Lexplore!<cr>", { desc = "Toggle netrw" })
-map("n", "<leader>E", "<cmd>Lexplore! %:p:h<cr>", { desc = "Explore current file directory" })
+map("n", "<leader>e", "<cmd>Vex<cr>", { desc = "Toggle netrw" })
+map("n", "<leader>E", "<cmd>vs .<cr>", { desc = "Explore current file directory" })
 
 local function map_netrw(event, lhs, rhs, desc)
     map("n", lhs, rhs, { buffer = event.buf, remap = true, desc = desc })
@@ -50,11 +52,9 @@ end
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "netrw",
     callback = function(event)
-        map_netrw(event, "<leader>e", "<cmd>Lexplore!<cr>", "Close netrw")
-        map_netrw(event, "L", "<CR><cmd>Lexplore!<cr>", "Open and close netrw")
-        map_netrw(event, "H", "u", "Go back in history")
-        map_netrw(event, "h", "-^", "Go up a directory")
+        map_netrw(event, "<leader>e", "<cmd>quit<cr>", "Close netrw")
         map_netrw(event, "l", "<CR>", "Open file or directory")
+        map_netrw(event, "h", "-^", "Go up a directory")
         map_netrw(event, ".", "gh", "Toggle hidden files")
         map_netrw(event, "<Tab>", "mf", "Toggle file mark")
         map_netrw(event, "<S-Tab>", "mF", "Unmark buffer files")
