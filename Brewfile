@@ -35,9 +35,6 @@ brew "awscli"
 brew "mise"
 brew "uv"
 
-# media / pdf
-brew "spotify_player"
-
 # utils
 brew "npq"
 brew "rtk"
