@@ -1,8 +1,5 @@
 local map = vim.keymap.set
 
-map("i", "jj", "<Esc>", { desc = "Escape insert mode" })
-map("i", "jk", "<Esc>", { desc = "Escape insert mode" })
-
 map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
@@ -23,13 +20,6 @@ map("n", "<M-_>", "<cmd>resize -5<cr>", { desc = "Decrease window height" })
 
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-
-map("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move line down" })
-map("n", "<M-k>", "<cmd>m .-2<cr>==", { desc = "Move line up" })
-map("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move selection down" })
-map("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move selection up" })
-map("i", "<M-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move line down" })
-map("i", "<M-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move line up" })
 
 map("v", "<", "<gv", { desc = "Indent left" })
 map("v", ">", ">gv", { desc = "Indent right" })
