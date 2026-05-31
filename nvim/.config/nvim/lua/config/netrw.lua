@@ -12,7 +12,26 @@ vim.g.netrw_list_hide = ""
 vim.g.netrw_localcopydircmd = "cp -r"
 vim.g.netrw_browse_split = 4 -- open file in prev buffer
 
-map("n", "<leader>e", "<cmd>Vex<cr>", { desc = "Toggle netrw" })
+local function toggle_netrw()
+    -- track the netrw window so <leader>e can close it even after focus moves
+    -- to a different buffer
+    local win = vim.t.netrw_win
+    if win and vim.api.nvim_win_is_valid(win) then
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.bo[buf].filetype == "netrw" then
+            vim.api.nvim_win_close(win, true)
+            return
+        end
+
+        vim.t.netrw_win = nil
+    end
+
+    -- using Vex since Lex can create hidden buffers
+    -- https://github.com/vim/vim/issues/1016
+    vim.cmd.Vex()
+end
+
+map("n", "<leader>e", toggle_netrw, { desc = "Toggle netrw" })
 map("n", "<leader>E", "<cmd>vs .<cr>", { desc = "Explore current file directory" })
 
 local function map_netrw(event, lhs, rhs, desc)
@@ -52,7 +71,9 @@ end
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "netrw",
     callback = function(event)
-        map_netrw(event, "<leader>e", "<cmd>quit<cr>", "Close netrw")
+        -- get id of the netrw buffer
+        vim.t.netrw_win = vim.api.nvim_get_current_win()
+
         map_netrw(event, "l", "<CR>", "Open file or directory")
         map_netrw(event, "h", "-^", "Go up a directory")
         map_netrw(event, ".", "gh", "Toggle hidden files")
