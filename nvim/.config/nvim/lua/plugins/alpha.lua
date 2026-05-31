@@ -9,7 +9,7 @@ return {
         dashboard.section.header.val = vim.fn.readfile(vim.fn.stdpath("config") .. "/ascii/alpha/" .. header_file)
 
         dashboard.section.buttons.val = {
-            dashboard.button("<C-p>", "  find file", ":Telescope frecency workspace=CWD <CR>"),
+            dashboard.button("<C-p>", "  find git files", ":Telescope git_files <CR>"),
             dashboard.button("<leader>/", "  grep", ":Telescope live_grep <CR>"),
             dashboard.button("l", "  lazy", ":Lazy <CR>"),
             dashboard.button("q", "  quit", ":qa <CR>"),

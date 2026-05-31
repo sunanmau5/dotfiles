@@ -193,7 +193,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local map = function(mode, lhs, rhs, desc)
             vim.keymap.set(mode, lhs, rhs, { buffer = args.buf, desc = desc })
         end
-        map("n", "gd", vim.lsp.buf.definition, "Go to definition")
+        map("n", "gd", "<cmd>Telescope lsp_definitions<cr>", "Go to definition")
         map("n", "gr", vim.lsp.buf.references, "Go to references")
         map("n", "gy", vim.lsp.buf.type_definition, "Go to type definition")
         map("n", "<leader>cr", vim.lsp.buf.rename, "Rename symbol")
