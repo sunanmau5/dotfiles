@@ -9,7 +9,11 @@ return {
         dashboard.section.header.val = vim.fn.readfile(vim.fn.stdpath("config") .. "/ascii/alpha/" .. header_file)
 
         dashboard.section.buttons.val = {
-            dashboard.button("<C-p>", "  find git files", ":Telescope git_files <CR>"),
+            (function()
+                local btn = dashboard.button("<C-p>", "  find files")
+                btn.on_press = function() require("utils").project_files() end
+                return btn
+            end)(),
             dashboard.button("<leader>/", "  grep", ":Telescope live_grep <CR>"),
             dashboard.button("l", "  lazy", ":Lazy <CR>"),
             dashboard.button("q", "  quit", ":qa <CR>"),
