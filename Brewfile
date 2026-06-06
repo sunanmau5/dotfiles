@@ -19,6 +19,7 @@ brew "yazi"
 brew "git-delta"
 brew "git-lfs"
 brew "btop"
+brew "tree"
 
 # dev tools
 brew "colima"
@@ -39,6 +40,7 @@ brew "uv"
 brew "npq"
 brew "rtk"
 
+cask "bruno"
 cask "coconutbattery"
 cask "codex"
 cask "font-jetbrains-mono-nerd-font"
