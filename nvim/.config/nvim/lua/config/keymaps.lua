@@ -26,8 +26,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without yanking" })
 
 vim.keymap.set("i", "<C-Space>", "<C-x><C-o>", { desc = "Trigger completion" })
 
-vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
-
 vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 vim.keymap.set("n", "<leader>w", "<cmd>set wrap!<cr>", { desc = "Toggle wrap" })
 
@@ -37,3 +35,5 @@ vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
 vim.keymap.set("n", "<leader><leader>x", "<cmd>so %<cr>", { desc = "Source current file" })
 vim.keymap.set("n", "<leader>x", ":.lua<cr>", { desc = "Execute" })
 vim.keymap.set("v", "<leader>x", ":lua<cr>", { desc = "Execute" })
+
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
