@@ -3,42 +3,40 @@ vim.g.maplocalleader = " "
 
 vim.g.autoformat = false
 
-local opt = vim.opt
+vim.opt.number = true
+vim.opt.relativenumber = true
 
-opt.number = true
-opt.relativenumber = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
 
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
-opt.smartindent = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 
-opt.ignorecase = true
-opt.smartcase = true
-opt.hlsearch = true
-opt.incsearch = true
+vim.opt.termguicolors = true
+vim.opt.signcolumn = "yes"
+vim.opt.cursorline = true
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+vim.opt.wrap = false
+vim.opt.showmode = false
 
-opt.termguicolors = true
-opt.signcolumn = "yes"
-opt.cursorline = true
-opt.scrolloff = 8
-opt.sidescrolloff = 8
-opt.wrap = false
-opt.showmode = false
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
-opt.splitright = true
-opt.splitbelow = true
+vim.opt.undofile = true
+vim.opt.swapfile = false
 
-opt.undofile = true
-opt.swapfile = false
+vim.opt.clipboard = "unnamedplus"
+vim.opt.mouse = "a"
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
-opt.clipboard = "unnamedplus"
-opt.mouse = "a"
-opt.updatetime = 250
-opt.timeoutlen = 300
-
-opt.completeopt = "menuone,noselect,popup"
-opt.laststatus = 2
-opt.cmdheight = 1
-opt.showcmd = true
-opt.title = true
+vim.opt.completeopt = "menuone,noselect,popup"
+vim.opt.laststatus = 2
+vim.opt.cmdheight = 1
+vim.opt.showcmd = true
+vim.opt.title = true

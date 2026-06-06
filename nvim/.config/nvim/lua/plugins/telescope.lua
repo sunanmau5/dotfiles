@@ -21,6 +21,7 @@ return {
             desc = "Grep word under cursor",
         },
         { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
+        { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find help tags" },
     },
     opts = function()
         local actions = require("telescope.actions")
