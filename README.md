@@ -44,7 +44,6 @@ stow */
 | `firefox`                                | Arkenfox setup and cookie permissions |
 | `obsidian`                               | Note-taking app                       |
 | `datagrip`                               | DataGrip IdeaVim config               |
-| `spotify_player`                         | Spotify Player config                 |
 
 ## Editor Setup
 
