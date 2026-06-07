@@ -28,6 +28,10 @@ return {
         },
         { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
         { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find help tags" },
+        { "gd", "<cmd>Telescope lsp_definitions<cr>", desc= "Go to definition" },
+        { "gr", "<cmd>Telescope lsp_references<cr>", desc= "Go to references" },
+        { "gy", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Go to type definition" }
+
     },
     opts = function()
         local actions = require("telescope.actions")
