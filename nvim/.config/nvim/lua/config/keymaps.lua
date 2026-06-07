@@ -37,3 +37,11 @@ vim.keymap.set("n", "<leader>x", ":.lua<cr>", { desc = "Execute" })
 vim.keymap.set("v", "<leader>x", ":lua<cr>", { desc = "Execute" })
 
 vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking text",
+    group = vim.api.nvim_create_augroup("kickstart-hightlight-yank", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
