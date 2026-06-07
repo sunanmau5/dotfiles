@@ -8,8 +8,8 @@ Personal configuration files for macOS, managed with [GNU Stow](https://www.gnu.
 # install command line tools
 xcode-select --install
 
-# clone repo
-git clone git@github.com:sunanmau5/dotfiles.git ~/.dotfiles
+# clone repo with submodules
+git clone --recurse-submodules git@github.com:sunanmau5/dotfiles.git ~/.dotfiles
 
 # navigate to dotfiles
 cd ~/.dotfiles
@@ -30,7 +30,7 @@ stow */
 | `git`                                    | Git configuration                     |
 | `mise`                                   | Version manager (node, ruby, etc)     |
 | `tmux`                                   | Terminal multiplexer                  |
-| `nvim`                                   | Neovim setups                         |
+| `nvim`                                   | Neovim config                         |
 | `alacritty` / `ghostty`                  | Terminal emulators                    |
 | `less` / `ripgrep`                       | CLI tool defaults                     |
 | `lazygit`                                | Lazygit config                        |
