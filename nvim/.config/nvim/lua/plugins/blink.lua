@@ -1,21 +1,22 @@
 return {
     "saghen/blink.cmp",
-    version = "*", -- use pre-built Rust binaries, no toolchain required
+    dependencies = { "rafamadriz/friendly-snippets" },
+    enabled = function()
+        return not vim.tbl_contains({ "markdown" }, vim.bo.filetype)
+    end,
+    version = "1.*",
     opts = {
-        enabled = function()
-            return vim.b.completion ~= false and vim.bo.filetype ~= "markdown"
-        end,
-        keymap = {
-            preset = "default",
-            ["<CR>"] = { "accept", "fallback" },
-        }, -- <C-space> trigger, <CR> accept, <C-e> close
-        appearance = { nerd_font_variant = "mono" },
+        keymap = { preset = "default" },
+        appearance = {
+            nerd_font_variant = "mono",
+        },
         completion = {
-            accept = { auto_brackets = { enabled = true } },
-            documentation = { auto_show = true, auto_show_delay_ms = 200 },
+            accept = {
+                auto_brackets = { enabled = false },
+            },
         },
-        sources = {
-            default = { "lsp", "path", "buffer" },
-        },
+        signature = { enabled = true },
+        fuzzy = { implementation = "prefer_rust_with_warning" },
     },
+    opts_extend = { "sources.default" },
 }
