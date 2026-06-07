@@ -51,7 +51,11 @@ else
     project_entries
     standalone_entries
     hook_entries
-  } | fzf --delimiter="$tab" --with-nth=1 --expect=enter,ctrl-o)"
+  } | fzf \
+    --delimiter="$tab" \
+    --with-nth=1 \
+    --expect=enter,ctrl-o \
+    --color=bg:-1,bg+:-1,gutter:-1)"
   [[ -z "$choice" ]] && exit 0
   launch_key="${choice%%$'\n'*}"
   selected="${choice#*$'\n'}"
