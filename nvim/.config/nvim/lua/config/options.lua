@@ -25,7 +25,6 @@ vim.opt.wrap = false
 vim.opt.showmode = false
 
 vim.opt.splitright = true
-vim.opt.splitbelow = true
 
 vim.opt.undofile = true
 vim.opt.swapfile = false
