@@ -10,14 +10,15 @@ return {
     end,
     cmd = "Telescope",
     keys = {
-        {
-            "<C-p>",
-            function()
-                require("utils").project_files()
-            end,
-            desc = "Find files",
-        },
+        { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
         { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+        {
+            "<leader>fg",
+            function()
+                require("config.telescope.multigrep").live_multigrep()
+            end,
+            desc = "Live multigrep",
+        },
         {
             "<leader>/",
             function()
@@ -28,60 +29,13 @@ return {
         },
         { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
         { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find help tags" },
-        { "gd", "<cmd>Telescope lsp_definitions<cr>", desc= "Go to definition" },
-        { "gr", "<cmd>Telescope lsp_references<cr>", desc= "Go to references" },
-        { "gy", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Go to type definition" }
-
+        { "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to definition" },
+        { "gr", "<cmd>Telescope lsp_references<cr>", desc = "Go to references" },
+        { "gy", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Go to type definition" },
     },
     opts = function()
         local actions = require("telescope.actions")
-        local action_state = require("telescope.actions.state")
-        local additional_rg_args = { "--hidden", "--glob", "!**/.git/*" }
-
-        local function delete_buffer(bufnr)
-            local ok, err = pcall(vim.api.nvim_buf_delete, bufnr, { force = false })
-            if not ok then
-                vim.notify(err, vim.log.levels.WARN)
-            end
-        end
-
-        local function buffer_mappings(prompt_bufnr, map)
-            local function refresh_buffers()
-                actions.close(prompt_bufnr)
-                vim.schedule(function()
-                    require("telescope.builtin").buffers()
-                end)
-            end
-
-            local function delete_selected_buffer()
-                local selection = action_state.get_selected_entry()
-                if selection and selection.bufnr then
-                    delete_buffer(selection.bufnr)
-                    refresh_buffers()
-                end
-            end
-
-            local function delete_selected_buffers()
-                local picker = action_state.get_current_picker(prompt_bufnr)
-                local selection = picker:get_multi_selection()
-
-                if vim.tbl_isempty(selection) then
-                    delete_selected_buffer()
-                    return
-                end
-
-                for _, entry in ipairs(selection) do
-                    delete_buffer(entry.bufnr)
-                end
-                refresh_buffers()
-            end
-
-            map("n", "dd", delete_selected_buffer)
-            map("n", "<C-d>", delete_selected_buffers)
-            map("i", "<C-d>", delete_selected_buffers)
-
-            return true
-        end
+        local additional_rg_args = { "--hidden", "--fixed-strings", "--glob", "!**/.git/*" }
 
         return {
             defaults = {
@@ -103,14 +57,18 @@ return {
             pickers = {
                 find_files = {
                     find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+                    theme = "ivy",
                 },
                 buffers = {
                     sort_mru = true,
                     ignore_current_buffer = true,
-                    attach_mappings = buffer_mappings,
+                    attach_mappings = require("config.telescope.buffers").attach_mappings,
                 },
                 live_grep = { additional_args = additional_rg_args },
                 grep_string = { additional_args = additional_rg_args },
+            },
+            extensions = {
+                fzf = {},
             },
         }
     end,
