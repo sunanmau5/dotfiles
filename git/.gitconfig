@@ -1,14 +1,16 @@
+[init]
+  templateDir = ~/.git_template
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [user]
-	name = sunanmau5
-	email = sunan.regi@gmail.com
+  name = sunanmau5
+  email = sunan.regi@gmail.com
 [alias]
-	pushfwl = push --force-with-lease
-	squash = !sh -c 'git reset --soft HEAD~$1 && git commit -m \"$(git log --format=%B --reverse HEAD..HEAD@{1})\"' -
+  pushfwl = push --force-with-lease
+  squash = !sh -c 'git reset --soft HEAD~$1 && git commit -m \"$(git log --format=%B --reverse HEAD..HEAD@{1})\"' -
 [core]
   pager = delta
 [interactive]
