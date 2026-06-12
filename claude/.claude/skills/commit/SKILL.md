@@ -13,6 +13,7 @@ Steps:
 
 Rules for the commit message:
 - Start with a type prefix: feat, fix, docs, style, refactor, test, chore
+- If a scope is included, use PascalCase (e.g. `feat(Section): ...`, `fix(Button): ...`)
 - If previous commits have similar changes, use the same scope
 - Use lowercase for the subject line after the prefix
 - Limit the subject line to 72 characters

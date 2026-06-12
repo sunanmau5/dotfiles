@@ -1,13 +1,20 @@
 {
-  "includeCoAuthoredBy": false,
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "DISABLE_AUTO_COMPACT": "1",
+    "DISABLE_INSTALL_GITHUB_APP_COMMAND": "1",
+    "DISABLE_TELEMETRY": "1"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
-      "Read(//Users/mba/Developer/marta/**)",
-      "Read(//Users/mba/Developer/projex/**)",
-      "Read(//Users/mba/.dotfiles/**)",
-      "Read(//Users/mba/Documents/obsidian/vault/**)",
-      "Read(//Users/mba/Library/Mobile Documents/iCloud~md~obsidian/Documents/cloud-storage/**)",
-      "Read(//Users/mba/Library/Application Support/Firefox/Profiles/r84pvtib.dev-edition-default/**)"
+      "Read(//Users/sunan.maunakea/Developer/koppla-tech/**)",
+      "Read(//Users/sunan.maunakea/.dotfiles/**)",
+      "Bash(rtk grep *)",
+      "Bash(rtk find *)"
     ],
     "deny": [
       "Read(**/.env*)",
@@ -22,7 +29,7 @@
       "Read(**/config/database.yml)"
     ]
   },
-  "model": "opus[1m]",
+  "model": "sonnet",
   "hooks": {
     "PreToolUse": [
       {
@@ -30,50 +37,37 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/mba/.claude/hooks/rtk-rewrite.sh"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"/Users/mba/.claude/hooks/gsd-prompt-guard.js\"",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"/Users/mba/.claude/hooks/gsd-check-update.js\""
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Bash|Edit|Write|MultiEdit|Agent|Task",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"/Users/mba/.claude/hooks/gsd-context-monitor.js\"",
-            "timeout": 10
+            "command": "rtk hook claude"
           }
         ]
       }
     ]
   },
+  "disableWorkflows": true,
+  "workflowKeywordTriggerEnabled": false,
+  "allowAllClaudeAiMcps": false,
   "statusLine": {
     "type": "command",
-    "command": "node \"/Users/mba/.claude/hooks/gsd-statusline.js\""
+    "command": "sh ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true
-  }
+    "frontend-slides@frontend-slides": true
+  },
+  "extraKnownMarketplaces": {
+    "frontend-slides": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/zarazhangrui/frontend-slides.git"
+      }
+    }
+  },
+  "effortLevel": "medium",
+  "awaySummaryEnabled": false,
+  "showClearContextOnPlanAccept": true,
+  "voice": {
+    "enabled": false
+  },
+  "channelsEnabled": false,
+  "autoCompactEnabled": false,
+  "switchModelsOnFlag": false
 }
