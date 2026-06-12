@@ -171,18 +171,3 @@ function cx() {
 function cxs() {
   codex --sandbox read-only "$@"
 }
-
-function wpm() {
-  local pm
-  if [[ -f "bun.lock" || -f "bun.lockb" ]]; then pm="bun"
-  elif [[ -f "pnpm-lock.yaml" ]]; then pm="pnpm"
-  elif [[ -f "yarn.lock" ]]; then pm="yarn"
-  elif [[ -f "package-lock.json" ]]; then pm="npm"
-  elif [[ -f "package.json" ]]; then echo "unknown (no lockfile)"; return
-  else echo "no package.json found"; return
-  fi
-
-  local version
-  [[ -f "package.json" ]] && version=$(grep -m1 '"packageManager"' package.json | grep -oE "${pm}@[^\"']+" | cut -d@ -f2)
-  echo "${pm}${version:+@$version}"
-}
