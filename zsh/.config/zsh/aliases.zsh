@@ -49,9 +49,7 @@ alias alias:custom="cat $ALIAS_FILE_PATH"
 alias vlt="$editor $VAULT_PATH"
 alias ffd-config="$editor $FFD_PROFILE_PATH"
 
-# marta
 alias rmods="find . -type dir -name node_modules | xargs rm -rf"
-alias awks="aws eks update-kubeconfig --region eu-central-1 --name k8s-cluster && export KUBE_CONFIG_PATH=~/.kube/config"
 
 # tmux
 alias t="tmux"
