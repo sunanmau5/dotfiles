@@ -5,6 +5,11 @@ set -euo pipefail
 dir="${1:-$PWD}"
 target="${dir##*/}"
 target="${target//[^[:alnum:]_-]/_}"
+session="=$target"
+
+session_id() {
+  tmux display-message -p -t "$session" '#{session_id}'
+}
 
 has_window() {
   tmux list-windows -t "$1" -F '#W' | grep -Fxq "$2"
@@ -24,12 +29,14 @@ ensure_window() {
   fi
 }
 
-if tmux has-session -t "$target" 2>/dev/null; then
+if tmux has-session -t "$session" 2>/dev/null; then
+  target="$(session_id)"
   ensure_window "$target" nvim nvim
   ensure_window "$target" term
   ensure_window "$target" git lazygit
 else
   tmux new-session -d -s "$target" -n nvim -c "$dir" nvim
+  target="$(session_id)"
   tmux new-window -d -t "$target" -n term -c "$dir"
   tmux new-window -d -t "$target" -n git -c "$dir" lazygit
 fi
