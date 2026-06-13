@@ -1,5 +1,8 @@
 Brewfile.lock.json
 
+# opencode npm artifacts
+opencode/.opencode/package-lock.json
+
 # karabiner backups
 **/automatic_backups
 
