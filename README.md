@@ -34,7 +34,6 @@ stow */
 | `alacritty` / `ghostty`                  | Terminal emulators                    |
 | `less` / `ripgrep`                       | CLI tool defaults                     |
 | `lazygit`                                | Lazygit config                        |
-| `yazi`                                   | File manager                          |
 | `btop`                                   | System monitor                        |
 | `karabiner`                              | Keyboard customization                |
 | `cursor` / `vscode` / `zed` / `opencode` | Editor settings                       |
