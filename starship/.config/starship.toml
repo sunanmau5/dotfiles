@@ -5,3 +5,9 @@ display_private = true
 
 [aws]
 format = 'on [($profile )(\($region\) )]($style)'
+
+[custom.git_worktree]
+command = 'printf "⎇"'
+when = 'git rev-parse --is-inside-work-tree >/dev/null 2>&1 && [ -f "$(git rev-parse --git-dir)/commondir" ]'
+format = ' [$output]($style)'
+style = 'bold yellow'
