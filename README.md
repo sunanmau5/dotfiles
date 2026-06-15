@@ -33,6 +33,7 @@ stow */
 | `nvim`                                   | Neovim config                         |
 | `alacritty` / `ghostty`                  | Terminal emulators                    |
 | `less` / `ripgrep`                       | CLI tool defaults                     |
+| `prettier`                               | Global Prettier defaults              |
 | `lazygit`                                | Lazygit config                        |
 | `btop`                                   | System monitor                        |
 | `karabiner`                              | Keyboard customization                |
