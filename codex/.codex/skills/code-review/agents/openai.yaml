@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Review"
+  short_description: "Review PRs, diffs, architecture, and quality"
+  default_prompt: "Use $code-review to review the current changes for bugs, risks, test gaps, and maintainability."

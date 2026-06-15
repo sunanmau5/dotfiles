@@ -4,58 +4,120 @@ description: Convert a recipe URL or pasted text into the user's Obsidian recipe
 user-invocable: true
 ---
 
-Convert a recipe into the user's Obsidian recipe format.
+# Recipe
 
-The user will provide either a **URL** or a **block of text** containing a recipe. Your job is to reformat it to match the established style below exactly.
+Convert a recipe URL or pasted recipe text into the user's Obsidian recipe format.
 
-## Format rules
+Use this skill when the user asks to add, convert, format, import, or clean up a recipe. Work one recipe at a time unless the user explicitly asks for batch work.
 
-**Frontmatter:**
+## Vault Context
+
+- Recipe notes live in `/Users/sunanrm/Library/Mobile Documents/iCloud~md~obsidian/Documents/cloud-storage`
+- `menu.md` is the source of truth for recipe discoverability
+- New recipe notes should be linked from `menu.md` in the right section
+- Existing recipe notes in the vault are the style reference
+
+## Required Workflow
+
+1. Determine whether the input is a URL, pasted text, or a request to create a recipe from a dish name.
+2. If the input is a URL, fetch the source and extract the recipe before drafting.
+3. If the input is pasted text, work from the supplied text and do not invent source details.
+4. If the input is only a dish name, draft a practical 4-serving version and state any assumptions before writing.
+5. Remove non-recipe content such as author bio, blog story, ads, nutrition, unrelated serving suggestions, and equipment lists unless equipment is critical.
+6. Convert measurements to the user's metric style.
+7. Draft the recipe in the exact format rules below.
+8. Ask for user approval before writing or modifying recipe files unless the user explicitly asked you to write immediately.
+9. After approval, create or update the recipe note and update `menu.md`.
+10. Verify the recipe filename appears in `menu.md` as a wiki link.
+
+## Recipe Format
+
+- Do not use frontmatter
+- Start the note with `# <Recipe Name>`
+- Use `##` for section headings
+- Do not use `---` dividers
+- Use `## Ingredients` for the main ingredient list
+- Use unordered lists for ingredients with `-`
+- Use `## Instructions` for method steps
+- Use ordered lists for instructions with `1.` markers
+- Put source links at the end as `### [Link](url)` when a source exists
+- Do not wrap the final recipe in a markdown code fence when writing to a file
+
+## Section Guidance
+
+- Default to one `## Ingredients` section and one `## Instructions` section
+- Split ingredient groups only when it improves clarity, such as sauce, filling, dough, topping, or garnish
+- Use clear subsection headings under ingredients only when useful
+- Keep instructions in one ordered list unless separate components are clearer
+- Preserve important sequencing and dependency details from the source
+- Keep optional garnish only if it materially affects the dish
+- Prefer concise practical wording over source prose
+
+## Menu Format
+
+Update `menu.md` with wiki links grouped under these sections:
+
+```markdown
+## Main dish
+
+- [[Recipe Name]]
+
+## Side dish
+
+- [[Recipe Name]]
+
+## Sauce
+
+- [[Recipe Name]]
+
+## Dessert
+
+- [[Recipe Name]]
 ```
----
-id: <Recipe Name>
-aliases: []
-tags:
-  - recipe
----
+
+Choose the most appropriate section. If a recipe could belong in more than one section, use the primary serving role.
+
+## Measurements
+
+- Always use metric units: `g`, `ml`, `°C`, and `cm`
+- Always put a space between number and unit: `300 g`, `400 ml`, `180 °C`, `20 cm`
+- Keep `tbsp` and `tsp` as-is
+- Convert imperial values such as `oz`, `lb`, `cups`, `°F`, and `inches`
+- Use practical kitchen conversions instead of false precision
+- Round grams and milliliters to sensible values unless precision matters
+- Convert oven temperatures to standard Celsius equivalents
+- Retain count-based units like eggs, cloves, onions, carrots, limes, and sheets
+- Prefer 4-serving recipes unless the user specifies another serving count
+
+## Writing Style
+
+- Keep prose concise and direct
+- Never use en dashes or em dashes
+- Use a plain hyphen if a dash is needed
+- Single-sentence ordered and unordered list items do not end with a period
+- Do not add unnecessary introductions or commentary to recipe files
+- Keep useful tips or caveats in parentheses in the relevant step
+- Use bold text only for critical warnings when it prevents a likely mistake
+
+## Output Template
+
+```markdown
+# Recipe Name
+
+## Ingredients
+
+- Ingredient
+- Ingredient
+
+## Instructions
+
+1. Step
+2. Step
+
+### [Link](https://example.com)
 ```
 
-**Sections:**
-- Use `####` (h4) for all section headings
-- Place a `---` divider on the line immediately after each heading (ingredients and instructions alike)
-- Ingredients are bullet lists (`-`)
-- Instructions are numbered lists
-- If the recipe has distinct component groups (e.g. chicken + sauce + toppings), split them into separate `####` sections, each with their own `---` divider
-- Each ingredient group should be followed by its own `#### Instructions` block (with `---`) if instructions are provided; if a recipe only has one instruction set, one block is fine
-- If the original source has a URL, add a final section: `#### [Link](url)`
-
-**Measurements:**
-- Always use metric: g, ml, °C, cm
-- Convert any imperial values (oz → g, cups → ml, °F → °C, inches → cm)
-- Always put a space between the number and the unit: `300 g`, `400 ml`, `2 tbsp`, `180 °C`
-- Keep tbsp and tsp as-is (they are universal)
-
-**Tone:**
-- Practical and concise
-- Keep useful tips or caveats in parentheses within the relevant step
-- Bold key ingredients or critical warnings where helpful (e.g. **do not add salt yet**)
-- Do not add unnecessary fluff or introductions
-
-**What NOT to include:**
-- Serving suggestions unrelated to the recipe itself
-- Nutritional info
-- Author bios or blog preamble
-- Equipment lists (unless critical)
-
-## Workflow
-
-1. If the input is a URL, fetch the page and extract the recipe content.
-2. Parse ingredients and instructions.
-3. Convert all measurements to metric with a space between number and unit.
-4. Reformat into the structure above.
-5. Output the full markdown file content, ready to paste into Obsidian — nothing else, no commentary before or after.
-
-The file content should start with `---` (the frontmatter opening) and end after the last recipe line.
+Omit the link heading when there is no source.
 
 ## Input
 
