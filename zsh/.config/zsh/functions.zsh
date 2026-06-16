@@ -34,20 +34,6 @@ function g-sd() {
   git stash drop stash@{"${1:-0}"}
 }
 
-# zsh-vi-mode config (runs before plugin init)
-function zvm_config() {
-  ZVM_SYSTEM_CLIPBOARD_ENABLED=true
-}
-
-# zsh-vi-mode hook (keybindings must be set here to survive zsh-vi-mode init)
-function zvm_after_init() {
-  bindkey '^e' autosuggest-accept
-  bindkey -s '^g' 'gcm-ai\n'
-  # workaround when using fzf and zvm - fzf Ctrl-r will be prioritized
-  source <(fzf --zsh)
-
-}
-
 # codex
 function cx() {
   codex --sandbox workspace-write "$@"

@@ -1,26 +1,31 @@
-# load zap - zsh plugin manager
-[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
-
 # source - keep the order
-plug "$HOME/.config/zsh/options.zsh"
-plug "$HOME/.config/zsh/variables.zsh"
-plug "$HOME/.config/zsh/aliases.zsh"
-plug "$HOME/.config/zsh/functions.zsh"
-plug "$HOME/.config/zsh/exports.zsh"
-[[ -f "$HOME/.config/zsh/secrets.zsh" ]] && plug "$HOME/.config/zsh/secrets.zsh"
-
-# plugins
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "jeffreytse/zsh-vi-mode"
+source "$HOME/.config/zsh/options.zsh"
+source "$HOME/.config/zsh/variables.zsh"
+source "$HOME/.config/zsh/aliases.zsh"
+source "$HOME/.config/zsh/functions.zsh"
+source "$HOME/.config/zsh/exports.zsh"
+[[ -f "$HOME/.config/zsh/secrets.zsh" ]] && source "$HOME/.config/zsh/secrets.zsh"
 
 # completions
 autoload -Uz compinit
 compinit
 
-# case insensitive completion
+# completion behavior
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' squeeze-slashes true
+
+# history search
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+
+# fzf
+[[ -t 0 ]] && source <(fzf --zsh)
 
 # mise (version manager for node, ruby, python, java)
 eval "$(mise activate zsh)"
@@ -28,7 +33,7 @@ eval "$(mise activate zsh)"
 # starship
 # check that the function `starship_zle-keymap-select` is defined.
 # xref: https://github.com/starship/starship/issues/3418
-type starship_zle-keymap-select >/dev/null || \
+type starship_zle-keymap-select >/dev/null ||
   {
     eval "$(starship init zsh)"
   }
