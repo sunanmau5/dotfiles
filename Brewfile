@@ -19,6 +19,8 @@ brew "git-delta"
 brew "git-lfs"
 brew "btop"
 brew "tree"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 
 # dev tools
 brew "colima"

@@ -41,6 +41,11 @@ type starship_zle-keymap-select >/dev/null ||
 # zoxide
 eval "$(zoxide init zsh)"
 
+# zsh-autosuggestions
+source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# zsh-syntax-highlighting -- must be last
+source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
 # tmux (alacritty only)
 # || true keeps exit code 0
 [[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]] && tmux new-session -A -s main || true
