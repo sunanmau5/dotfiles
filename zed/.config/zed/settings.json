@@ -7,122 +7,40 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "show_completion_documentation": false,
-  "show_completions_on_input": false,
-  "show_edit_predictions": false,
-  "title_bar": {
-    "show_onboarding_banner": false,
-    "show_branch_name": true,
-    "show_project_items": true,
-    "show_sign_in": true,
-    "show_user_menu": true,
-    "show_user_picture": true,
-  },
-  "file_finder": {
-    "git_status": false,
-  },
-  "collaboration_panel": {
-    "button": false,
-  },
-  "notification_panel": {
-    "button": false,
-  },
-  "outline_panel": {
-    "button": false,
-  },
-  "status_bar": {
-    "active_language_button": false,
-    "cursor_position_button": false,
-    "experimental.show": false,
-  },
-  "diagnostics": {
-    "button": false,
-  },
-  "search": {
-    "button": false,
-  },
-  "debugger": {
-    "button": false,
-  },
   "agent": {
-    "default_profile": "write",
     "button": false,
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-6",
+      "effort": "medium",
+      "enable_thinking": true,
+      "model": "gpt-5.5",
+      "provider": "openai-subscribed"
     },
+    "default_profile": "write",
+    "dock": "right",
+    "flexible": true,
     "model_parameters": [],
+    "sidebar_side": "right",
+    "single_file_review": true
   },
-  "relative_line_numbers": "enabled",
+  "auto_indent_on_paste": false,
   "base_keymap": "VSCode",
-  // Vim mode settings
-  "vim_mode": true,
-  "ui_font_size": 16,
-  "buffer_font_size": 13,
   "buffer_font_family": "JetBrainsMonoNL Nerd Font",
-  // move panels to the right
-  "project_panel": {
-    "hide_gitignore": false,
-    "hide_hidden": false,
-    "sort_mode": "directories_first",
-    "hide_root": true,
-    "sticky_scroll": false,
-    "auto_fold_dirs": true,
-    "starts_open": true,
-    "auto_reveal_entries": true,
-    "indent_size": 20.0,
-    "folder_icons": true,
-    "file_icons": true,
-    "entry_spacing": "standard",
-    "button": false,
-    "dock": "right",
+  "buffer_font_size": 12.0,
+  "buffer_line_height": "standard",
+  "collaboration_panel": {
+    "button": false
   },
-  "terminal": {
-    "button": false,
-    "dock": "right",
+  "debugger": {
+    "dock": "right"
   },
-  "git_panel": {
-    "dock": "right",
+  "ensure_final_newline_on_save": false,
+  "file_finder": {
+    "modal_max_width": "medium"
   },
-  "toolbar": {
-    "quick_actions": false,
-  },
-  "tab_bar": {
-    "show_tab_bar_buttons": false,
-    "show_nav_history_buttons": false,
-    "show": false,
-  },
-  "scrollbar": {
-    "show": "never",
-  },
-  "theme": "Ayu Mirage",
-  "inlay_hints": {
-    "enabled": false,
-  },
-  "languages": {
-    "JavaScript": {
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true,
-      },
-    },
-    "TypeScript": {
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true,
-      },
-    },
-    "TSX": {
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true,
-      },
-    },
-  },
-  // File syntax highlighting
-  "file_types": {
-    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
-    "JSON": ["json", "jsonc", "*.code-snippets"],
-  },
-  // File scan exclusions, hide on the file explorer and search
+  // File scan exclusions (files to hide from file explorer and search)
+  // https://zed.dev/docs/reference/all-settings#file-scan-exclusions
   "file_scan_exclusions": [
+    "**/.git",
     "**/.svn",
     "**/.hg",
     "**/CVS",
@@ -130,17 +48,134 @@
     "**/Thumbs.db",
     "**/.classpath",
     "**/.settings",
-    // above is default from Zed
+    // Above is default from Zed
     "**/out",
+    "**/dist",
+    "**/.husky",
     "**/.turbo",
     "**/.vscode-test",
+    "**/.vscode",
+    "**/.next",
+    "**/.storybook",
     "**/.tap",
     "**/.nyc_output",
     "**/report",
+    "**/node_modules"
   ],
+  // File type associations
+  // https://zed.dev/docs/configuring-languages#file-associations
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["json", "jsonc", "*.code-snippets"]
+  },
+  "git": {
+    "show_stage_restore_buttons": true
+  },
+  "git_panel": {
+    "collapse_untracked_diff": true,
+    "diff_stats": true,
+    "dock": "right",
+    "file_icons": true,
+    "show_count_badge": true,
+    "tree_view": true
+  },
+  "inlay_hints": {
+    "enabled": false
+  },
+  "languages": {
+    "Markdown": {
+      "format_on_save": "off",
+      "preferred_line_length": 80
+    }
+  },
+  "outline_panel": {
+    "button": false
+  },
+  "project_panel": {
+    "auto_fold_dirs": false,
+    "auto_reveal_entries": true,
+    "bold_folder_labels": false,
+    "button": true,
+    "diagnostic_badges": false,
+    "dock": "right",
+    "entry_spacing": "standard",
+    "file_icons": true,
+    "folder_icons": true,
+    "git_status": true,
+    "git_status_indicator": true,
+    "hide_gitignore": false,
+    "hide_hidden": false,
+    "hide_root": true,
+    "indent_size": 12.0,
+    "scrollbar": {
+      "horizontal_scroll": true
+    },
+    "show_diagnostics": "errors",
+    "sort_mode": "directories_first",
+    "starts_open": true,
+    "sticky_scroll": false
+  },
+  "relative_line_numbers": "enabled",
+  "scrollbar": {
+    "show": "never"
+  },
+  "show_completion_documentation": true,
+  "show_completions_on_input": true,
+  "show_edit_predictions": true,
+  "soft_wrap": "editor_width",
+  "status_bar": {
+    "experimental.show": true
+  },
+  "tab_bar": {
+    "show": false,
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": false
+  },
+  "tab_size": 2,
   // Turn off telemetry
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
+  "terminal": {
+    "copy_on_select": true,
+    "dock": "right",
+    "env": {
+      "EDITOR": "zed --wait"
+    },
+    "keep_selection_on_copy": false,
+    "option_as_meta": true,
+    "show_count_badge": true,
+    "toolbar": {
+      "breadcrumbs": false
+    }
+  },
+  "theme": {
+    "dark": "One Dark",
+    "light": "One Light",
+    "mode": "system"
+  },
+  "title_bar": {
+    "show_branch_name": true,
+    "show_branch_status_icon": false,
+    "show_onboarding_banner": false,
+    "show_project_items": true,
+    "show_sign_in": true,
+    "show_user_menu": true,
+    "show_user_picture": true
+  },
+  "toolbar": {
+    "quick_actions": false
+  },
+  "ui_font_size": 15.0,
+  "use_smartcase_search": true,
+  "vim": {
+    "toggle_relative_line_numbers": true,
+    "use_smartcase_find": true
+  },
+  // Vim mode settings
+  "vim_mode": true,
+  "which_key": {
+    "enabled": true
+  }
 }
