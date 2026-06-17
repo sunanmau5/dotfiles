@@ -21,6 +21,7 @@ brew "btop"
 brew "tree"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+brew "tlrc"
 
 # dev tools
 brew "colima"
