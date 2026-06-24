@@ -1,0 +1,4 @@
+interface:
+  display_name: "Karpathy Guidelines"
+  short_description: "Coding guardrails for simpler agent work"
+  default_prompt: "Use $karpathy-guidelines when writing, reviewing, or refactoring code."
