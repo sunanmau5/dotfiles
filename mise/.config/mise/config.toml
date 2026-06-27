@@ -9,6 +9,7 @@ idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
 node = "lts"
+pi = "latest"
 python = "3.13"
 ruff = "latest"
 serverless = "latest"

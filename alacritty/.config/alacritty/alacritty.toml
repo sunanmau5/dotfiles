@@ -4,11 +4,12 @@ TERM = "xterm-256color"
 
 [keyboard]
 bindings = [
-  { key = "Left",  mods = "Alt",     chars = "\u001bB"   },
-  { key = "Right", mods = "Alt",     chars = "\u001bF"   },
-  { key = "Left",  mods = "Command", chars = "\u001bOH"  },
-  { key = "Right", mods = "Command", chars =  "\u001bOF" },
-  { key = "Back",  mods = "Command", chars = "\u0015"    },
+  { key = "Left",  mods = "Alt",     chars = "\u001bB"      },
+  { key = "Right", mods = "Alt",     chars = "\u001bF"      },
+  { key = "Left",  mods = "Command", chars = "\u001bOH"     },
+  { key = "Right", mods = "Command", chars =  "\u001bOF"    },
+  { key = "Back",  mods = "Command", chars = "\u0015"       },
+  { key = "Enter", mods = "Alt",     chars = "\u001b[13;3u" },
 ]
 
 [window]
