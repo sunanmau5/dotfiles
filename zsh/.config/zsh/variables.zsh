@@ -11,6 +11,7 @@ export VSCODE_SETTINGS_PATH="$HOME/.config/vscode/settings.json"
 export DEV_HOME="$HOME/Developer"
 export DOTFILES_PATH="$HOME/.dotfiles"
 export NVIM_CONFIG_PATH="$DOTFILES_PATH/nvim/.config/nvim"
+export SKILLS_PATH="$DOTFILES_PATH/sskills"
 export OBS_ICLOUD_PATH="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 export OBS_LOCAL_PATH="$HOME/Documents/obsidian"
 export VAULT_PATH="$OBS_LOCAL_PATH/vault"
@@ -24,6 +25,7 @@ export FD_OPTIONS="--hidden --exclude '.git'"
 export PROJECT_DIRS="$DEV_HOME/koppla $DEV_HOME/projex"
 export STANDALONE_PROJECTS="$DOTFILES_PATH
 $NVIM_CONFIG_PATH
+$SKILLS_PATH
 $VAULT_PATH
 $MENU_PATH
 $FFD_PROFILE_PATH"

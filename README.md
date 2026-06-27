@@ -41,7 +41,7 @@ stow */
 | `btop`                                   | System monitor                        |
 | `karabiner`                              | Keyboard customization                |
 | `cursor` / `vscode` / `zed` / `opencode` | Editor settings                       |
-| `codex`                                  | Codex skills                          |
+| `codex`                                  | Codex settings                        |
 | `claude`                                 | Claude Code settings                  |
 | `sskills`                                | Shared Codex and Claude skills        |
 | `docker`                                 | Docker CLI config                     |
@@ -117,6 +117,8 @@ sync-claude-permissions
 | ------------------------- | ------------------------------------------- |
 | `~/.claude/settings.json` | Stowed Claude Code settings file            |
 | `sync-claude-permissions` | Syncs Read permissions from `variables.zsh` |
+
+Agent skills are linked by `sskills/scripts/link-skills.sh`, not stored in the `codex` or `claude` packages
 
 ## Tmux
 
