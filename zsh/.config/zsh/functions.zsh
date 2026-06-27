@@ -1,5 +1,11 @@
 function tm() {
-  if tmux has-session -t main 2>/dev/null; then
+  if [[ -d "$DOTFILES_PATH" ]]; then
+    if tmux has-session -t _dotfiles 2>/dev/null; then
+      ta -t _dotfiles
+    else
+      tn -s _dotfiles -n .dotfiles -c "$DOTFILES_PATH"
+    fi
+  elif tmux has-session -t main 2>/dev/null; then
     ta -t main
   else
     tn -s main

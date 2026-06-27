@@ -49,4 +49,10 @@ source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 
 # tmux (alacritty only)
 # || true keeps exit code 0
-[[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]] && tmux new-session -A -s main || true
+if [[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]]; then
+  if [[ -d "$DOTFILES_PATH" ]]; then
+    tmux new-session -A -s _dotfiles -n .dotfiles -c "$DOTFILES_PATH"
+  else
+    tmux new-session -A -s main
+  fi
+fi || true
