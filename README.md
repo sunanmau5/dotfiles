@@ -19,6 +19,9 @@ brew bundle
 
 # symlink all configs
 stow */
+
+# link shared Codex and Claude skills
+./sskills/scripts/link-skills.sh
 ```
 
 ## What's Included
@@ -40,6 +43,7 @@ stow */
 | `cursor` / `vscode` / `zed` / `opencode` | Editor settings                       |
 | `codex`                                  | Codex skills                          |
 | `claude`                                 | Claude Code settings                  |
+| `sskills`                                | Shared Codex and Claude skills        |
 | `docker`                                 | Docker CLI config                     |
 | `firefox`                                | Arkenfox setup and cookie permissions |
 | `obsidian`                               | Note-taking app                       |
