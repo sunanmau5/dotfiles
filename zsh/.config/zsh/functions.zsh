@@ -3,7 +3,7 @@ function tm() {
     if tmux has-session -t _dotfiles 2>/dev/null; then
       ta -t _dotfiles
     else
-      tn -s _dotfiles -n .dotfiles -c "$DOTFILES_PATH"
+      tn -s _dotfiles -n _dotfiles -c "$DOTFILES_PATH"
     fi
   elif tmux has-session -t main 2>/dev/null; then
     ta -t main
