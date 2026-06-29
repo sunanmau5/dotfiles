@@ -69,5 +69,7 @@
   },
   "channelsEnabled": false,
   "autoCompactEnabled": false,
-  "switchModelsOnFlag": false
+  "switchModelsOnFlag": false,
+  "disableAutoMode": "disable",
+  "totalTokensReminder": "countdown"
 }
