@@ -1,12 +1,17 @@
 [
   // Editor context without vim_mode - works in all modes (normal, visual, insert)
   {
-    "context": "Editor",
+    "context": "Editor && !menu",
     "bindings": {
       "alt-j": "editor::MoveLineDown",
       "alt-k": "editor::MoveLineUp",
-      "ctrl-p": "file_finder::Toggle"
-    }
+    },
+  },
+  {
+    "context": "Editor && menu",
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCompletion",
+    },
   },
   // Normal & visual mode
   {
@@ -14,6 +19,7 @@
     "bindings": {
       "g f": "editor::OpenExcerpts",
       "g y": "editor::GoToTypeDefinition",
+      "space /": "pane::DeploySearch",
       "space a c": "agent::ToggleFocus",
       "space a n": "agent::NewThread",
       "space a m": "agent::ToggleModelSelector",
@@ -26,8 +32,8 @@
       "space g s": "git_panel::ToggleFocus",
       "space m p": "markdown::OpenPreview",
       "space m P": "markdown::OpenPreviewToTheSide",
-      "space u w": "editor::ToggleSoftWrap"
-    }
+      "space u w": "editor::ToggleSoftWrap",
+    },
   },
   // Normal mode only
   {
@@ -39,34 +45,54 @@
       "] e": "editor::GoToDiagnostic",
       "[ h": "editor::GoToPreviousHunk",
       "] h": "editor::GoToHunk",
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-l": "workspace::ActivatePaneRight",
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
       "g r": "editor::FindAllReferences",
       "g t": "editor::GoToTypeDefinition",
       "g T": "editor::GoToTypeDefinitionSplit",
       "s s": "outline::Toggle",
       "s S": "project_symbols::Toggle",
-      "space /": "pane::DeploySearch",
       "space b a": "pane::CloseAllItems",
       "space b d": "pane::CloseActiveItem",
       "space b o": "pane::CloseOtherItems",
       "space c a": "editor::ToggleCodeActions",
       "space c r": "editor::Rename",
       "space e": "pane::RevealInProjectPanel",
+      "space g d": "git::Diff",
       "space q q": "zed::Quit",
       "space space": "file_finder::Toggle",
-      "space x x": "diagnostics::Deploy"
-    }
+      "space x x": "diagnostics::Deploy",
+      "-": "project_panel::ToggleFocus",
+    },
+  },
+  // File finder
+  {
+    "context": "FileFinder",
+    "bindings": {
+      "ctrl-l": ["workspace::SendKeystrokes", "cmd-shift-a cmd-l"],
+    },
+  },
+  // Pane navigation - excluded from pickers/modals
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu && !Picker",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+    },
   },
   // Empty pane
   {
     "context": "EmptyPane || SharedScreen",
     "bindings": {
+      "ctrl-p": "file_finder::Toggle",
       "space f p": "projects::OpenRecent",
-      "space space": "file_finder::Toggle"
-    }
+      "space space": "file_finder::Toggle",
+      "space g d": "git::Diff",
+    },
   },
   // Workspace
   {
@@ -75,8 +101,7 @@
       "alt--": "workspace::DecreaseActiveDockSize",
       "alt-=": "workspace::IncreaseActiveDockSize",
       "cmd-b": "workspace::ToggleRightDock",
-      "ctrl-p": "file_finder::Toggle"
-    }
+    },
   },
   // Terminal
   {
@@ -84,15 +109,16 @@
     "bindings": {
       "cmd-;": [
         "workspace::SendKeystrokes",
-        "ctrl-shift-g c shift-escape alt-tab escape"
+        "ctrl-shift-g c shift-escape alt-tab escape",
       ],
       "ctrl-h": "workspace::ActivatePaneLeft",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-l": "workspace::ActivatePaneRight",
+      // used to clear
+      "ctrl-l": null,
       "ctrl-p": null,
-      "ctrl-n": null
-    }
+      "ctrl-n": null,
+    },
   },
   // Project panel
   {
@@ -110,8 +136,8 @@
       "q": "workspace::ToggleRightDock",
       "r": "project_panel::Rename",
       "space e": "workspace::ToggleRightDock",
-      "x": "project_panel::Cut"
-    }
+      "x": "project_panel::Cut",
+    },
   },
   // Dock
   {
@@ -120,23 +146,41 @@
       "ctrl-w h": "workspace::ActivatePaneLeft",
       "ctrl-w j": "workspace::ActivatePaneDown",
       "ctrl-w k": "workspace::ActivatePaneUp",
-      "ctrl-w l": "workspace::ActivatePaneRight"
-    }
+      "ctrl-w l": "workspace::ActivatePaneRight",
+    },
   },
   // Git panel
   {
     "context": "GitPanel",
     "bindings": {
       "ctrl-g p": "git::Pull",
-      "ctrl-g P": "git::Push"
-    }
+      "ctrl-g P": "git::Push",
+    },
   },
   {
     "context": "GitPanel && !CommitEditor",
     "bindings": {
       "c": "git_panel::FocusEditor",
       "d": "git::RestoreFile",
-      "D": "git::RestoreTrackedFiles"
-    }
-  }
+      "D": "git::RestoreTrackedFiles",
+    },
+  },
+  // Agent panel
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "ctrl-w h": null,
+      "ctrl-w j": null,
+      "ctrl-w k": null,
+      "ctrl-w l": null,
+    },
+  },
+  // TODO: this is somehow not working
+  // but it works when selecting through menu
+  {
+    "context": "AcpThread > Editor",
+    "bindings": {
+      "ctrl+j": "editor::NewlineBelow",
+    },
+  },
 ]
