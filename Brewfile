@@ -22,6 +22,7 @@ brew "tree"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "tlrc"
+brew "hunk"
 
 # dev tools
 brew "colima"
