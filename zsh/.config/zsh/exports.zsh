@@ -11,6 +11,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# libpq
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
