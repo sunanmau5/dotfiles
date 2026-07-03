@@ -34,6 +34,7 @@ brew "ni"
 brew "opencode"
 brew "elixir"
 brew "awscli"
+brew "libpq"
 
 # version manager (node, ruby, python, java)
 brew "mise"
