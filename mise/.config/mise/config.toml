@@ -5,7 +5,7 @@ python.uv_venv_auto = true
 trusted_config_paths = [
   "~/Developer/projex",
 ]
-idiomatic_version_file_enable_tools = ["node"]
+idiomatic_version_file_enable_tools = ["node", "bun"]
 
 [tools]
 node = "lts"
