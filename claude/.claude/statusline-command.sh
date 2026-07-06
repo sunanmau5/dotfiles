@@ -27,51 +27,30 @@ if [ -n "$cwd" ] && git -C "$cwd" --no-optional-locks rev-parse --is-inside-work
   fi
 fi
 
-# Context usage summary (percentage + used/total tokens)
+# Human-readable token counts: 1500 -> 1.5k, 2000000 -> 2m
+fmt_num() {
+  local n=$1
+  if [ "$n" -ge 1000000 ]; then
+    awk -v n="$n" 'BEGIN { printf "%.1fm", n / 1000000 }'
+  elif [ "$n" -ge 1000 ]; then
+    awk -v n="$n" 'BEGIN { printf "%.1fk", n / 1000 }'
+  else
+    printf '%d' "$n"
+  fi
+}
+
+# Context usage summary (bar + percentage + used/total tokens)
 ctx_line=""
 if [ -n "$used_pct" ] && [ "$used_pct" != "null" ] && [ "$ctx_size" -gt 0 ] 2>/dev/null; then
   used_tokens=$(((ctx_size * $(printf '%.0f' "$used_pct")) / 100))
-  ctx_line=$(printf "ctx %.0f%% (%dk/%dk)" "$used_pct" "$((used_tokens / 1000))" "$((ctx_size / 1000))")
-fi
-
-# PR number + review state for the current branch (if any)
-pr_line=""
-pr_color=""
-if [ -n "$git_info" ] && command -v gh >/dev/null 2>&1; then
-  pr_json=$(cd "$cwd" && gh pr view --json number,state,isDraft,reviewDecision 2>/dev/null)
-  if [ -n "$pr_json" ]; then
-    pr_number=$(echo "$pr_json" | jq -r '.number')
-    pr_state=$(echo "$pr_json" | jq -r '.state')
-    pr_draft=$(echo "$pr_json" | jq -r '.isDraft')
-    pr_review=$(echo "$pr_json" | jq -r '.reviewDecision // empty')
-
-    if [ "$pr_draft" = "true" ]; then
-      pr_color='\033[90m' # gray
-      pr_status="draft"
-    elif [ "$pr_state" = "MERGED" ]; then
-      pr_color='\033[35m' # magenta
-      pr_status="merged"
-    elif [ "$pr_state" = "CLOSED" ]; then
-      pr_color='\033[31m' # red
-      pr_status="closed"
-    else
-      case "$pr_review" in
-      APPROVED)
-        pr_color='\033[32m'
-        pr_status="approved"
-        ;; # green
-      CHANGES_REQUESTED)
-        pr_color='\033[31m'
-        pr_status="changes requested"
-        ;; # red
-      *)
-        pr_color='\033[33m'
-        pr_status="pending review"
-        ;; # yellow
-      esac
-    fi
-    pr_line="PR#${pr_number} ${pr_status}"
-  fi
+  pct_rounded=$(printf '%.0f' "$used_pct")
+  bar_width=10
+  filled=$(( (pct_rounded * bar_width + 50) / 100 ))
+  [ "$filled" -eq 0 ] && [ "$pct_rounded" -gt 0 ] && filled=1
+  [ "$filled" -gt "$bar_width" ] && filled="$bar_width"
+  empty=$((bar_width - filled))
+  bar=$(printf '%*s' "$filled" '' | tr ' ' '█')$(printf '%*s' "$empty" '' | tr ' ' '░')
+  ctx_line=$(printf "ctx [%s] %s%% (%s/%s)" "$bar" "$pct_rounded" "$(fmt_num "$used_tokens")" "$(fmt_num "$ctx_size")")
 fi
 
 # Relative time remaining until the 5-hour rate limit window resets
@@ -96,10 +75,9 @@ colors=("")
 [ -n "$git_info" ] && segments+=("$git_info") && colors+=("")
 segments+=("$model")
 colors+=("")
-segments+=("$(printf 'in:%s out:%s' "$in_tokens" "$out_tokens")")
+segments+=("$(printf 'in:%s out:%s' "$(fmt_num "$in_tokens")" "$(fmt_num "$out_tokens")")")
 colors+=("")
 [ -n "$ctx_line" ] && segments+=("$ctx_line") && colors+=("")
-[ -n "$pr_line" ] && segments+=("$pr_line") && colors+=("$pr_color")
 [ -n "$reset_line" ] && segments+=("$reset_line") && colors+=("")
 
 line=""
