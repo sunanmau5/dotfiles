@@ -9,6 +9,8 @@ Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-s
 ## Writing Style
 
 - Never use en dashes (–) or em dashes (—). Use a plain hyphen (-) if a dash is needed
+- Use semicolons sparingly
+- Avoid staccato drama - runs of short punchy sentences create artificial pauses and an overdramatic tone. Write sentences at natural, varied length
 - Keep prose concise and direct
 - Single-sentence ordered and unordered list items do not end with a period
 
