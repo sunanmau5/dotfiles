@@ -29,7 +29,18 @@
       "Read(**/config/database.yml)"
     ]
   },
-  "model": "sonnet",
+  "model": "opus",
+  "skillOverrides": {
+    "review": "off",
+    "security-review": "off",
+    "simplify": "off",
+    "verify": "off",
+    "run": "off",
+    "init": "off",
+    "dataviz": "off",
+    "keybindings-help": "off",
+    "fewer-permission-prompts": "off"
+  },
   "hooks": {
     "PreToolUse": [
       {
