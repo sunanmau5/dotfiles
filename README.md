@@ -40,6 +40,7 @@ stow */
 | `lazygit`                                | Lazygit config                        |
 | `btop`                                   | System monitor                        |
 | `karabiner`                              | Keyboard customization                |
+| `hammerspoon`                            | macOS automation                      |
 | `cursor` / `vscode` / `zed` / `opencode` | Editor settings                       |
 | `codex`                                  | Codex settings                        |
 | `claude`                                 | Claude Code settings                  |
