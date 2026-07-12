@@ -30,7 +30,7 @@
       "Read(**/config/database.yml)"
     ]
   },
-  "model": "opus",
+  "model": "sonnet",
   "skillOverrides": {
     "review": "off",
     "security-review": "off",
