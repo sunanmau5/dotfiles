@@ -83,11 +83,3 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
-
-## Subagent model tiering
-
-`CLAUDE_CODE_SUBAGENT_MODEL` in settings.json caps every subagent at Sonnet as a cost ceiling. That env var is the real guardrail; this note only shapes spawn decisions, which the cap does not cover.
-
-Spawn subagents to isolate context, parallelize genuinely independent work, or offload bulk mechanical tasks. Don't spawn when the parent needs the reasoning, when synthesis requires holding things together, or when spawn overhead dominates. Coding work rarely parallelizes cleanly, so most implementation stays inline. Every spawn multiplies context and rebuilds cache, so fan out deliberately.
-
-If a subagent needs a higher tier than the cap allows, return the decision to the parent. The parent owns final output and cross-spawn synthesis.
