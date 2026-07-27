@@ -11,7 +11,6 @@ dir_display=$(basename "$cwd" 2>/dev/null)
 model=$(echo "$input" | jq -r '.model.display_name // .model.id // "unknown"')
 
 in_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
-out_tokens=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0')
 used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 ctx_size=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
 
@@ -39,10 +38,12 @@ fmt_num() {
   fi
 }
 
-# Context usage summary (bar + percentage + used/total tokens)
+# Context usage summary (bar + percentage + used/total tokens).
+# total_input_tokens is exactly what used_percentage is derived from, so use it
+# directly rather than re-deriving it from the rounded percentage.
 ctx_line=""
 if [ -n "$used_pct" ] && [ "$used_pct" != "null" ] && [ "$ctx_size" -gt 0 ] 2>/dev/null; then
-  used_tokens=$(((ctx_size * $(printf '%.0f' "$used_pct")) / 100))
+  used_tokens=$in_tokens
   pct_rounded=$(printf '%.0f' "$used_pct")
   bar_width=10
   filled=$(( (pct_rounded * bar_width + 50) / 100 ))
@@ -51,6 +52,16 @@ if [ -n "$used_pct" ] && [ "$used_pct" != "null" ] && [ "$ctx_size" -gt 0 ] 2>/d
   empty=$((bar_width - filled))
   bar=$(printf '%*s' "$filled" '' | tr ' ' '█')$(printf '%*s' "$empty" '' | tr ' ' '░')
   ctx_line=$(printf "ctx [%s] %s%% (%s/%s)" "$bar" "$pct_rounded" "$(fmt_num "$used_tokens")" "$(fmt_num "$ctx_size")")
+fi
+
+# Cost-shaped split of the context: tokens processed anew this turn, billed at
+# 1x or more (fresh input plus cache writes), versus tokens served from cache at
+# ~0.1x. current_usage is null before the first API call and after /compact.
+usage_line=""
+if [ "$(echo "$input" | jq -r '(.context_window.current_usage // null) != null')" = "true" ]; then
+  read -r fresh_tokens cached_tokens <<<"$(echo "$input" | jq -r '.context_window.current_usage
+    | "\((.input_tokens // 0) + (.cache_creation_input_tokens // 0)) \(.cache_read_input_tokens // 0)"')"
+  usage_line=$(printf 'fresh:%s cache:%s' "$(fmt_num "$fresh_tokens")" "$(fmt_num "$cached_tokens")")
 fi
 
 # Estimated cost of this session (client-side estimate; resets on /clear)
@@ -97,11 +108,11 @@ render_line() {
     [ -n "$out" ] && out="${out}\033[2m | \033[0m"
     out="${out}\033[2m${seg}\033[0m"
   done
-  [ -n "$out" ] && printf '%b\n' "$out"
+  if [ -n "$out" ]; then
+    printf '%b\n' "$out"
+  fi
 }
 
 # Line 1: where you are. Line 2: everything that moves.
 render_line "$dir_display" "$git_info" "$model"
-render_line \
-  "$(printf 'in:%s out:%s' "$(fmt_num "$in_tokens")" "$(fmt_num "$out_tokens")")" \
-  "$ctx_line" "$cost_line" "$hour_line" "$week_line"
+render_line "$ctx_line" "$usage_line" "$cost_line" "$hour_line" "$week_line"
