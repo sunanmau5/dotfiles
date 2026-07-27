@@ -1,10 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-5",
     "DISABLE_AUTO_COMPACT": "1",
     "DISABLE_INSTALL_GITHUB_APP_COMMAND": "1",
-    "DISABLE_TELEMETRY": "1",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
+    "DISABLE_TELEMETRY": "1"
   },
   "attribution": {
     "commit": "",
@@ -30,7 +30,6 @@
       "Read(**/config/database.yml)"
     ]
   },
-  "model": "sonnet",
   "skillOverrides": {
     "review": "off",
     "security-review": "off",
@@ -85,5 +84,6 @@
   "disableAutoMode": "disable",
   "theme": "dark",
   "autoCompactEnabled": false,
-  "switchModelsOnFlag": false
+  "switchModelsOnFlag": false,
+  "model": "opus[1m]"
 }

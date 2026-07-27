@@ -53,6 +53,20 @@ if [ -n "$used_pct" ] && [ "$used_pct" != "null" ] && [ "$ctx_size" -gt 0 ] 2>/d
   ctx_line=$(printf "ctx [%s] %s%% (%s/%s)" "$bar" "$pct_rounded" "$(fmt_num "$used_tokens")" "$(fmt_num "$ctx_size")")
 fi
 
+# Estimated cost of this session (client-side estimate; resets on /clear)
+cost_line=""
+cost_usd=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
+if [ -n "$cost_usd" ] && [ "$cost_usd" != "null" ]; then
+  cost_line=$(awk -v c="$cost_usd" 'BEGIN { printf "$%.2f", c }')
+fi
+
+# Share of the 7-day rate limit consumed (absent on plans that don't report it)
+week_line=""
+week_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+if [ -n "$week_pct" ] && [ "$week_pct" != "null" ]; then
+  week_line=$(printf "7d %s%%" "$(printf '%.0f' "$week_pct")")
+fi
+
 # Relative time remaining until the 5-hour rate limit window resets
 reset_line=""
 resets_at=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
@@ -78,6 +92,8 @@ colors+=("")
 segments+=("$(printf 'in:%s out:%s' "$(fmt_num "$in_tokens")" "$(fmt_num "$out_tokens")")")
 colors+=("")
 [ -n "$ctx_line" ] && segments+=("$ctx_line") && colors+=("")
+[ -n "$cost_line" ] && segments+=("$cost_line") && colors+=("")
+[ -n "$week_line" ] && segments+=("$week_line") && colors+=("")
 [ -n "$reset_line" ] && segments+=("$reset_line") && colors+=("")
 
 line=""

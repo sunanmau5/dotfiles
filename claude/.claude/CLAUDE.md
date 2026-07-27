@@ -80,6 +80,40 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+## 5. Delegate Sparingly
+
+**Subagents multiply cost. Each one re-establishes context, re-explores, and reports back - then you re-read its report.**
+
+Measured fan-out runs 2.6x to 3.2x the tokens of a sequential pass, and is rarely faster.
+
+Delegate for:
+
+- Genuinely independent, parallelizable tracks, such as a wide multi-file investigation
+
+Do not delegate for:
+
+- Work you could finish directly in a handful of tool calls
+- Review or verification - that belongs in the main loop
+
+When delegating:
+
+- Prefer one subagent over several, and keep spawn counts low
+- Brief it precisely the first time rather than launching, waiting, and re-briefing
+- Commit to the result - don't redo the work or re-derive its findings
+- Send independent spawns in a single message so they run concurrently
+- Never exceed 20 parallel agents unless explicitly asked
+
+## 6. Session Hygiene
+
+**The whole context is re-sent every turn. Manage it deliberately.**
+
+Auto-compact is off by design, so the discipline has to replace it:
+
+- **New task, new session.** Suggest starting fresh at task boundaries instead of continuing
+- **Rewind over correct.** Correcting leaves the failed attempt in context to be re-sent forever; rewinding removes it
+- **Directed compact.** When compacting, name the focus ("keep the auth refactor, drop the debugging") rather than letting it guess
+- Quality degrades from context rot well before the window fills. Treat a 1M window as headroom, not a target
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
