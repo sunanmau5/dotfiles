@@ -60,53 +60,48 @@ if [ -n "$cost_usd" ] && [ "$cost_usd" != "null" ]; then
   cost_line=$(awk -v c="$cost_usd" 'BEGIN { printf "$%.2f", c }')
 fi
 
-# Share of the 7-day rate limit consumed (absent on plans that don't report it)
-week_line=""
-week_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
-if [ -n "$week_pct" ] && [ "$week_pct" != "null" ]; then
-  week_line=$(printf "7d %s%%" "$(printf '%.0f' "$week_pct")")
-fi
-
-# Relative time remaining until the 5-hour rate limit window resets
-reset_line=""
-resets_at=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
-if [ -n "$resets_at" ] && [ "$resets_at" != "null" ]; then
-  now=$(date +%s)
-  diff=$((resets_at - now))
-  if [ "$diff" -gt 0 ]; then
-    hours=$((diff / 3600))
-    mins=$(((diff % 3600) / 60))
-    reset_line="5h reset ${hours}h${mins}m"
+# Relative time until a Unix epoch: "3d4h" past a day, otherwise "1h5m"
+fmt_until() {
+  local diff=$(($1 - $(date +%s)))
+  if [ "$diff" -le 0 ]; then
+    printf 'now'
+  elif [ "$diff" -ge 86400 ]; then
+    printf '%dd%dh' $((diff / 86400)) $(((diff % 86400) / 3600))
   else
-    reset_line="5h reset now"
+    printf '%dh%dm' $((diff / 3600)) $(((diff % 3600) / 60))
   fi
-fi
+}
 
-# Assemble segments, skipping any that are empty. Each segment has a paired
-# color; empty color means "use the default dim styling".
-segments=("$dir_display")
-colors=("")
-[ -n "$git_info" ] && segments+=("$git_info") && colors+=("")
-segments+=("$model")
-colors+=("")
-segments+=("$(printf 'in:%s out:%s' "$(fmt_num "$in_tokens")" "$(fmt_num "$out_tokens")")")
-colors+=("")
-[ -n "$ctx_line" ] && segments+=("$ctx_line") && colors+=("")
-[ -n "$cost_line" ] && segments+=("$cost_line") && colors+=("")
-[ -n "$week_line" ] && segments+=("$week_line") && colors+=("")
-[ -n "$reset_line" ] && segments+=("$reset_line") && colors+=("")
+# One rate-limit window as "<label> <pct>% <time to reset>". Either half may be
+# missing: plans that don't report rate limits yield an empty segment.
+fmt_window() {
+  local label=$1 key=$2 pct resets out
+  pct=$(echo "$input" | jq -r ".rate_limits.${key}.used_percentage // empty")
+  resets=$(echo "$input" | jq -r ".rate_limits.${key}.resets_at // empty")
+  [ -z "$pct" ] && [ -z "$resets" ] && return
+  out="$label"
+  [ -n "$pct" ] && out="${out} $(printf '%.0f' "$pct")%"
+  [ -n "$resets" ] && out="${out} $(fmt_until "$resets")"
+  printf '%s' "$out"
+}
 
-line=""
-for i in "${!segments[@]}"; do
-  seg="${segments[$i]}"
-  col="${colors[$i]}"
-  [ -n "$line" ] && line="${line}\033[2m | \033[0m"
-  if [ -n "$col" ]; then
-    line="${line}${col}${seg}\033[0m"
-  else
-    line="${line}\033[2m${seg}\033[0m"
-  fi
-done
+hour_line=$(fmt_window "5h" "five_hour")
+week_line=$(fmt_window "7d" "seven_day")
 
-# %b interprets the embedded \033 escapes (works well on both dark and light terminal themes)
-printf '%b\n' "$line"
+# Join non-empty segments with a dim pipe, and print only if something remains.
+# %b interprets the embedded \033 escapes (readable on dark and light themes).
+render_line() {
+  local out="" seg
+  for seg in "$@"; do
+    [ -z "$seg" ] && continue
+    [ -n "$out" ] && out="${out}\033[2m | \033[0m"
+    out="${out}\033[2m${seg}\033[0m"
+  done
+  [ -n "$out" ] && printf '%b\n' "$out"
+}
+
+# Line 1: where you are. Line 2: everything that moves.
+render_line "$dir_display" "$git_info" "$model"
+render_line \
+  "$(printf 'in:%s out:%s' "$(fmt_num "$in_tokens")" "$(fmt_num "$out_tokens")")" \
+  "$ctx_line" "$cost_line" "$hour_line" "$week_line"
