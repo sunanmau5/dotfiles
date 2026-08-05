@@ -106,3 +106,6 @@ alias oc="opencode"
 
 # fd
 alias fd="fd $FD_OPTIONS"
+
+# brew
+alias mbrew="brew bundle && brew update && brew upgrade -y"
