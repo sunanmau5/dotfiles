@@ -48,3 +48,14 @@ function cx() {
 function cxs() {
   codex --sandbox read-only "$@"
 }
+
+function b64e() {
+  echo -n "$1" | base64
+}
+
+function b64d() {
+  local decoded
+  decoded=$(echo -n "$1" | base64 -d)
+  echo "$decoded"
+  echo "${decoded#*:}"
+}
