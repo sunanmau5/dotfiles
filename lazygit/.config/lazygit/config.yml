@@ -44,3 +44,5 @@ customCommands:
     command: "git worktree remove -f {{ .SelectedWorktree.Path | quote }}"
     loadingText: "Removing worktree..."
     output: log
+# skip "press enter to return to lazygit"
+promptToReturnFromSubprocess: false
