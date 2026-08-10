@@ -115,6 +115,9 @@ defaults write -g AppleKeyboardUIMode -int 2
 # Disable press-and-hold for diacritics
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+# Press globe key to: Do Nothing (frees fn as the Karabiner mouse layer)
+defaults write com.apple.HIToolbox AppleFnUsageType -int 0
+
 # Txt Input > Correct spelling automatically
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
