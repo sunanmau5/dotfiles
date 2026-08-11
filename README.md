@@ -121,6 +121,42 @@ sync-claude-permissions
 
 Agent skills are linked by `sskills/scripts/link-skills.sh`, not stored in the `codex` or `claude` packages
 
+## Karabiner
+
+**Mouse mode** puts the pointer on the keyboard. Left hand drives the cursor, right hand scrolls
+
+```text
+  +---+---+---+---+---+---+---+---+---+---+
+  |   | W |   |   |   |   |   | I |   |   |    W A S D  move cursor
+  +---+---+---+---+---+---+---+---+---+---+    H J K L  scroll left down up right
+    +---+---+---+---+---+---+---+---+---+      N        left click, hold to drag
+    | A | S | D |   | G | H | J | K | L |      I        right click
+    +---+---+---+---+---+---+---+---+---+      G G      jump to top
+      +---+---+---+---+---+---+---+---+
+      |   |   |   |   |   | N |   |   |
+      +---+---+---+---+---+---+---+---+
+```
+
+Hold two movement keys at once for a diagonal
+
+| Key                 | Action                     |
+| ------------------- | -------------------------- |
+| `fn`                | Toggle mouse mode on / off |
+| `esc` / `caps lock` | Exit mouse mode            |
+| `space`             | Hold for 0.4x precision    |
+| `left shift`        | Hold for 2x sprint         |
+| `right shift` + `g` | Jump to bottom of page     |
+
+Outside mouse mode:
+
+| Key                     | Action                                          |
+| ----------------------- | ----------------------------------------------- |
+| `caps lock`             | Control when held, escape when tapped           |
+| `right cmd` + `h j k l` | Arrow keys                                      |
+| `cmd+m` / `cmd+h`       | Disabled, to avoid accidental minimise and hide |
+
+Requires **System Settings -> Keyboard -> Press globe key to -> Do Nothing**, otherwise every `fn` tap also opens the emoji picker. `setup-macos.sh` sets this
+
 ## Tmux
 
 On macOS, disable the system `C-Space` shortcut so tmux can receive the prefix:
