@@ -176,7 +176,7 @@
                   { "name": "mouse_mode", "type": "variable_if", "value": 1 }
                 ],
                 "from": { "key_code": "h" },
-                "to": [{ "mouse_key": { "horizontal_wheel": 96 } }],
+                "to": [{ "mouse_key": { "horizontal_wheel": 64 } }],
                 "type": "basic"
               },
               {
@@ -184,7 +184,7 @@
                   { "name": "mouse_mode", "type": "variable_if", "value": 1 }
                 ],
                 "from": { "key_code": "j" },
-                "to": [{ "mouse_key": { "vertical_wheel": 96 } }],
+                "to": [{ "mouse_key": { "vertical_wheel": 64 } }],
                 "type": "basic"
               },
               {
@@ -192,7 +192,7 @@
                   { "name": "mouse_mode", "type": "variable_if", "value": 1 }
                 ],
                 "from": { "key_code": "k" },
-                "to": [{ "mouse_key": { "vertical_wheel": -96 } }],
+                "to": [{ "mouse_key": { "vertical_wheel": -64 } }],
                 "type": "basic"
               },
               {
@@ -200,7 +200,7 @@
                   { "name": "mouse_mode", "type": "variable_if", "value": 1 }
                 ],
                 "from": { "key_code": "l" },
-                "to": [{ "mouse_key": { "horizontal_wheel": -96 } }],
+                "to": [{ "mouse_key": { "horizontal_wheel": -64 } }],
                 "type": "basic"
               },
               {
@@ -224,9 +224,41 @@
                   { "name": "mouse_mode", "type": "variable_if", "value": 1 }
                 ],
                 "from": {
-                  "key_code": "left_shift",
-                  "modifiers": { "optional": ["any"] }
+                  "key_code": "g",
+                  "modifiers": { "mandatory": ["right_shift"] }
                 },
+                "to": [{ "key_code": "end" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  { "name": "mouse_mode", "type": "variable_if", "value": 1 },
+                  { "name": "mouse_mode_g", "type": "variable_if", "value": 1 }
+                ],
+                "from": { "key_code": "g" },
+                "to": [
+                  { "key_code": "home" },
+                  { "set_variable": { "name": "mouse_mode_g", "value": 0 } }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  { "name": "mouse_mode", "type": "variable_if", "value": 1 }
+                ],
+                "from": { "key_code": "g" },
+                "to": [{ "set_variable": { "name": "mouse_mode_g", "value": 1 } }],
+                "to_delayed_action": {
+                  "to_if_canceled": [{ "set_variable": { "name": "mouse_mode_g", "value": 0 } }],
+                  "to_if_invoked": [{ "set_variable": { "name": "mouse_mode_g", "value": 0 } }]
+                },
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  { "name": "mouse_mode", "type": "variable_if", "value": 1 }
+                ],
+                "from": { "key_code": "left_shift" },
                 "to": [{ "mouse_key": { "speed_multiplier": 2.0 } }],
                 "type": "basic"
               }
