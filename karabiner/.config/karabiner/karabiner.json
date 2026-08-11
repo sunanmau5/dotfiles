@@ -136,7 +136,7 @@
                   { "name": "mouse_mode", "type": "variable_if", "value": 1 }
                 ],
                 "from": { "key_code": "spacebar" },
-                "to": [{ "mouse_key": { "speed_multiplier": 2.0 } }],
+                "to": [{ "mouse_key": { "speed_multiplier": 0.4 } }],
                 "type": "basic"
               },
               {
@@ -227,7 +227,7 @@
                   "key_code": "left_shift",
                   "modifiers": { "optional": ["any"] }
                 },
-                "to": [{ "mouse_key": { "speed_multiplier": 0.4 } }],
+                "to": [{ "mouse_key": { "speed_multiplier": 2.0 } }],
                 "type": "basic"
               }
             ]
