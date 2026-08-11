@@ -119,6 +119,10 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # Karabiner's mouse mode also opens the emoji picker
 defaults write com.apple.HIToolbox AppleFnUsageType -int 0
 
+# Linear scroll wheel, otherwise macOS damps the first ticks of Karabiner's
+# mouse mode scrolling. Only affects wheel events, not the trackpad
+defaults write -g com.apple.scrollwheel.scaling -1
+
 # Txt Input > Correct spelling automatically
 defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
