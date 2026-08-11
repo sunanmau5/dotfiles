@@ -142,7 +142,6 @@ Hold two movement keys at once for a diagonal
 | Key                 | Action                     |
 | ------------------- | -------------------------- |
 | `fn`                | Toggle mouse mode on / off |
-| `esc` / `caps lock` | Exit mouse mode            |
 | `space`             | Hold for 0.4x precision    |
 | `left shift`        | Hold for 2x sprint         |
 | `right shift` + `g` | Jump to bottom of page     |
