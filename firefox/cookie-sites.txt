@@ -13,3 +13,4 @@ www.amazon.de
 pass.proton.me
 www.netflix.com
 f1tv.formula1.com
+www.startpage.com
