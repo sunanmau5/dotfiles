@@ -6,6 +6,7 @@ brew "stow"
 brew "starship"
 brew "zoxide"
 brew "fzf"
+brew "jj"
 
 # cli nice-to-have
 brew "bat"
@@ -35,6 +36,7 @@ brew "opencode"
 brew "elixir"
 brew "awscli"
 brew "libpq"
+brew "pandoc"
 
 # version manager (node, ruby, python, java)
 brew "mise"
