@@ -7,6 +7,7 @@ brew "starship"
 brew "zoxide"
 brew "fzf"
 brew "jj"
+brew "yazi"
 
 # cli nice-to-have
 brew "bat"
