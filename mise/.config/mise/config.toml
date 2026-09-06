@@ -8,10 +8,12 @@ trusted_config_paths = [
 idiomatic_version_file_enable_tools = ["node", "bun"]
 
 [tools]
+go = "1.26.4"
 node = "lts"
 pi = "latest"
 python = "3.13"
 ruff = "latest"
 serverless = "latest"
 terraform = "latest"
+wrangler = { version = "4.129.0", allow_builds = ["esbuild", "sharp", "workerd"] }
 yarn = "4.9.2"

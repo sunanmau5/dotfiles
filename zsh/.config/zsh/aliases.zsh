@@ -70,7 +70,7 @@ alias npm="corepack npm"
 # npq
 # alias npm="npq-hero"
 # alias yarn="NPQ_PKG_MGR=yarn npq-hero"
-alias pnpm="NPQ_PKG_MGR=pnpm npq-hero"
+# alias pnpm="NPQ_PKG_MGR=pnpm npq-hero"
 
 # wordpress
 alias wplocal="cd /Applications/XAMPP/htdocs"

@@ -38,6 +38,7 @@ brew "elixir"
 brew "awscli"
 brew "libpq"
 brew "pandoc"
+brew "hugo"
 
 # version manager (node, ruby, python, java)
 brew "mise"
