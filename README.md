@@ -34,6 +34,7 @@ stow */
 | `mise`                                   | Version manager (node, ruby, etc)     |
 | `tmux`                                   | Terminal multiplexer                  |
 | `nvim`                                   | Neovim config                         |
+| `helix`                                  | Helix config                          |
 | `alacritty` / `ghostty`                  | Terminal emulators                    |
 | `less` / `ripgrep`                       | CLI tool defaults                     |
 | `prettier`                               | Global Prettier defaults              |

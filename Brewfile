@@ -1,6 +1,7 @@
 # core tools
 brew "git"
 brew "neovim"
+brew "helix"
 brew "tmux"
 brew "stow"
 brew "starship"
