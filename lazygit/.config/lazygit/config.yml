@@ -1,3 +1,9 @@
+os:
+  edit: "hx {{filename}}"
+  editAtLine: "hx {{filename}}:{{line}}"
+  editAtLineAndWait: "hx {{filename}}:{{line}}"
+  editInTerminal: true
+  openDirInEditor: "hx {{dir}}"
 git:
   diffRenderers:
     - colorArg: always

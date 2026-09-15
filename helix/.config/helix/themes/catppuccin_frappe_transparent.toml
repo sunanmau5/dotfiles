@@ -1,0 +1,12 @@
+inherits = "catppuccin_frappe"
+
+"ui.background" = {}
+"ui.menu" = {}
+"ui.popup" = {}
+"ui.popup.info" = {}
+"ui.help" = {}
+"ui.statusline" = {}
+"ui.statusline.inactive" = {}
+"ui.virtual.whitespace" = { fg = "surface2" }
+"ui.virtual.indent-guide" = { fg = "surface1" }
+"ui.virtual.ruler" = { bg = "surface0" }

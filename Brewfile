@@ -2,6 +2,7 @@
 brew "git"
 brew "neovim"
 brew "helix"
+brew "taplo"
 brew "tmux"
 brew "stow"
 brew "starship"

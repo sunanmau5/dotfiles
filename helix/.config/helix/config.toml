@@ -1,8 +1,9 @@
-theme = "catppuccin_frappe"
+theme = "catppuccin_frappe_transparent"
 
 [editor]
 line-number = "relative"
 default-yank-register = "+"
+cursorline = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -11,3 +12,34 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.indent-guides]
+render = true
+
+[keys.normal]
+G = "goto_file_end"
+X = "extend_line_above"
+# scooter
+C-r = [
+  ":write-all",
+  ":insert-output scooter --no-stdin >/dev/tty",
+  ":redraw",
+  ":reload-all",
+]
+# lazygit
+C-g = [
+  ":write-all",
+  ":insert-output lazygit >/dev/tty",
+  ":redraw",
+  ":reload-all",
+]
+# yazi
+- = [
+  ':sh rm -f /tmp/unique-file-h21a434',
+  ':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-file-h21a434',
+  ':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh{cat /tmp/unique-file-h21a434}',
+  ':redraw',
+  ':set mouse false',
+  ':set mouse true',
+]

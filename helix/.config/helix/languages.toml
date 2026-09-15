@@ -1,0 +1,13 @@
+[[language]]
+name = "markdown"
+comment-tokens = ["-", "+", "*", "- [ ]", ">"]
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
+
+[language-server.taplo]
+command = "taplo"
+args = ["lsp", "stdio"]
+
+[[language]]
+name = "toml"
+language-servers = ["taplo"]
+auto-format = true
