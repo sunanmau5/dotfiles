@@ -9,6 +9,7 @@ brew "zoxide"
 brew "fzf"
 brew "jj"
 brew "yazi"
+brew "scooter"
 
 # cli nice-to-have
 brew "bat"
