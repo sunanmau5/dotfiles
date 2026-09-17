@@ -31,17 +31,17 @@ ensure_window() {
 
 if tmux has-session -t "$session" 2>/dev/null; then
   target="$(session_id)"
-  ensure_window "$target" nvim nvim
+  ensure_window "$target" editor hx
   ensure_window "$target" term
   ensure_window "$target" git lazygit
 else
-  tmux new-session -d -s "$target" -n nvim -c "$dir" nvim
+  tmux new-session -d -s "$target" -n editor -c "$dir" hx
   target="$(session_id)"
   tmux new-window -d -t "$target" -n term -c "$dir"
   tmux new-window -d -t "$target" -n git -c "$dir" lazygit
 fi
 
-tmux select-window -t "$target:nvim"
+tmux select-window -t "$target:editor"
 
 if [[ -z "${TMUX:-}" ]]; then
   tmux attach -t "$target"
