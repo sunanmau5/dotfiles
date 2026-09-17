@@ -49,6 +49,12 @@ function cxs() {
   codex --sandbox read-only "$@"
 }
 
+# caffeinate
+function cfi() {
+  [[ -z "$1" ]] && { echo "Usage: cfi <command-here>"; return 1; }
+  cf -i "$1"
+}
+
 function b64e() {
   echo -n "$1" | base64
 }

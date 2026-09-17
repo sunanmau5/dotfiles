@@ -107,5 +107,9 @@ alias oc="opencode"
 # fd
 alias fd="fd $FD_OPTIONS"
 
+# caffeinate
+alias cf="caffeinate"
+alias cfd="cf -d"
+
 # brew
 alias mbrew="brew bundle && brew update && brew upgrade -y"
