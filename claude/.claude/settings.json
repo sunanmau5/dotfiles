@@ -62,7 +62,8 @@
     "command": "sh ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "frontend-slides@frontend-slides": true
+    "frontend-slides@frontend-slides": false,
+    "typescript-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "frontend-slides": {
