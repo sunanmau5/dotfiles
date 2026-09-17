@@ -1,6 +1,7 @@
 [[language]]
 name = "markdown"
 comment-tokens = ["-", "+", "*", "- [ ]", ">"]
+language-servers = ["marksman"]
 formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
 
 [language-server.taplo]
@@ -11,3 +12,46 @@ args = ["lsp", "stdio"]
 name = "toml"
 language-servers = ["taplo"]
 auto-format = true
+
+[language-server.vscode-json-language-server]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+config = { provideFormatter = true, json = { validate = { enable = true } } }
+
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server"]
+
+[[language]]
+name = "jsonc"
+language-servers = ["vscode-json-language-server"]
+
+[[language-server.typescript-language-server.config.plugins]]
+name = "@vue/typescript-plugin"
+location = "@vue/typescript-plugin"
+languages = ["vue"]
+
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server"]
+
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server"]
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server"]
+
+[[language]]
+name = "jsx"
+language-servers = ["typescript-language-server"]
+
+[language-server.vue-language-server]
+command = "vue-language-server"
+args = ["--stdio"]
+config.typescript.tsdk = "~/.local/share/mise/installs/node/lts/lib/node_modules/typescript/lib"
+
+[[language]]
+name = "vue"
+language-servers = ["vue-language-server", "typescript-language-server"]

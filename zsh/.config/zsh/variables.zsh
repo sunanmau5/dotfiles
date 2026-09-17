@@ -2,8 +2,10 @@ zed="zed"
 vscode="code"
 cursor="cursor"
 nvim="nvim"
+helix="hx"
 
-export EDITOR=$nvim
+export EDITOR=$helix
+export VISUAL=$helix
 
 export ZSH_CONFIG_PATH="$HOME/.zshrc"
 export ALIAS_FILE_PATH="$HOME/.config/zsh/aliases.zsh"

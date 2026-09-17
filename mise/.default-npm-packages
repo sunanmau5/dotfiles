@@ -1,0 +1,5 @@
+typescript@5.9.3
+typescript-language-server
+vscode-langservers-extracted
+@vue/language-server
+@vue/typescript-plugin

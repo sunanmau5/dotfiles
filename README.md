@@ -51,6 +51,10 @@ stow */
 | `obsidian`                               | Note-taking app                       |
 | `datagrip`                               | DataGrip IdeaVim config               |
 
+## Language Servers
+
+Native binaries live in the `Brewfile`. Npm-based servers live in `mise/.default-npm-packages` and get auto-installed into every node version mise manages. Editor wiring lives in each editor's config
+
 ## Editor Setup
 
 Most editors work automatically with stow, but VSCode and Cursor store configs outside `~/.config`, so they need manual symlinks

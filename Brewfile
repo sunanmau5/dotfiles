@@ -2,7 +2,6 @@
 brew "git"
 brew "neovim"
 brew "helix"
-brew "taplo"
 brew "tmux"
 brew "stow"
 brew "starship"
@@ -52,8 +51,12 @@ brew "uv"
 brew "npq"
 brew "rtk"
 
-cask "bruno"
-cask "coconutbattery"
+# language servers
+brew "taplo"
+brew "marksman"
+
+# cask "bruno"
+# cask "coconutbattery"
 cask "font-jetbrains-mono-nerd-font"
 cask "hammerspoon"
 cask "karabiner-elements"
