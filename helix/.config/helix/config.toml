@@ -43,3 +43,4 @@ C-g = [
   ':set mouse false',
   ':set mouse true',
 ]
+C-b = ":echo %sh{git show --no-patch --format='%%h (%%an: %%ar): %%s' $(git blame -p %{buffer_name} -L%{cursor_line},+1 | head -1 | cut -d' ' -f1)}"
