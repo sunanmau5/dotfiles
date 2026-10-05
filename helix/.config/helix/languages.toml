@@ -3,6 +3,7 @@ name = "markdown"
 comment-tokens = ["-", "+", "*", "- [ ]", ">"]
 language-servers = ["marksman"]
 formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
+auto-format = true
 
 [language-server.taplo]
 command = "taplo"

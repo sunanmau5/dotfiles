@@ -1,7 +1,13 @@
 {
+  "$schema": "https://plugins.dprint.dev/dprint/dprint-plugin-json/latest/schema.json",
   "markdown": {
     "lineWidth": 80,
+    "textWrap": "maintainAndWrap"
   },
   "excludes": [],
-  "plugins": ["https://plugins.dprint.dev/markdown-0.16.1.wasm"],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.96.1.wasm",
+    "https://plugins.dprint.dev/json-0.25.1.wasm",
+    "https://plugins.dprint.dev/markdown-0.25.0.wasm"
+  ]
 }
