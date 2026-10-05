@@ -7,14 +7,15 @@ idiomatic_version_file_enable_tools = ["node", "bun"]
 
 [tools]
 go = "1.26.4"
-node = "lts"
+node = { version = "lts", postinstall = "npm install -g typescript@5.9.3 @vue/typescript-plugin" }
 python = "3.13"
 ruff = "latest"
-serverless = "latest"
 terraform = "latest"
 wrangler = { version = "4.129.0", allow_builds = [
   "esbuild",
   "sharp",
   "workerd",
 ] }
-yarn = "4.9.2"
+"npm:typescript-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:@vue/language-server" = "latest"

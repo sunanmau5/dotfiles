@@ -53,7 +53,7 @@ stow */
 
 ## Language Servers
 
-Native binaries live in the `Brewfile`. Npm-based servers live in `mise/.default-npm-packages` and get auto-installed into every node version mise manages. Editor wiring lives in each editor's config
+Native binaries live in the `Brewfile`. Npm-based language-server CLIs are managed globally with mise's npm backend. TypeScript and the Vue TypeScript plugin are installed into each mise-managed Node version by its postinstall hook. Editor wiring lives in each editor's config.
 
 ## Editor Setup
 
