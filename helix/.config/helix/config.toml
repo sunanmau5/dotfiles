@@ -1,8 +1,8 @@
 theme = "catppuccin_frappe_transparent"
 
 [editor]
+clipboard-provider = "pasteboard"
 line-number = "relative"
-default-yank-register = "+"
 cursorline = true
 
 [editor.cursor-shape]
@@ -19,6 +19,10 @@ render = true
 [keys.normal]
 G = "goto_file_end"
 X = "extend_line_above"
+# system clipboard
+y = "yank_to_clipboard"
+p = "paste_clipboard_after"
+P = "paste_clipboard_before"
 # scooter
 C-r = [
   ":write-all",
