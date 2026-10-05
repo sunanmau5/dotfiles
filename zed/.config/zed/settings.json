@@ -7,8 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "helix_mode": true,
+  "markdown_preview": {
+    "font_size": 16.0
+  },
   "format_on_save": "off",
-  "markdown_preview_font_size": 16.0,
   "minimap": {
     "max_width_columns": 80,
     "show": "never"
@@ -24,6 +27,9 @@
     }
   },
   "agent": {
+    "threads_sidebar": {
+      "position": "right"
+    },
     "auto_compact": {
       "threshold": "90%"
     },
@@ -38,7 +44,6 @@
     "dock": "right",
     "flexible": true,
     "model_parameters": [],
-    "sidebar_side": "right",
     "single_file_review": true,
     "tool_permissions": {
       "tools": {
@@ -132,6 +137,7 @@
     "button": false
   },
   "project_panel": {
+    "folder_indicator": "icon",
     "auto_fold_dirs": false,
     "auto_reveal_entries": true,
     "bold_folder_labels": false,
@@ -140,7 +146,6 @@
     "dock": "right",
     "entry_spacing": "standard",
     "file_icons": true,
-    "folder_icons": true,
     "git_status": true,
     "git_status_indicator": true,
     "hide_gitignore": false,
@@ -215,7 +220,7 @@
     "use_smartcase_find": true
   },
   // Vim mode settings
-  "vim_mode": true,
+  "vim_mode": false,
   "which_key": {
     "delay_ms": 500,
     "enabled": true
