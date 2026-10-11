@@ -4,6 +4,7 @@ theme = "catppuccin_frappe_transparent"
 clipboard-provider = "pasteboard"
 line-number = "relative"
 cursorline = true
+idle-timeout = 0
 
 [editor.cursor-shape]
 insert = "bar"
