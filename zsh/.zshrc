@@ -56,3 +56,6 @@ if [[ -z "$TMUX" && "$TERM_PROGRAM" == "Alacritty" ]]; then
     tmux new-session -A -s main
   fi
 fi || true
+
+# direnv
+eval "$(direnv hook zsh)"
