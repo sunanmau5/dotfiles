@@ -10,6 +10,7 @@ brew "fzf"
 brew "jj"
 brew "yazi"
 brew "scooter"
+brew "sk" # skim
 
 # cli nice-to-have
 brew "bat"

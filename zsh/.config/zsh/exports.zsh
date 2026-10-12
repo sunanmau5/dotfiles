@@ -21,3 +21,8 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export FZF_DEFAULT_OPTS="--layout reverse"
 export FZF_DEFAULT_COMMAND="fd $FD_OPTIONS --type f --strip-cwd-prefix"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# skim
+export SKIM_DEFAULT_OPTIONS="--layout reverse"
+export SKIM_DEFAULT_COMMAND="fd $FD_OPTIONS --type f --strip-cwd-prefix"
+export SKIM_CTRL_T_COMMAND="$SKIM_DEFAULT_COMMAND"

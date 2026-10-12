@@ -25,7 +25,10 @@ bindkey '^P' up-line-or-beginning-search
 bindkey '^N' down-line-or-beginning-search
 
 # fzf
-[[ -t 0 ]] && source <(fzf --zsh)
+# [[ -t 0 ]] && source <(fzf --zsh)
+
+# skim
+[[ -t 0 ]] && source <(sk --shell zsh --shell-bindings)
 
 # mise (version manager for node, ruby, python, java)
 eval "$(mise activate zsh)"

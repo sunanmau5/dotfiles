@@ -11,6 +11,7 @@ git:
 gui:
   sidePanelWidth: 0.25
   showCommandLog: false
+  filterMode: fuzzy
 customCommands:
   # Create worktree from current branch (when in worktrees view)
   - key: "N"
