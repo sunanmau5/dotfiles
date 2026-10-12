@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
-    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-5",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "claude-sonnet-5-5",
     "DISABLE_AUTO_COMPACT": "1",
     "DISABLE_INSTALL_GITHUB_APP_COMMAND": "1",
     "DISABLE_TELEMETRY": "1"
@@ -13,9 +13,10 @@
   "permissions": {
     "allow": [
       "Read(//Users/sunan.maunakea/Developer/koppla-tech/**)",
+      "Read(//Users/sunan.maunakea/Developer/projex/**)",
       "Read(//Users/sunan.maunakea/.dotfiles/**)",
-      "Bash(rtk grep *)",
-      "Bash(rtk find *)"
+      "Read(//Users/sunan.maunakea/.dotfiles/nvim/.config/nvim/**)",
+      "Read(//Users/sunan.maunakea/.dotfiles/sskills/**)"
     ],
     "deny": [
       "Read(**/.env*)",
@@ -26,7 +27,6 @@
       "Read(**/credentials/**)",
       "Read(**/.aws/**)",
       "Read(**/.ssh/**)",
-      "Read(**/docker-compose*.yml)",
       "Read(**/config/database.yml)"
     ]
   },
@@ -52,6 +52,17 @@
           }
         ]
       }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'case \"$PWD\" in */koppla-tech/notes*) exit 0 ;; */koppla-tech/*) echo \"TypeScript LSP is configured for this project. Before using Grep/Glob to find a symbol (function, class, type, interface, variable, method), call ToolSearch with query select:LSP to load LSP, then use goToDefinition/findReferences/hover. Grep is only for prose, comments, config strings, or file discovery.\" ;; esac'"
+          }
+        ]
+      }
     ]
   },
   "disableWorkflows": true,
@@ -63,7 +74,8 @@
   },
   "enabledPlugins": {
     "frontend-slides@frontend-slides": false,
-    "typescript-lsp@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "frontend-slides": {
@@ -86,5 +98,16 @@
   "theme": "dark",
   "autoCompactEnabled": false,
   "switchModelsOnFlag": false,
-  "model": "opus[1m]"
+  "mcpServers": {
+    "excalidraw": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-excalidraw-server"
+      ],
+      "env": {
+        "EXPRESS_SERVER_URL": "http://localhost:3000"
+      }
+    }
+  }
 }
