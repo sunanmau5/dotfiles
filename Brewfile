@@ -58,6 +58,7 @@ brew "marksman"
 
 # cask "bruno"
 # cask "coconutbattery"
+cask "fanckush/solodisplay/solodisplay"
 cask "font-jetbrains-mono-nerd-font"
 cask "hammerspoon"
 cask "karabiner-elements"
