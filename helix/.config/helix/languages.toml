@@ -4,6 +4,8 @@ comment-tokens = ["-", "+", "*", "- [ ]", ">"]
 language-servers = ["marksman"]
 formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
 auto-format = true
+text-width = 80
+soft-wrap = { enable = true, wrap-at-text-width = true }
 
 [language-server.taplo]
 command = "taplo"
@@ -12,7 +14,6 @@ args = ["lsp", "stdio"]
 [[language]]
 name = "toml"
 language-servers = ["taplo"]
-auto-format = true
 
 [language-server.vscode-json-language-server]
 command = "vscode-json-language-server"
@@ -27,32 +28,19 @@ language-servers = ["vscode-json-language-server"]
 name = "jsonc"
 language-servers = ["vscode-json-language-server"]
 
-[[language-server.typescript-language-server.config.plugins]]
-name = "@vue/typescript-plugin"
-location = "@vue/typescript-plugin"
-languages = ["vue"]
+# TODO: go to definition perf is still ass
+[language-server.typescript-language-server.config]
+plugins = [
+  { name = "@vue/typescript-plugin", location = "/Users/sunan.maunakea/.local/share/mise/installs/node/lts/lib/node_modules/@vue/language-server", languages = [
+    "vue",
+  ] },
+]
+tsserver = { path = "/Users/sunan.maunakea/.local/share/mise/installs/node/lts/lib/node_modules/typescript/lib" }
 
-[[language]]
-name = "typescript"
-language-servers = ["typescript-language-server"]
-
-[[language]]
-name = "javascript"
-language-servers = ["typescript-language-server"]
-
-[[language]]
-name = "tsx"
-language-servers = ["typescript-language-server"]
-
-[[language]]
-name = "jsx"
-language-servers = ["typescript-language-server"]
-
-[language-server.vue-language-server]
+[language-server.vuels]
 command = "vue-language-server"
 args = ["--stdio"]
-config.typescript.tsdk = "~/.local/share/mise/installs/node/lts/lib/node_modules/typescript/lib"
 
 [[language]]
 name = "vue"
-language-servers = ["vue-language-server", "typescript-language-server"]
+language-servers = ["typescript-language-server", "vuels"]
