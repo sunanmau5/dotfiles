@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "tabs": {
+    "git_status": false
+  },
   "helix_mode": true,
   "markdown_preview": {
     "font_size": 16.0
@@ -169,10 +172,11 @@
   "show_edit_predictions": true,
   "soft_wrap": "editor_width",
   "status_bar": {
+    "show_active_file": false,
     "experimental.show": true
   },
   "tab_bar": {
-    "show": false,
+    "show": true,
     "show_nav_history_buttons": false,
     "show_tab_bar_buttons": false
   },
@@ -200,6 +204,12 @@
     "light": "One Light",
     "mode": "system"
   },
+  "theme_overrides": {
+    "One Dark": {
+      // helix gw labels default to the text color in One Dark
+      "vim.helix_jump_label.foreground": "#e5c07b"
+    }
+  },
   "title_bar": {
     "show_branch_name": true,
     "show_branch_status_icon": false,
@@ -219,8 +229,6 @@
     "toggle_relative_line_numbers": true,
     "use_smartcase_find": true
   },
-  // Vim mode settings
-  "vim_mode": false,
   "which_key": {
     "delay_ms": 500,
     "enabled": true
