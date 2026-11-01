@@ -29,6 +29,7 @@ brew "zsh-syntax-highlighting"
 brew "tlrc"
 brew "hunk"
 brew "dprint"
+brew "blueutil"
 
 # dev tools
 brew "colima"
