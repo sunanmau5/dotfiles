@@ -7,7 +7,7 @@ idiomatic_version_file_enable_tools = ["node", "bun"]
 
 [tools]
 go = "1.26.4"
-node = { version = "lts", postinstall = "npm install -g typescript@5.9.3 @vue/typescript-plugin" }
+node = { version = "24", postinstall = "npm install -g typescript@5.9.3 @vue/typescript-plugin" }
 python = "3.13"
 ruff = "latest"
 terraform = "latest"
