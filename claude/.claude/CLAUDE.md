@@ -9,6 +9,8 @@
 - Avoid staccato drama - runs of short punchy sentences create artificial pauses and an overdramatic tone. Write sentences at natural, varied length
 - Keep prose concise and direct
 - Single-sentence ordered and unordered list items do not end with a period
+- Always write the relative pronoun (that, which, who, whose), never drop it in a contact clause. Write "the values that a restore would write", not "the values a restore would write"
+- Don't make an action or process the subject that does something ("a restore writes", "the check catches"). Name who does it, or use a "when" clause: "the values that we get when we restore a version"
 
 ## graphify
 
