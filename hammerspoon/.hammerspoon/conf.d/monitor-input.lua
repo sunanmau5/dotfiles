@@ -12,13 +12,13 @@ local function switchInput(input)
 end
 
 hs.hotkey.bind(modifiers, "1", function()
-  switchInput("15")
+  switchInput("18") -- HDMI2
 end)
 
 hs.hotkey.bind(modifiers, "2", function()
-  switchInput("17")
+  switchInput("17") -- HDMI1
 end)
 
 hs.hotkey.bind(modifiers, "3", function()
-  switchInput("18")
+  switchInput("15") -- DisplayPort1
 end)
