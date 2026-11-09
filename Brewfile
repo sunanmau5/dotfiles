@@ -30,6 +30,7 @@ brew "tlrc"
 brew "hunk"
 brew "dprint"
 brew "blueutil"
+brew "m1ddc"
 
 # dev tools
 brew "colima"
